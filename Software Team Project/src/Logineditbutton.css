@@ -1,0 +1,20 @@
+.login-button {
+    height: 40px;
+    width: 400px;
+    background-color: #FFD79C;
+    color: #000;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+    font-family: Lato;
+    margin-bottom: 15px;
+  }
+  
+.login-button:hover {
+    background-color: #FFE6B2;
+  }
+  
+.login-button:active {
+    background-color: #D2AA68;
+  }

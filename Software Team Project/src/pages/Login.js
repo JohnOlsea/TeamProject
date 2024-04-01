@@ -1,4 +1,4 @@
-import '../styles/App.css';
+import '../styles/Login.css';
 import logo from '../images/KMITLLogo.png'; 
 
 function Login() {
@@ -13,6 +13,19 @@ function Login() {
       <nav className="navbar">
         King Mongkut's Institute of Technology Ladkrabang
       </nav>
+      <div className="login-form">
+        <div className="input-group">
+          <label htmlFor="email">Email</label>
+          <input type="text" id="email" />
+        </div>
+        <div className="input-group">
+          <label htmlFor="password">Password</label>
+          <input type="password" id="password" />
+        </div>
+        <button className="login-btn">Login</button>
+        <p>OR</p>
+        <button className="google-signin-btn">Sign In with Google</button>
+      </div>
     </div>
   );
 }

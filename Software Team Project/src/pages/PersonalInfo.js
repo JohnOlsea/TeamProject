@@ -1,21 +1,33 @@
-import '../styles/App.css';
-import logo from '../images/KMITLLogo.png'; 
+import React from 'react';
+import '../styles/PersonalInfo.css';
+import logo from '../images/KMITLLogo.png';
+import { Link } from 'react-router-dom';
 
-function PersonalInfo() {
+function Home() {
+  const userName = "Thongchai Jaidee";
 
   return (
     <div className="app-container">
       <header className="header">
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
-          <h1 className="title">Personal Information</h1>
+          <div>
+            <h1 className="title">Personal Information</h1>
+            <p className="subtitle">{userName}</p>
+          </div>
         </div>
       </header>
       <nav className="navbar">
-        King Mongkut's Institute of Technology Ladkrabang
+        <div className="navbar-left">
+          <button className="nav-button" onClick={() => window.location.href='/home'}>Home Page</button>
+        </div>
+        <div className="navbar-right">
+          <button className="logout-button">Logout</button>
+        </div>
       </nav>
+      
     </div>
   );
 }
 
-export default PersonalInfo;
+export default Home;

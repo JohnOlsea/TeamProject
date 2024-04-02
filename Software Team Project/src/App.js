@@ -17,9 +17,9 @@ function App() {
     <BrowserRouter>
       <main>
         <Routes>
+          <Route path='/' element={<Login />} />
           <Route path='home' element={<Home />} />
           <Route path='personalInfo' element={<PersonalInfo />} />
-          <Route path='login' element={<Login />} />
           <Route path='degreeCertificateCollection' element={<DegreeCertificateCollection />} />
           <Route path='addressConfirmation' element={<AddressConfirmation />} />
           <Route path='payment' element={<Payment />} />

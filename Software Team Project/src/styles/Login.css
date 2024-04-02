@@ -37,6 +37,9 @@
   .header-content {
     display: flex;
     align-items: center;
+    width: 80%; /* Set width to 80% of the parent container */
+    max-width: 414px; /* Set maximum width to match the Login page */
+    height: auto; /* Allow height to adjust based on content */
   }
   
   .logo {

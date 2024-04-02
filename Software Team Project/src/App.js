@@ -9,6 +9,8 @@ import DegreeCertificateCollection from './pages/DegreeCertificateCollection'
 import AddressConfirmation from './pages/AddressConfirmation'
 import Payment from './pages/Payment'
 import PaymentCompleted from './pages/PaymentCompleted'
+import GraduationDayPickup from './pages/GraduationDayPickUp'
+import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
           <Route path='addressConfirmation' element={<AddressConfirmation />} />
           <Route path='payment' element={<Payment />} />
           <Route path='paymentCompleted' element={<PaymentCompleted />} />
+          <Route path='graduationDayPickup' element={<GraduationDayPickup />} />
+          <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
         </Routes>
       </main>
     </BrowserRouter>

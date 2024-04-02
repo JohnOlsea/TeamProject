@@ -85,24 +85,29 @@
   .logout-button {
     background-color: white;
     border: 1px solid black;
-    color: Red;
+    border-right: none;
+    color: red;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
     width: 100%;
     font-size: 150%;
     font-weight: bold;
+    height: 50px;
   }
 
   .nav-button {
     background-color: white;
     border: 1px solid black;
+    border-left: none;
+    border-right: none;
     color: black;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
     width: 100%;
-    font-size: 143%;
+    height: 50px;
+    font-size: 120%;
     font-weight: bold;
   }
   
@@ -114,25 +119,68 @@
     text-align: center; 
   }
 
-  .data-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .data-field {
-    text-align: center;
-  }
-  
-  .data-field label {
-    display: block;
+  .announcement-title {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 120%;
     margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .small-font-left-align {
+    font-size: 70%;
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
+  }
+
+  .empty-line {
+    margin-top: 5px; 
+    margin-bottom: 5px; 
   }
   
-  .data-field input[type="text"] {
-    width: 150px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .orange-text {
+    color: #FF6E2F;
   }
+
+  .button-container {
+    display: flex;
+    justify-content: center;
+  }
+
+  .submit-button {
+    color: #FF6E2F;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 120%;
+    border-radius: 5px;
+    width: 70%;
+    padding: 10px;
+    margin-top: 30%;
+  }
+
+  .radio-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 20%;
+    margin-top: 10%;
+  }
+  
+  .radio-buttons label {
+    margin-left: 20px;
+    font-weight: bold;
+    font-size: 70%;
+    align-items: flex-end;
+  }
+  
+  .radio-buttons input[type="radio"] {
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  
   

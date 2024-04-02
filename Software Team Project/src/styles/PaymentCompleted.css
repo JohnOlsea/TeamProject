@@ -85,24 +85,29 @@
   .logout-button {
     background-color: white;
     border: 1px solid black;
-    color: Red;
+    border-right: none;
+    color: red;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
     width: 100%;
     font-size: 150%;
     font-weight: bold;
+    height: 50px;
   }
 
   .nav-button {
     background-color: white;
     border: 1px solid black;
+    border-left: none;
+    border-right: none;
     color: black;
     padding: 10px 20px;
     cursor: pointer;
     text-decoration: none;
     width: 100%;
-    font-size: 143%;
+    height: 50px;
+    font-size: 120%;
     font-weight: bold;
   }
   
@@ -110,29 +115,35 @@
     background-color: #f0f0f0;
   }
 
-  .announcement {
+  .pc-announcement {
     text-align: center; 
   }
 
-  .data-container {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 20px;
-  }
-  
-  .data-field {
-    text-align: center;
-  }
-  
-  .data-field label {
-    display: block;
+  .pc-announcement-title {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 120%;
     margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+    padding-bottom: 5%;
+  }
+
+  .pc-description {
+    font-size: 70%;
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
   }
   
-  .data-field input[type="text"] {
-    width: 150px;
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+  .orange-text {
+    color: #FF6E2F;
   }
+
+ 
+
+  
+  
+  
   

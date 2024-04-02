@@ -3,7 +3,7 @@ import '../styles/PersonalInfo.css';
 import logo from '../images/KMITLLogo.png';
 import { Link } from 'react-router-dom';
 
-function Home() {
+function PersonalInfo() {
   const userName = "Thongchai Jaidee";
 
   return (
@@ -25,9 +25,28 @@ function Home() {
           <button className="logout-button">Logout</button>
         </div>
       </nav>
+
+      <div className="data-container">
+        <div className="data-field">
+          <label htmlFor="studentId">Student ID</label>
+          <input type="text" id="studentId" />
+        </div>
+        <div className="data-field">
+          <label htmlFor="citizenId">Citizen ID</label>
+          <input type="text" id="citizenId" />
+        </div>
+        <div className="data-field">
+          <label htmlFor="firstName">First Name</label>
+          <input type="text" id="firstName" />
+        </div>
+        <div className="data-field">
+          <label htmlFor="lastName">Last Name</label>
+          <input type="text" id="lastName" />
+        </div>
+      </div>
       
     </div>
   );
 }
 
-export default Home;
+export default PersonalInfo;

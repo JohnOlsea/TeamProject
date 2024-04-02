@@ -69,6 +69,7 @@
   
   .navbar-left {
     width: 60%;
+    height: auto;
     background-color: white; 
     border: black; 
     color: black;
@@ -102,8 +103,7 @@
     cursor: pointer;
     text-decoration: none;
     width: 100%;
-    font-size: 143%;
-    font-weight: bold;
+    font-size: 50%;
   }
   
   .nav-button:hover {

@@ -49,6 +49,7 @@ function Home() {
       <div className="button-container">
         <button className="choose-option-button">Choose Your Option</button>
       </div>
+      
     </div>
   );
 }

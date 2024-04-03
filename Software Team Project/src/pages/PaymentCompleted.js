@@ -5,6 +5,12 @@ import { Link } from 'react-router-dom';
 
 function PaymentCompleted() {
   const userName = "Thongchai Jaidee";
+  const studentId = 64011555;
+  const address = "1 Chalong Krung 1 Alley, Lat Krabang";
+  const province = "Bangkok";
+  const country = "Thailand";
+  const postalCode = 10520;
+
   const [selectedOption, setSelectedOption] = useState('');
 
   const handleOptionChange = (event) => {
@@ -24,7 +30,7 @@ function PaymentCompleted() {
       </header>
       <nav className="navbar">
         <div className="navbar-left">
-          <button className="nav-button" onClick={() => window.location.href='/personalInfo'}>Personal Information</button>
+          <button className="nav-button" onClick={() => window.location.href='/personalInfo'}>Home Page</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button">Logout</button>
@@ -39,6 +45,19 @@ function PaymentCompleted() {
         <p className="pc-description">Expect your certificate to arrive at your doorstep soon! 📜✨ </p>
         <p className="pc-description">If you have any further inquiries, feel free to reach out. We're here to assist you every step of the way. </p>
         
+        <p className="pc-description">
+            Student ID: <span className="orange-text">{studentId}</span> <br />
+            Name: <span className="orange-text">{userName}</span> <br />
+            Address: <span className="orange-text">{address}</span> <br />
+            Province: <span className="orange-text">{province}</span> <br />
+            Country: <span className="orange-text">{country}</span> <br />
+            Postal Code: <span className="orange-text">{postalCode}</span> 
+        </p>
+
+      </div>
+
+      <div className="button-container">
+        <button className="pc-back-to-homepage-button">Back to Home Page</button>
       </div>
 
     </div>

@@ -27,7 +27,7 @@ function Home() {
       </nav>
       <div className="announcement">
         <p className="announcement-title">🎓📜 Important Announcement 📜🎓</p>
-        <p className="announcement-title2">How to Obtain Your Degree Certificate</p>
+        <p className="announcement-title">How to Obtain Your Degree Certificate</p>
 
         <p className="small-font-left-align">Dear Graduates,</p>
         <p className="small-font-left-align">Congratulations on your remarkable achievement! We understand that obtaining your degree certificate is a significant moment, and we're here to make the process as convenient as possible for you. You have three options to collect your degree certificate:</p>
@@ -49,7 +49,7 @@ function Home() {
       <div className="button-container">
         <button className="choose-option-button">Choose Your Option</button>
       </div>
-      
+
     </div>
   );
 }

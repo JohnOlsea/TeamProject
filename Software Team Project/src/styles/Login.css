@@ -26,20 +26,20 @@
   
   .header {
     background-color: #FF6E2F;
-    height: 70%; /* Adjust as needed */
+    height: 70%; 
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 24px; /* Adjust the font size as needed */
+    font-size: 24px; 
     color: White;
   }
   
   .header-content {
     display: flex;
     align-items: center;
-    width: 80%; /* Set width to 80% of the parent container */
-    max-width: 414px; /* Set maximum width to match the Login page */
-    height: auto; /* Allow height to adjust based on content */
+    width: 80%; 
+    max-width: 414px;  
+    height: auto;
   }
   
   .logo {
@@ -105,13 +105,13 @@
   }
 
   .login-btn {
-    width: 210px; /* Set the width to 100% */
-    padding: 10px; /* Adjust padding as needed */
+    width: 210px; 
+    padding: 10px; 
     background-color: #4285f4;
     color: #fff;
     border: none;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px; /* Add margin-top for spacing */
+    margin-top: 10px; 
   }
   

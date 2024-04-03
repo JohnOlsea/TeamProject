@@ -1,0 +1,33 @@
+.navbar-right {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.logout-button {
+    background-color: white;
+    border: 1px solid black;
+    color: Red;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    font-size: 150%;
+    font-weight: bold;
+}
+
+.nav-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    font-size: 50%;
+}
+
+.nav-button:hover {
+    background-color: #f0f0f0;
+}

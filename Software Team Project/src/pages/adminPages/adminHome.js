@@ -1,5 +1,5 @@
 import React from 'react';
-import '/Users/teerapatwattanamanont/Documents/GitHub/TeamProject/Software Team Project/src/styles/adminStyles.css/adminHome.css';
+import '../../styles/adminStyles.css/adminHome.css';
 import logo from '../../images/KMITLLogo.png';
 import { Link } from 'react-router-dom';
 

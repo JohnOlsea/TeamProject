@@ -1,4 +1,4 @@
-.am-header {
+.ap-header {
     background-color: #FF6E2F;
     height: 70%; 
     display: flex;
@@ -8,19 +8,19 @@
     color: White;
 }
 
-.am-title {
+.ap-title {
     font-size: 150%;
     margin-bottom: 5px; 
     margin-left: 60%; 
     display: inline-block; 
 }
 
-.am-header-content {
+.ap-header-content {
     display: flex;
     align-items: center;
 }
 
-.am-logo {
+.ap-logo {
     width: 150px; 
     height: auto;
     margin-right: 10%; 
@@ -29,25 +29,25 @@
     margin-bottom: 10%; 
 }
 
-.am-subtitle {
+.ap-subtitle {
     font-size: 16px;
     font-weight: bold;
 }
 
-.am-admin {
+.ap-admin {
     font-size: 150%;
     font-weight: bold;
     margin-top: 15%; 
     margin-left: 175%;
 }
 
-.am-navbar {
+.ap-navbar {
     background-color: #666666;
     height: 50px;
     display: flex;
 }
 
-.am-navbar-left {
+.ap-navbar-left {
     width: 70%;
     height: auto;
     background-color: transparent;
@@ -57,14 +57,14 @@
     margin-left: 10px;
 }
 
-.am-navbar-right {
+.ap-navbar-right {
     width: 30%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.am-logout-button {
+.ap-logout-button {
     background-color: white;
     border: 1px solid black;
     color: Red;
@@ -76,7 +76,7 @@
     font-weight: bold;
 }
 
-.am-nav-button {
+.ap-nav-button {
     background-color: white;
     border: 1px solid black;
     color: black;
@@ -87,36 +87,36 @@
     font-size: 50%;
 }
 
-.am-nav-button:hover {
+.ap-nav-button:hover {
     background-color: #f0f0f0;
 }
 
-.am-table-container {
+.ap-table-container {
     height: 400px;
     overflow-y: auto;
 }
 
-.am-table {
+.ap-table {
     border-collapse: collapse;
     width: 60%;
     margin-left: 20%;
     margin-top: 2%;
 }
 
-.am-table th,
-.am-table td {
+.ap-table th,
+.ap-table td {
     border: 1px solid black;
     padding: 8px;
     text-align: left;
 }
 
-.am-table th {
+.ap-table th {
     background-color: #f2f2f2;
     position: sticky;
     top: 0;
 }
 
-.am-table tr:hover {
+.ap-table tr:hover {
     background-color: #f5f5f5;
 }
 
@@ -125,7 +125,7 @@
     justify-content: center;
 }
 
-.am-button {
+.ap-button {
     color: #FF6E2F;
     background-color: white;
     border: 2px solid black;
@@ -136,6 +136,10 @@
     padding: 10px;
     margin-right: 20px;
     margin-top: 3%;
+    text-decoration: none; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 .table-container {

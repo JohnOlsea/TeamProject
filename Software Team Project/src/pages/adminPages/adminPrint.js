@@ -1,25 +1,15 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
-import '../../styles/adminStyles/adminHome.css';
+import '../../styles/adminStyles/adminPrint.css';
 import { Link } from 'react-router-dom';
 
-function AdminHome() {
+function AdminPrint() {
   const userName = "Admin";
 
   // Mock data
   const [data, setData] = useState([
     { id: 64011671, name: "Thanawat Rodklay", status: "Paid", checked: false },
-    { id: 64011555, name: "Phuttiphat Leaungmanotham", status: "Unpaid", checked: false },
-    { id: 64011655, name: "Teerapat Wattanamanont", status: "Sent", checked: false },
-    { id: 64011378, name: "Chiho Li", status: "Paid", checked: false },
-    { id: 64011331, name: "Akararat Pattanamontri", status: "Paid", checked: false },
-    { id: 64011426, name: "Kasita Sansanthad", status: "Paid", checked: false },
-    { id: 64011397, name: "Jade Chuapakdee", status: "Paid", checked: false },
-    { id: 64011683, name: "Thitiwat Sornmanee", status: "Paid", checked: false },
-    { id: 64011643, name: "Suriya Chaubey", status: "Paid", checked: false },
-    { id: 64011470, name: "Natchapon Manachaipraset", status: "Paid", checked: false },
     { id: 64011546, name: "Phattara Srilachot", status: "Paid", checked: false },
-    { id: 64011752, name: "Theint Nandarsu", status: "Paid", checked: false },
     { id: 64011393, name: "Hannah Ebenezar", status: "Paid", checked: false },
 
   ]);
@@ -46,27 +36,27 @@ function AdminHome() {
   return (
     <div className="app-container">
 
-      <header className="am-header">
-        <div className="am-header-content">
-          <img src={logo} alt="Logo" className="am-logo" />
+      <header className="ap-header">
+        <div className="ap-header-content">
+          <img src={logo} alt="Logo" className="ap-logo" />
           <div>
-            <h1 className="am-title">Home</h1>
+            <h1 className="ap-title">Print</h1>
           </div>
           <p className="am-admin">{userName}</p>
         </div>
       </header>
       
-      <nav className="am-navbar">
-        <div className="am-navbar-left">
-            <p className="am-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
+      <nav className="ap-navbar">
+        <div className="ap-navbar-left">
+            <p className="ap-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
         </div>
-        <div className="am-navbar-right">
-          <button className="am-logout-button">Logout</button>
+        <div className="ap-navbar-right">
+          <button className="ap-logout-button">Logout</button>
         </div>
       </nav>
 
       <div className="table-container">
-        <table className="am-table">
+        <table className="ap-table">
           <thead>
             <tr>
               <th><input type="checkbox" checked={data.every(item => item.checked)} onChange={() => handleCheckboxChange(0)} /></th>
@@ -97,11 +87,11 @@ function AdminHome() {
       </div>
       
       <div className="button-container">
-      <Link to="/adminPrint" className="am-button">Print</Link>
-        <button className="am-button">Update</button>
+        <Link to="/adminHome" className="ap-button">Back</Link>
+        <button className="ap-button">Print</button>
       </div>
     </div>
   );
 }
 
-export default AdminHome;
+export default AdminPrint;

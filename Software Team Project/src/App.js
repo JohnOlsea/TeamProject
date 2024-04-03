@@ -12,6 +12,7 @@ import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import AdminHome from './pages/adminPages/adminHome'
+import AdminPrint from './pages/adminPages/adminPrint'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
 
           <Route path='adminHome' element={<AdminHome />} />
+          <Route path='adminPrint' element={<AdminPrint />} />
 
         </Routes>
       </main>

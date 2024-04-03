@@ -1,11 +1,45 @@
-.navbar-right {
+.am-header-content {
+    display: flex;
+    align-items: center;
+}
+  
+.am-logo {
+    width: 150px; 
+    height: auto;
+    margin-right: 10%; 
+    margin-left: 10%; 
+    margin-top: 10%; 
+    margin-bottom: 10%; 
+}
+
+.am-subtitle {
+    font-size: 16px;
+  }
+
+.am-navbar {
+    background-color: #666666;
+    height: 50px;
+    display: flex;
+}
+  
+.am-navbar-left {
+    width: 70%;
+    height: auto;
+    background-color: transparent;
+    border: black; 
+    color: white;
+    text-decoration: none; 
+    margin-left: 10px;
+}
+
+.am-navbar-right {
     width: 30%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
 }
 
-.logout-button {
+.am-logout-button {
     background-color: white;
     border: 1px solid black;
     color: Red;
@@ -17,7 +51,7 @@
     font-weight: bold;
 }
 
-.nav-button {
+.am-nav-button {
     background-color: white;
     border: 1px solid black;
     color: black;
@@ -28,6 +62,6 @@
     font-size: 50%;
 }
 
-.nav-button:hover {
+.am-nav-button:hover {
     background-color: #f0f0f0;
 }

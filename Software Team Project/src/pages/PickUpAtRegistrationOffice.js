@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import '../styles/PaymentCompleted.css';
+import '../styles/GraduationDayPickUp.css';
 import logo from '../images/KMITLLogo.png';
+import kmitlRegisOfficeImage from '../images/kmitlimg2.jpeg'; 
 import { Link } from 'react-router-dom';
 
 function PickUpatRegistrationOffice() {
@@ -34,11 +35,19 @@ function PickUpatRegistrationOffice() {
       <div className="pc-announcement">
         <p className="pc-announcement-title">🎓 Pick Up at Registration Office 🎓</p>
 
-        <p className="pc-description">Congratulations on your upcoming graduation!</p>
-        <p className="pc-description">We're thrilled that you've chosen the excitement of 'Graduation Day Pickup' to collect your degree certificate. Get ready to embrace the celebration of your achievement surrounded by friends, family, and faculty members. </p>
-        <p className="pc-description">Your graduation day will be a moment to cherish forever, and we're honored to be a part of it. </p>
-        <p className="pc-description">See you at the ceremony</p>
+        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image" />
+
+        <p className="pc-description">Congratulations on your graduation achievement!</p>
+        <p className="pc-description">Opting to pick up your degree certificate at the registration office during our regular business hours is a smart choice for those with busy schedules.</p>
+        <p className="pc-description">We understand the demands of balancing academics and other commitments, and we're here to make the process as convenient as possible for you. </p>
+        <p className="pc-description">Our office is open from 9:00 - 17:00</p>
+        <p className="pc-description">Our dedicated staff will be ready to assist you in collecting your certificate and celebrating this significant milestone. </p>
+        <p className="pc-description">Your certificate awaits your triumphant arrival!</p>
         
+      </div>
+
+      <div className="button-container">
+        <button className="back-to-homepage-puarg-button">Back to Home Page</button>
       </div>
 
     </div>
@@ -46,3 +55,5 @@ function PickUpatRegistrationOffice() {
 }
 
 export default PickUpatRegistrationOffice;
+
+

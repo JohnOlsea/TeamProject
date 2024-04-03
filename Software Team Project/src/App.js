@@ -11,8 +11,11 @@ import Payment from './pages/Payment'
 import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
+
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
+import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
+import AdminUpdatedStatus from './pages/adminPages/adminUpdateStatus';
 
 
 function App() {
@@ -33,6 +36,8 @@ function App() {
 
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />
+          <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
+          <Route path='adminUpdatedStatus' element={<AdminUpdatedStatus />} />
 
         </Routes>
       </main>

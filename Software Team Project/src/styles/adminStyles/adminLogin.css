@@ -1,0 +1,101 @@
+ .al-body, .al-html {
+    height: 100%;
+    margin: 0;
+}
+  
+.al-app-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+  
+.al-header {
+    background-color: #FF6E2F;
+    height: 70%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px; 
+    color: White;
+}
+  
+.al-header-content {
+    display: flex;
+    align-items: center;
+    width: 80%; 
+    max-width: 414px;  
+    height: auto;
+}
+  
+.al-logo {
+    width: 150px; 
+    height: auto;
+    margin-right: 10%; 
+    margin-left: 10%; 
+    margin-top: 10%; 
+    margin-bottom: 10%; 
+}
+  
+.al-title {
+    font-size: 24px;
+}
+  
+.al-navbar {
+    background-color: #666666; 
+    height: 50px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 15px; 
+    font-weight: bold;
+}
+
+.al-login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+}
+
+.al-input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+  
+.al-input-group label {
+    margin-bottom: 5px;
+}
+  
+
+.al-input-group input {
+    width: 200px;
+    padding: 5px;
+    border: 1px solid #ccc;
+}
+
+.al-google-signin-btn {
+    width: 210px;
+    padding: 10px 20px;
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.al-google-signin-btn:hover {
+    background-color: #357ae8;
+}
+
+.al-login-btn {
+    width: 210px; 
+    padding: 10px; 
+    background-color: #4285f4;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; 
+}

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Link} from 'react-router-dom'
 import React, { useState } from 'react';
 
-// Pages
+// User Pages
 import Home from './pages/Home'
 import PersonalInfo from './pages/PersonalInfo'
 import Login from './pages/Login'
@@ -12,10 +12,12 @@ import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 
+// Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
 import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
 import AdminUpdatedStatus from './pages/adminPages/adminUpdateStatus';
+import AdminLogin from './pages/adminPages/adminLogin';
 
 
 function App() {
@@ -34,6 +36,7 @@ function App() {
           <Route path='graduationDayPickup' element={<GraduationDayPickup />} />
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
 
+          <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />

@@ -40,9 +40,9 @@ function AdminPrint() {
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="ap-logo" />
           <div>
-            <h1 className="ap-title">Print</h1>
+            <h1 className="ap-title">Print Page</h1>
           </div>
-          <p className="am-admin">{userName}</p>
+          <p className="ap-admin">{userName}</p>
         </div>
       </header>
       

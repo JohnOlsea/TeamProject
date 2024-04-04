@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
-import '../../styles/adminStyles/adminPrint.css';
+import '../../styles/adminStyles/adminShowUpdatedStatus.css';
 import { Link } from 'react-router-dom';
 
 function AdminShowUpdatedStatus() {
@@ -36,27 +36,27 @@ function AdminShowUpdatedStatus() {
   return (
     <div className="app-container">
 
-      <header className="ap-header">
-        <div className="ap-header-content">
-          <img src={logo} alt="Logo" className="ap-logo" />
+      <header className="asus-header">
+        <div className="asus-header-content">
+          <img src={logo} alt="Logo" className="asus-logo" />
           <div>
-            <h1 className="ap-title">Show Updated Status</h1>
+            <h1 className="asus-title">Show Updated Status</h1>
           </div>
-          <p className="am-admin">{userName}</p>
+          <p className="asus-admin">{userName}</p>
         </div>
       </header>
       
-      <nav className="ap-navbar">
-        <div className="ap-navbar-left">
-            <p className="ap-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
+      <nav className="asus-navbar">
+        <div className="asus-navbar-left">
+            <p className="asus-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
         </div>
-        <div className="ap-navbar-right">
-          <button className="ap-logout-button">Logout</button>
+        <div className="asus-navbar-right">
+          <button className="asus-logout-button">Logout</button>
         </div>
       </nav>
 
       <div className="table-container">
-        <table className="ap-table">
+        <table className="asus-table">
           <thead>
             <tr>
               <th><input type="checkbox" checked={data.every(item => item.checked)} onChange={() => handleCheckboxChange(0)} /></th>
@@ -87,7 +87,7 @@ function AdminShowUpdatedStatus() {
       </div>
       
       <div className="button-container">
-        <Link to="/adminHome" className="ap-button">Home Page</Link>
+        <Link to="/adminHome" className="asus-button">Home Page</Link>
       </div>
 
     </div>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
-import '../../styles/adminStyles/adminPrint.css';
+import '../../styles/adminStyles/adminUpdatedStatus.css';
 import { Link } from 'react-router-dom';
 
 function AdminUpdatedStatus() {
@@ -36,27 +36,27 @@ function AdminUpdatedStatus() {
   return (
     <div className="app-container">
 
-      <header className="ap-header">
-        <div className="ap-header-content">
-          <img src={logo} alt="Logo" className="ap-logo" />
+      <header className="aus-header">
+        <div className="aus-header-content">
+          <img src={logo} alt="Logo" className="aus-logo" />
           <div>
-            <h1 className="ap-title">Update Status</h1>
+            <h1 className="aus-title">Update Status</h1>
           </div>
-          <p className="am-admin">{userName}</p>
+          <p className="aus-admin">{userName}</p>
         </div>
       </header>
       
-      <nav className="ap-navbar">
-        <div className="ap-navbar-left">
-            <p className="ap-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
+      <nav className="aus-navbar">
+        <div className="aus-navbar-left">
+            <p className="aus-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
         </div>
-        <div className="ap-navbar-right">
-          <button className="ap-logout-button">Logout</button>
+        <div className="aus-navbar-right">
+          <button className="aus-logout-button">Logout</button>
         </div>
       </nav>
 
       <div className="table-container">
-        <table className="ap-table">
+        <table className="aus-table">
           <thead>
             <tr>
               <th><input type="checkbox" checked={data.every(item => item.checked)} onChange={() => handleCheckboxChange(0)} /></th>
@@ -87,8 +87,8 @@ function AdminUpdatedStatus() {
       </div>
       
       <div className="button-container">
-        <Link to="/adminHome" className="ap-button">Back</Link>
-        <button className="ap-button">Confirm</button>
+        <Link to="/adminHome" className="aus-button">Back</Link>
+        <button className="aus-button">Confirm</button>
       </div>
     </div>
   );

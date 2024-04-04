@@ -1,8 +1,8 @@
 .App {
     text-align: center;
-  }
+}
   
-  .App-header {
+.App-header {
     background-color: #fdfdfd;
     min-height: 100vh;
     display: flex;
@@ -11,20 +11,20 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
-  }
+}
   
-  body, html {
+body, html {
     height: 100%;
     margin: 0;
-  }
+}
   
-  .app-container {
+.app-container {
     height: 100%;
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .header {
+.header {
     background-color: #FF6E2F;
     height: 70%; 
     display: flex;
@@ -32,30 +32,30 @@
     align-items: center;
     font-size: 24px; 
     color: White;
-  }
+}
   
-  .header-content {
+.header-content {
     display: flex;
     align-items: center;
     width: 80%; 
     max-width: 414px;  
     height: auto;
-  }
+}
   
-  .logo {
+.logo {
     width: 150px; 
     height: auto;
     margin-right: 10%; 
     margin-left: 10%; 
     margin-top: 10%; 
     margin-bottom: 10%; 
-  }
+}
   
-  .title {
+.title {
     font-size: 24px;
-  }
+}
   
-  .navbar {
+.navbar {
     background-color: #666666; 
     height: 50px; 
     display: flex;
@@ -64,33 +64,32 @@
     color: white;
     font-size: 15px; 
     font-weight: bold;
-  }
+}
 
-  .login-form {
+.login-form {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-top: 30%;
-  }
+}
 
-  .input-group {
+.input-group {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .input-group label {
+.input-group label {
     margin-bottom: 5px;
-  }
+}
   
-
-  .input-group input {
+.input-group input {
     width: 200px;
     padding: 5px;
     border: 1px solid #ccc;
-  }
+}
 
-  .google-signin-btn {
+.google-signin-btn {
     width: 210px;
     padding: 10px 20px;
     background-color: #4285f4;
@@ -98,13 +97,13 @@
     border: none;
     cursor: pointer;
     font-size: 16px;
-  }
+}
 
-  .google-signin-btn:hover {
+.google-signin-btn:hover {
     background-color: #357ae8;
-  }
+}
 
-  .login-btn {
+.login-btn {
     width: 210px; 
     padding: 10px; 
     background-color: #4285f4;
@@ -113,5 +112,5 @@
     cursor: pointer;
     font-size: 16px;
     margin-top: 10px; 
-  }
+}
   

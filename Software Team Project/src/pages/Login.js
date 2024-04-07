@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from "styled-components";
 import '../styles/Login.css';
 import '../styles/LoginButton.css';
 import '../styles/GoogleButton.css';
 import logo from '../images/KMITLLogo.png'; 
+import axios  from 'axios';
 export const StyledContainer = styled.div`
   display: grid;
   justify-items: center;
@@ -15,6 +16,21 @@ export const ErrorMessage = styled.p`
   margin-top: 8px;
 `;
 function Login() {
+
+  const getUser = async()=>{
+    try {
+      const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
+      navigate('/home')
+    } catch (err) {
+      console.log(err);
+      navigate('/');
+    }
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -36,6 +52,12 @@ function Login() {
     setInputError({ ...inputError, [id]: false });
     setErrorMessage('');
   };
+
+
+  const handleGoogleLogin = () => {
+      window.open("http://localhost:5000/auth/google","_self")
+  };
+
   const handleSubmit = () => {
     if (formData.email === mockUserData.email && formData.password === mockUserData.password) {
       setAuthenticated(true);
@@ -87,7 +109,7 @@ function Login() {
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <button className="login-button" onClick={handleSubmit}>Login</button>
         <p style={{ textAlign: "center", marginBottom: "8px", fontFamily: "Lato" }}>OR</p>
-        <button className="google-button">Sign In with Google</button></StyledContainer>
+        <button className="google-button" onClick={handleGoogleLogin}>Sign In with Google</button></StyledContainer>
         
       </div>
     </div>

@@ -32,6 +32,9 @@ function DegreeCertificateCollection() {
   const handleLogout = () => {
     navigate('/');
   };
+  const handleHome = () => {
+    navigate('/Home');
+  };
   return (
     <div className="app-container">
       <header className="header">
@@ -82,6 +85,7 @@ function DegreeCertificateCollection() {
 
       <div className="button-container">
         <button className="submit-button" onClick={handleSubmit}>Submit</button>
+        <button className="back-to-homepage-button-d" onClick={handleHome}>Back to Home Page</button>
       </div>
 
     </div>

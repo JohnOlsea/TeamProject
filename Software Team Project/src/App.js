@@ -27,6 +27,7 @@ function App() {
       <main>
         <Routes>
           <Route path='/' element={<Login />} />
+          <Route path='login' element={<Login />} />
           <Route path='home' element={<Home />} />
           <Route path='personalInfo' element={<PersonalInfo />} />
           <Route path='degreeCertificateCollection' element={<DegreeCertificateCollection />} />

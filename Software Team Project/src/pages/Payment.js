@@ -14,8 +14,8 @@ function Payment() {
   const handleLogout = () => {
     navigate('/');
   };
-  const handleHome = () => {
-    navigate('/Home');
+  const handlePersonalInfo = () => {
+    navigate('/personalInfo');
   };
   
   const handleFileChange = (event) => {
@@ -55,7 +55,7 @@ function Payment() {
       </header>
       <nav className="navbar">
         <div className="navbar-left">
-          <button className="nav-button" onClick={handleHome}>Home Page</button>
+          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>

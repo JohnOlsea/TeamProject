@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
 import '../../styles/adminStyles/adminShowUpdatedStatus.css';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function AdminShowUpdatedStatus() {
   const userName = "Admin";
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    navigate('/adminLogin');
+  };
+  const handleGotoHome = () => {
+    navigate('/adminHome');
+  };
 
   // Mock data
   const [data, setData] = useState([
@@ -32,7 +39,7 @@ function AdminShowUpdatedStatus() {
             <p className="asus-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
         </div>
         <div className="asus-navbar-right">
-          <button className="asus-logout-button">Logout</button>
+          <button className="asus-logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 
@@ -57,8 +64,12 @@ function AdminShowUpdatedStatus() {
         </table>
       </div>
       
-      <div className="button-container">
-        <Link to="/adminHome" className="asus-button">Home Page</Link>
+        <div>
+            <h2 className="asus-description">Status has been updated!</h2>
+        </div>
+      
+      <div className="asus-button-container">
+        <button className="asus-button" onClick={handleGotoHome}>Home Page</button>
       </div>
 
     </div>

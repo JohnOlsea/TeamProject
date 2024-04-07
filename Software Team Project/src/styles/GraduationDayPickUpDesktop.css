@@ -21,11 +21,13 @@
 }
 
 .gdp-description2-dt {
+    color: #FF6E2F;
     font-size: 150%;
     text-align: left;
     margin-left: 3%;
     margin-right: 5%;
     font-weight: bold;
+    text-align: center;
 }
 
 .gradPU-image-dt {

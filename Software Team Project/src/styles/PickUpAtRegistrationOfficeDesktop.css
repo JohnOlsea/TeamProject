@@ -13,12 +13,14 @@
 }
 
 .pc-dt-description-title {
+    color: #FF6E2F;
     font-size: 150%;
     text-align: left;
     margin-bottom: 3%;
     margin-left: 3%;
     margin-top: 5%;
     font-weight: bold;
+    text-align: center;
 }
   
 .pc-dt-description {

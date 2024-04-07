@@ -15,7 +15,15 @@
 .gdp-description-dt {
     font-size: 120%;
     text-align: left;
-    margin-left: 5%;
+    margin-left: 7%;
+    margin-right: 5%;
+    font-weight: bold;
+}
+
+.gdp-description2-dt {
+    font-size: 150%;
+    text-align: left;
+    margin-left: 3%;
     margin-right: 5%;
     font-weight: bold;
 }

@@ -84,7 +84,7 @@ function DegreeCertificateCollection() {
       </div>
 
       <div className="button-container">
-        <button className="submit-button" onClick={handleSubmit}>Submit</button>
+        <button className="submit-button" onClick={handleSubmit}>Confirm</button>
         <button className="back-to-homepage-button-d" onClick={handleHome}>Back to Home Page</button>
       </div>
 

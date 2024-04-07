@@ -20,6 +20,17 @@
     margin-top: 5%;
     font-weight: bold;
 }
+
+.pc-description2 {
+    color: #FF6E2F;
+    font-size: 120%;
+    text-align: left;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 5%;
+    font-weight: bold;
+    text-align: center;
+}
   
 .orange-text {
     color: #FF6E2F;

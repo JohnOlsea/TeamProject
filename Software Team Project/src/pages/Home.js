@@ -2,13 +2,39 @@ import React from 'react';
 import '../styles/Home.css';
 import logo from '../images/KMITLLogo.png';
 import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function Home() {
-  const userName = "Thongchai Jaidee";
-  const navigate = useNavigate();
+
+  const [userData, setUserData] = useState({});
+  console.log("response: ",userData);
+
   const handleLogout = () => {
-    navigate('/');
+    window.open("http://localhost:5000/logout","_self") 
   };
+
+  const getUser = async()=>{
+    try {
+      const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
+      setUserData(response.data.user)
+    } catch (err) {
+      console.log(err);
+      navigate('/');
+    }
+  }
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
+  // const userName = "Thongchai Jaidee";
+  const userName = userData.displayName;
+
+  const navigate = useNavigate();
+  // const handleLogout = () => {
+  //   navigate('/');
+  // };
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
   };

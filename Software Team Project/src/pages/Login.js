@@ -1,5 +1,6 @@
 import '../styles/Login.css';
 import logo from '../images/KMITLLogo.png'; 
+import kmitlImage from '../images/kmitlLoginImg.JPG'
 
 function Login() {
   return (

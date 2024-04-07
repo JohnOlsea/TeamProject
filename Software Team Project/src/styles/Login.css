@@ -26,7 +26,7 @@ body, html {
   
 .header {
     background-color: #FF6E2F;
-    height: 70%; 
+    height: 20%; 
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,24 +37,21 @@ body, html {
 .header-content {
     display: flex;
     align-items: center;
-    width: 80%; 
-    max-width: 414px;  
+    max-width: 80%; 
+    width: 100%; 
     height: auto;
 }
   
 .logo {
     width: 150px; 
     height: auto;
-    margin-right: 10%; 
-    margin-left: 10%; 
-    margin-top: 10%; 
-    margin-bottom: 10%; 
+    margin-right: 10px; 
 }
-  
+
 .title {
     font-size: 24px;
 }
-  
+
 .navbar {
     background-color: #666666; 
     height: 50px; 
@@ -70,13 +67,14 @@ body, html {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 30%;
+    margin-top: 10%; 
 }
 
 .input-group {
     margin-bottom: 20px;
     display: flex;
     flex-direction: column;
+    
 }
   
 .input-group label {
@@ -84,13 +82,15 @@ body, html {
 }
   
 .input-group input {
-    width: 200px;
-    padding: 5px;
+    width: 100%; 
+    max-width: 300px; 
+    padding: 10px; 
     border: 1px solid #ccc;
 }
 
 .google-signin-btn {
-    width: 210px;
+    width: 100%; 
+    max-width: 300px; 
     padding: 10px 20px;
     background-color: #4285f4;
     color: #fff;
@@ -104,7 +104,8 @@ body, html {
 }
 
 .login-btn {
-    width: 210px; 
+    width: 100%; 
+    max-width: 300px;
     padding: 10px; 
     background-color: #4285f4;
     color: #fff;
@@ -113,4 +114,3 @@ body, html {
     font-size: 16px;
     margin-top: 10px; 
 }
-  

@@ -16,7 +16,7 @@ import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
 import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
-import AdminUpdatedStatus from './pages/adminPages/adminUpdateStatus';
+import AdminUpdateStatus from './pages/adminPages/adminUpdateStatus';
 import AdminLogin from './pages/adminPages/adminLogin';
 
 
@@ -40,7 +40,7 @@ function App() {
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
-          <Route path='adminUpdatedStatus' element={<AdminUpdatedStatus />} />
+          <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
 
         </Routes>
       </main>

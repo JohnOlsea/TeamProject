@@ -63,7 +63,6 @@ function AdminShowUpdatedStatus() {
               <th>ID</th>
               <th>Name</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -73,20 +72,17 @@ function AdminShowUpdatedStatus() {
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.status}</td>
-                <td>
-                  <select onChange={(e) => handleStatusChange(index, e.target.value)}>
-                    <option value="Paid">Paid</option>
-                    <option value="Unpaid">Unpaid</option>
-                    <option value="Sent">Sent</option>
-                  </select>
-                </td>
               </tr>
             ))}
           </tbody>
         </table>
       </div>
+
+      <div>
+            <h2 className="asus-description">Status has been updated!</h2>
+        </div>
       
-      <div className="button-container">
+      <div className="asus-button-container">
         <Link to="/adminHome" className="asus-button">Home Page</Link>
       </div>
 

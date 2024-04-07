@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
-import '../../styles/adminStyles/adminUpdatedStatus.css';
+import '../../styles/adminStyles/adminUpdateStatus.css';
 import { Link } from 'react-router-dom';
 
-function AdminUpdatedStatus() {
+function AdminUpdateStatus() {
   const userName = "Admin";
 
   // Mock data
@@ -94,4 +94,4 @@ function AdminUpdatedStatus() {
   );
 }
 
-export default AdminUpdatedStatus;
+export default AdminUpdateStatus;

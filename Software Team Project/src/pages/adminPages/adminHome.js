@@ -24,24 +24,20 @@ function AdminHome() {
 
   ]);
 
-  const handleStatusChange = (index, status) => {
-    const newData = [...data];
-    newData[index].status = status;
-    setData(newData);
-  };
-
   const handleCheckboxChange = (index) => {
     const newData = [...data];
-    if (index === 0) {
-      const allChecked = newData[0].checked;
-      newData.forEach((item) => {
-        item.checked = !allChecked;
-      });
-    } else {
-      newData[index].checked = !newData[index].checked;
-    }
+    newData[index].checked = !newData[index].checked;
     setData(newData);
   };
+  
+  const handleAllCheckboxChange = () => {
+    const newData = data.map((item) => ({
+      ...item,
+      checked: !data.every((item) => item.checked),
+    }));
+    setData(newData);
+  };
+  
 
   return (
     <div className="app-container">
@@ -69,11 +65,10 @@ function AdminHome() {
         <table className="am-table">
           <thead>
             <tr>
-              <th><input type="checkbox" checked={data.every(item => item.checked)} onChange={() => handleCheckboxChange(0)} /></th>
+              <th><input type="checkbox" checked={data.every(item => item.checked)} onChange={handleAllCheckboxChange} /></th>
               <th>ID</th>
               <th>Name</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -83,13 +78,6 @@ function AdminHome() {
                 <td>{row.id}</td>
                 <td>{row.name}</td>
                 <td>{row.status}</td>
-                <td>
-                  <select onChange={(e) => handleStatusChange(index, e.target.value)}>
-                    <option value="Paid">Paid</option>
-                    <option value="Unpaid">Unpaid</option>
-                    <option value="Sent">Sent</option>
-                  </select>
-                </td>
               </tr>
             ))}
           </tbody>

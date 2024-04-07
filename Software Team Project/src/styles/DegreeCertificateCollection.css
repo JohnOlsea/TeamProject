@@ -1,8 +1,10 @@
+/* DegreeCertificateCollection.css */
+
 .App {
     text-align: center;
-  }
+}
   
-  .App-header {
+.App-header {
     background-color: #fdfdfd;
     min-height: 100vh;
     display: flex;
@@ -11,20 +13,20 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: rgb(0, 0, 0);
-  }
+}
   
-  body, html {
+body, html {
     height: 100%;
     margin: 0;
-  }
+}
   
-  .app-container {
+.app-container {
     height: 100%;
     display: flex;
     flex-direction: column;
-  }
+}
   
-  .header {
+.header {
     background-color: #FF6E2F;
     height: 70%; 
     display: flex;
@@ -32,57 +34,57 @@
     align-items: center;
     font-size: 24px; 
     color: White;
-  }
+}
   
-  .header-content {
+.header-content {
     display: flex;
     align-items: center;
     width: 80%; 
     max-width: 414px; 
     height: auto; 
-  }
+}
   
-  .logo {
+.logo {
     width: 150px; 
     height: auto;
     margin-right: 10%; 
     margin-left: 10%; 
     margin-top: 10%; 
     margin-bottom: 10%; 
-  }
+}
   
-  .title {
+.title {
     font-size: 24px;
     margin-bottom: 5px; 
-  }
+}
   
-  .subtitle {
+.subtitle {
     font-size: 16px;
-  }
+}
   
   
-  .navbar {
+.navbar {
     background-color: #666666;
     height: 50px;
     display: flex;
-  }
+}
   
-  .navbar-left {
+.navbar-left {
     width: 60%;
     background-color: white; 
     border: black; 
     color: black;
     text-decoration: none; 
-  }
+}
   
-  .navbar-right {
+.navbar-right {
     width: 40%;
     display: flex;
     justify-content: flex-end;
     align-items: center;
-  }
+}
 
-  .logout-button {
+.logout-button {
     background-color: white;
     border: 1px solid black;
     border-right: none;
@@ -94,9 +96,9 @@
     font-size: 150%;
     font-weight: bold;
     height: 50px;
-  }
+}
 
-  .nav-button {
+.nav-button {
     background-color: white;
     border: 1px solid black;
     border-left: none;
@@ -109,48 +111,48 @@
     height: 50px;
     font-size: 120%;
     font-weight: bold;
-  }
+}
   
-  .nav-button:hover {
+.nav-button:hover {
     background-color: #f0f0f0;
-  }
+}
 
-  .announcement {
+.announcement {
     text-align: center; 
-  }
+}
 
-  .announcement-title {
+.announcement-title {
     font-weight: bold;
     text-decoration: underline;
     font-size: 120%;
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
-  }
+}
 
-  .small-font-left-align {
-    font-size: 70%;
+.small-font-left-align {
+    font-size: 100%; /* Increased font size */
     text-align: left;
     margin-left: 5%;
     margin-right: 5%;
     font-weight: bold;
-  }
+}
 
-  .empty-line {
+.empty-line {
     margin-top: 5px; 
     margin-bottom: 5px; 
-  }
+}
   
-  .orange-text {
+.orange-text {
     color: #FF6E2F;
-  }
+}
 
-  .button-container {
+.button-container {
     display: flex;
     justify-content: center;
-  }
+}
 
-  .submit-button {
+.submit-button {
     color: #FF6E2F;
     background-color: white;
     border: 2px solid black;
@@ -159,26 +161,39 @@
     border-radius: 5px;
     width: 70%;
     padding: 10px;
-    margin-top: 30%;
-  }
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
 
-  .radio-buttons {
+.radio-buttons {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20%;
+    margin-left: 20%; 
     margin-top: 10%;
-  }
-  
-  .radio-buttons label {
-    margin-left: 20px;
+}
+
+.radio-buttons label {
     font-weight: bold;
-    font-size: 70%;
-    align-items: flex-end;
-  }
-  
-  
-  .radio-buttons input[type="radio"] {
-    display: inline-block;
-    margin-bottom: 10px;
-  }
+    font-size: 100%;
+    margin-left: 20px; 
+    display: flex;
+    align-items: center; 
+}
+
+.radio-buttons input[type="radio"] {
+    margin-right: 10px;
+}
+
+@media screen and (min-width: 768px) {
+    .radio-buttons {
+        margin-left: auto; 
+        margin-right: 35%; 
+        max-width: 300px; 
+    }
+
+    .radio-buttons label {
+        margin-left: 0; 
+    }
+}
+

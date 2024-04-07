@@ -1,20 +1,19 @@
-.login-button {
-    height: 40px;
-    width: 400px;
-    background-color: #FFD79C;
-    color: #000;
+.adm-login-button {
+    height: 35px;
+    width: 210px;
+    background-color: #f0ad4e;
+    color: #ffffff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
     font-family: Lato;
-    margin-bottom: 15px;
   }
   
-.login-button:hover {
+.adm-login-button:hover {
     background-color: #FFE6B2;
   }
   
-.login-button:active {
+.adm-login-button:active {
     background-color: #D2AA68;
   }

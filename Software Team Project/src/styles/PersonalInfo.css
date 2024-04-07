@@ -1,0 +1,38 @@
+
+  .data-container {
+    display: grid;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .data-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2%;
+  }
+  
+  .data-field {
+    text-align: start;
+  }
+  
+  .data-field label {
+    display: grid;
+    margin-bottom: 5%;
+  }
+  
+  .data-field input[type="text"],
+  .data-field select {
+    width: 85%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+
+  .invalid-input input[type="text"],
+  .invalid-input select {
+    border-color: red;
+  }
+  
+  
+  

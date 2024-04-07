@@ -51,6 +51,10 @@ function PickUpatRegistrationOfficeMobile() {
         
       </div>
 
+      <div className="button-container">
+        <button className="back-to-homepage-button" onClick={handleHome}>Back to Home Page</button>
+      </div>
+
     </div>
   );
 }

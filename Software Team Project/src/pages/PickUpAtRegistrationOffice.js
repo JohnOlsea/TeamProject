@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/PaymentCompleted.css';
 import logo from '../images/KMITLLogo.png';
+import kmitlRegisOfficeImage from '../images/kmitlimg2.jpg';
 import { useNavigate } from 'react-router-dom';
 
 function PickUpatRegistrationOffice() {
@@ -39,6 +40,7 @@ function PickUpatRegistrationOffice() {
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">🎓 Pick Up at Registration Office 🎓</p>
+        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image" />
 
         <p className="pc-description">Congratulations on your upcoming graduation!</p>
         <p className="pc-description">We're thrilled that you've chosen the excitement of 'Graduation Day Pickup' to collect your degree certificate. Get ready to embrace the celebration of your achievement surrounded by friends, family, and faculty members. </p>

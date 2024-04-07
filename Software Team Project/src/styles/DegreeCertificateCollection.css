@@ -1,5 +1,3 @@
-/* DegreeCertificateCollection.css */
-
 .App {
     text-align: center;
 }
@@ -124,14 +122,14 @@ body, html {
 .announcement-title {
     font-weight: bold;
     text-decoration: underline;
-    font-size: 120%;
+    font-size: 140%;
     margin-bottom: 5px;
     margin-left: 5px;
     margin-right: 5px;
 }
 
 .small-font-left-align {
-    font-size: 100%; /* Increased font size */
+    font-size: 100%; 
     text-align: left;
     margin-left: 5%;
     margin-right: 5%;
@@ -163,30 +161,30 @@ body, html {
     width: 50%;
     padding: 10px;
     margin-top: 5%;
-  }
+    margin-bottom: 5%;
+}
 
 .radio-buttons {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    margin-left: 20%;
+    margin-left: 20%; 
     margin-top: 5%;
-  }
-  
-  .radio-buttons label {
-    margin-left: 20px;
+}
+
+.radio-buttons label {
     font-weight: bold;
-    font-size: 70%;
+    font-size: 100%;
     align-items: flex-end;
   }
   
   
-  .radio-buttons input[type="radio"] {
+.radio-buttons input[type="radio"] {
     display: inline-block;
     margin-bottom: 10px;
-  }
+}
 
-  .back-to-homepage-button-d {
+.back-to-homepage-button-d {
     color: #FF6E2F;
     background-color: white;
     border: 2px solid black;
@@ -195,6 +193,6 @@ body, html {
     border-radius: 5px;
     width: 50%;
     padding: 10px;
-    margin-top: 5%;
+    margin-top: 0%;
     margin-bottom: 5%;
 }

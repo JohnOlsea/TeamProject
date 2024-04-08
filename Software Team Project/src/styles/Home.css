@@ -110,6 +110,10 @@ body, html {
   background-color: #f0f0f0;
 }
 
+.logout-button:hover {
+  background-color: #f0f0f0;
+}
+
 .announcement {
   text-align: center; 
 }
@@ -161,4 +165,5 @@ body, html {
   padding: 10px;
   margin-top: 2%;
   margin-bottom: 5%;
+  cursor: pointer;
 }

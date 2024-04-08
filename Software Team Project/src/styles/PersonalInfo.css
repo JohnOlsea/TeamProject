@@ -1,38 +1,29 @@
+/* PersonalInfo.css */
+.personal-info-table {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
 
-  .data-container {
-    display: grid;
-    align-items: center;
-    margin: 20px;
-  }
-  
-  .data-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 2%;
-  }
-  
-  .data-field {
-    text-align: start;
-  }
-  
-  .data-field label {
-    display: grid;
-    margin-bottom: 5%;
-  }
-  
-  .data-field input[type="text"],
-  .data-field select {
-    width: 85%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-  .invalid-input input[type="text"],
-  .invalid-input select {
-    border-color: red;
-  }
-  
-  
-  
+th {
+  background-color: #e0e0e0; /* Background color for table headers */
+  padding: 2%;
+  border: 1px solid #000000;
+  text-align: left;
+  font-size: 90%;
+}
+
+td {
+  padding: 2%;
+  text-align: left;
+}
+
+table, td {
+  border: 1px solid #000000;
+}

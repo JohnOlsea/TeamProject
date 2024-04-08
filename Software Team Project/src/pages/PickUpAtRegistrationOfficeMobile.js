@@ -44,7 +44,6 @@ function PickUpatRegistrationOfficeMobile() {
       <div className="pc-announcement">
         <p className="pc-announcement-title">🎓 Pick Up at Registration Office 🎓</p>
         <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image-mb" />
-
         <p className="pc-description2">🎉 Congratulation 🎉</p>
         <p className="pc-description-mb">Opting to pick up your degree certificate at the registration office during our regular business hours is a smart choice for those with busy schedules.</p>
         <p className="pc-description-mb">We understand the demands of balancing academics and other commitments, and we're here to make the process as convenient as possible for you. </p>

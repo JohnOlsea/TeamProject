@@ -87,7 +87,7 @@ function Payment() {
         <button className="payment-submit-button" onClick={handleSubmit}>Submit</button>
       </div>
       {submitClicked && !receiptUploaded && (
-          <p style={{ color: 'red', marginTop: '5%', textAlign:'center'}}>Please upload a receipt before submitting.</p>
+          <p style={{ color: 'red', textAlign:'center'}}>Please upload a receipt before submitting.</p>
         )}
 
     </div>

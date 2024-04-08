@@ -165,7 +165,7 @@ function AddressConfirmation() {
       )}
       <div style={{display:"flex", 
                    justifyContent:"center", 
-                   marginTop:"10%",
+                   marginTop:"5%",
                    marginBottom:"5%",
                   }}
       >

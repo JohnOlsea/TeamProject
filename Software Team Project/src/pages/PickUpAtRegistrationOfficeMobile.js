@@ -14,6 +14,9 @@ function PickUpatRegistrationOfficeMobile() {
   const handleHome = () => {
     navigate('/Home');
   };
+  const handlePersonalInfo = () => {
+    navigate('/personalInfo');
+  };
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -31,7 +34,7 @@ function PickUpatRegistrationOfficeMobile() {
       </header>
       <nav className="navbar">
         <div className="navbar-left">
-          <button className="nav-button" onClick={handleHome}>Home Page</button>
+          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
@@ -40,7 +43,7 @@ function PickUpatRegistrationOfficeMobile() {
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">🎓 Pick Up at Registration Office 🎓</p>
-        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image" />
+        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image-mb" />
 
         <p className="pc-description2">🎉 Congratulation 🎉</p>
         <p className="pc-description">Opting to pick up your degree certificate at the registration office during our regular business hours is a smart choice for those with busy schedules.</p>

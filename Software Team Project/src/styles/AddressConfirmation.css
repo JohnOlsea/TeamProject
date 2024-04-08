@@ -66,14 +66,14 @@
     color: red;
   }
   .address-inputs {
-    margin-top: 20px;
+    margin-top: 5%;
     margin-left: 10%;
     margin-right: 10%;
+    display: grid;
+    justify-content: center;
   }
   
   .address-inputs input {
-    width: 100%;
-    margin-bottom: no;
     padding: 8px;
     font-size: 16px;
     border: 1px solid #ccc;
@@ -91,21 +91,18 @@
   .address-inline-inputs {
     display: flex;
     
-  }
-  .address-postal-inputs input {
-    width: 50%;
-  }
-  
-  .input-group {
-    margin-bottom: none;
+  } 
+  .add-input-group {
+    margin-bottom: 5%;
+    display: grid;
   }
   
-  .input-group label {
+  .add-input-group label {
     display: block;
     margin-bottom: 10px;
   }
 
-  .input-group.error input {
+  .add-input-group.error input {
     border-color: red;
   }
 

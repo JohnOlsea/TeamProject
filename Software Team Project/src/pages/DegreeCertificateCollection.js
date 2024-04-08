@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import '../styles/DegreeCertificateCollection.css';
 import logo from '../images/KMITLLogo.png';
 import { useNavigate } from 'react-router-dom';
+import SeeYourOption from './SeeYourOption';
 
 function DegreeCertificateCollection() {
   const userName = "Thongchai Jaidee";
@@ -79,15 +80,13 @@ function DegreeCertificateCollection() {
                 Postal Office
             </label>
         </div>
-
-
       </div>
 
       <div className="button-container">
         <button className="submit-button" onClick={handleSubmit}>Confirm</button>
         <button className="back-to-homepage-button-d" onClick={handleHome}>Back to Home Page</button>
       </div>
-
+      {selectedOption && <SeeYourOption selectedOption={selectedOption} />}
     </div>
   );
 }

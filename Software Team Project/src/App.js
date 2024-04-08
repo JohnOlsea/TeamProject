@@ -11,6 +11,7 @@ import Payment from './pages/Payment'
 import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
+import SeeYourOption from './pages/SeeYourOption.js'
 
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
@@ -36,6 +37,7 @@ function App() {
           <Route path='paymentCompleted' element={<PaymentCompleted />} />
           <Route path='graduationDayPickup' element={<GraduationDayPickup />} />
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
+          <Route path='seeyouroption' element={<SeeYourOption />} />
 
           <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />

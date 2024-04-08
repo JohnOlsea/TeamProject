@@ -1,8 +1,8 @@
-.pc-announcement {
+.pc-announcement-mb {
     text-align: center; 
   }
   
-.pc-announcement-title {
+.pc-announcement-title-mb {
     font-weight: bold;
     text-decoration: underline;
     font-size: 120%;
@@ -12,7 +12,7 @@
     padding-bottom: 5%;
 }
   
-.pc-description {
+.pc-description-mb {
     font-size: 120%;
     text-align: left;
     margin-left: 5%;

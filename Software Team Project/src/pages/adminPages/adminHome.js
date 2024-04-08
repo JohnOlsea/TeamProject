@@ -10,10 +10,12 @@ function AdminHome() {
     navigate('/adminLogin');
   };
   const handlePrint = () => {
-    navigate('/adminPrint');
+    navigate('/adminPrint', { state: { selectedData: data.filter(item => item.checked) } });
   };
+  
   const handleUpdate = () => {
-    navigate('/adminUpdateStatus');
+    const selectedData = data.filter(item => item.checked);
+    navigate('/adminUpdateStatus', { state: { selectedData } });
   };
   // Mock data
   const [data, setData] = useState([

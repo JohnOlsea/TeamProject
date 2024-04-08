@@ -1,24 +1,21 @@
 import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../images/KMITLLogo.png';
 import '../../styles/adminStyles/adminPrint.css';
-import { useNavigate } from 'react-router-dom';
 
 function AdminPrint() {
+  const { state: { selectedData } } = useLocation();
+  const [data, setData] = useState(selectedData || []);
   const userName = "Admin";
   const navigate = useNavigate();
+
   const handleLogout = () => {
     navigate('/adminLogin');
   };
+
   const handleBack = () => {
     navigate('/adminHome');
   };
-  // Mock data
-  const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", status: "Paid", checked: false },
-    { id: 64011546, name: "Phattara Srilachot", status: "Paid", checked: false },
-    { id: 64011393, name: "Hannah Ebenezar", status: "Paid", checked: false },
-
-  ]);
 
   const handleStatusChange = (index, status) => {
     const newData = [...data];
@@ -74,7 +71,6 @@ function AdminPrint() {
               <th>ID</th>
               <th>Name</th>
               <th>Status</th>
-              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -83,9 +79,8 @@ function AdminPrint() {
                 <td><input type="checkbox" checked={row.checked} onChange={() => handleCheckboxChange(index)} /></td>
                 <td>{row.id}</td>
                 <td>{row.name}</td>
-                <td>{row.status}</td>
                 <td>
-                  <select onChange={(e) => handleStatusChange(index, e.target.value)}>
+                  <select value={row.status} onChange={(e) => handleStatusChange(index, e.target.value)}>
                     <option value="Paid">Paid</option>
                     <option value="Unpaid">Unpaid</option>
                     <option value="Sent">Sent</option>

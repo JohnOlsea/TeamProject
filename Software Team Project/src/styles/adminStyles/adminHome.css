@@ -2,7 +2,7 @@
     background-color: #FF6E2F;
     height: 70%; 
     display: flex;
-    justify-content: left;
+    justify-content: center;
     align-items: center;
     font-size: 24px; 
     color: White;
@@ -11,8 +11,16 @@
 .am-title {
     font-size: 150%;
     margin-bottom: 5px; 
-    margin-left: 60%; 
+    margin-left: 20%; 
+    font-size: 35px;
     display: inline-block; 
+}
+
+.am-admin {
+    font-size: 150%;
+    margin-left: 20%; 
+    margin-top: 15%; 
+    font-size: 20px;
 }
 
 .am-header-content {
@@ -34,12 +42,6 @@
     font-weight: bold;
 }
 
-.am-admin {
-    font-size: 150%;
-    font-weight: bold;
-    margin-top: 15%; 
-    margin-left: 180%;
-}
 
 .am-navbar {
     background-color: #666666;
@@ -62,6 +64,30 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
+}
+
+.see-all-students-nav-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 11px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    font-size: 143%;
+    font-weight: bold;
+}
+
+.print-student-address-nav-button {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
+    padding: 11px 20px;
+    cursor: pointer;
+    text-decoration: none;
+    width: 100%;
+    font-size: 143%;
+    font-weight: bold;
 }
 
 .am-logout-button {
@@ -91,6 +117,11 @@
     background-color: #f0f0f0;
 }
 
+.see-all-students-nav-button:hover,
+.print-student-address-nav-button:hover {
+    background-color: #f0f0f0;
+}
+
 .am-table-container {
     height: 400px;
     overflow-y: auto;
@@ -98,22 +129,26 @@
 
 .am-table {
     border-collapse: collapse;
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 2%;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 0%;
+    z-index: 0;
 }
 
-.am-table th,
 .am-table td {
     border: 1px solid black;
     padding: 8px;
-    text-align: left;
+    text-align: center;
+    z-index: 0;
 }
 
 .am-table th {
-    background-color: #f2f2f2;
+    background-color: #a7a7a7;
     position: sticky;
     top: 0;
+    z-index: 1;
+    text-align: center;
+    padding: 8px;
 }
 
 .am-table tr:hover {
@@ -126,7 +161,24 @@
     margin-bottom: 5%;
 }
 
-.am-button {
+.am-update-button {
+    color: #FF6E2F;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 100%;
+    border-radius: 5px;
+    width: 20%;
+    padding: 10px;
+    margin-right: 20px;
+    margin-top: 3%;
+    text-decoration: none; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.am-cancel-button {
     color: #FF6E2F;
     background-color: white;
     border: 2px solid black;
@@ -146,4 +198,191 @@
 .table-container {
     height: 400px; 
     overflow-y: auto; 
+}
+
+.dropbtn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    color: black; 
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: auto; 
+    z-index: 1;
+    top: calc(100% + 5px); 
+    left: 0;
+    white-space: nowrap; 
+    padding: 5px 0; 
+    max-height: 200px; 
+    overflow-y: auto; 
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 10px; 
+    cursor: pointer; 
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.view-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 100%;
+    height: auto;
+}
+  
+
+.reject-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: 40%;
+    text-align: center;
+    
+}
+  
+.verify-button {
+    align-content: right;
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    width: 40%;
+}
+
+.shipping-id-cell {
+    position: relative;
+}
+  
+.shipping-id-cell input[type="text"] {
+    max-width: 100px; 
+    width: auto; 
+    padding-right: 30px; 
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+}
+
+
+  
+.shipping-id-cell .settings-icon {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+  
+.shipping-id-cell .settings-icon img {
+    width: 20px;
+    height: auto;
+}
+  
+
+.non-delivery-cell {
+    background-color: #ebebeb; /* Gray background color */
+}
+
+.popup-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+  
+.popup {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    max-width: 400px; 
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+
+}
+  
+.popup h2 {
+    margin-top: 0;
+}
+
+.popup input[type="text"] {
+    width: 100%; 
+    height: 40px; 
+    margin-bottom: 20px; 
+}
+  
+.popup .button-container {
+    margin-top: 3%;
+}
+  
+.popup .button-container button {
+    font-weight: bold;
+    font-size: 100%;
+    border-radius: 5px;
+    width: 20%;
+    padding: 10px;
+    text-decoration: none;
+    display: inline-block;
+}
+  
+.popup .button-container .popup-button-cancel {
+    color: #FF6E2F; 
+    background-color: white;
+    border: 2px solid black;
+    margin-right: 20px;
+    width: 50%;
+    cursor: pointer;
+}
+  
+.popup .button-container .popup-button-save {
+    color: #FF6E2F;
+    background-color: white;
+    border: 2px solid black;
+    width: 50%;
+    cursor: pointer;
+}
+
+.popup .button-container .popup-button-save:hover {
+    background-color: #e7e7e7;
+}
+
+.popup .button-container .popup-button-cancel:hover {
+    background-color: #e7e7e7;
+}
+
+
+.white-space {
+    background-color: black;
 }

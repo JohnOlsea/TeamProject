@@ -8,12 +8,12 @@
     cursor: pointer;
     font-size: 15px;
     font-family: Lato;
-  }
+}
   
 .login-button:hover {
     background-color: #FFE6B2;
-  }
+}
   
 .login-button:active {
     background-color: #D2AA68;
-  }
+}

@@ -12,6 +12,9 @@ import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 
+// Test
+import ImageTest from './pages/ImageTest'
+
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
@@ -42,6 +45,9 @@ function App() {
           <Route path='adminPrint' element={<AdminPrint />} />
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
+
+          <Route path='imageTest' element={<ImageTest />} />
+
 
         </Routes>
       </main>

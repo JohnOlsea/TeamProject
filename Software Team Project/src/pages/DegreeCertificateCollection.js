@@ -1,36 +1,64 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/DegreeCertificateCollection.css';
 import logo from '../images/KMITLLogo.png';
 import { useNavigate } from 'react-router-dom';
+import axios from "axios";
+
 
 function DegreeCertificateCollection() {
-  const userName = "Thongchai Jaidee";
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState('');
+  const [userData, setUserData] = useState("Not selected yet");
+
+  const getUser = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/login/success", {
+        withCredentials: true,
+      });
+      setUserData(response.data.user);
+    } catch (err) {
+      console.log(err);
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
-  const handleSubmit = () => {
-    switch (selectedOption) {
-      case 'graduationDay':
-        navigate('/graduationDayPickup');
-        break;
-      case 'registrationOffice':
-        navigate('/pickUpAtRegistrationOffice');
-        break;
-      case 'postalOffice':
-        navigate('/Payment');
-        break;
-      default:
-        break;
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/update_option', {
+        email: userData.email,
+        grant_option: selectedOption
+      });
+      
+      switch (selectedOption) {
+        case 'Graduation Day Pick up':
+          navigate('/graduationDayPickup');
+          break;
+        case 'Pick up at Registration Office':
+          navigate('/pickUpAtRegistrationOffice');
+          break;
+        case 'Postal Delivery':
+          navigate('/Payment');
+          break;
+        default:
+          break;
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
     }
   };
+  
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
   };
   const handleLogout = () => {
-    navigate('/');
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleHome = () => {
     navigate('/Home');
@@ -42,7 +70,7 @@ function DegreeCertificateCollection() {
           <img src={logo} alt="Logo" className="logo" />
           <div>
             <h1 className="title">Degree Certificate Collection</h1>
-            <p className="subtitle">{userName}</p>
+            <p className="subtitle">{userData.displayName}</p>
           </div>
         </div>
       </header>
@@ -58,7 +86,7 @@ function DegreeCertificateCollection() {
         <p className="announcement-title">🎓 Degree Certificate Collection Options 🎓</p>
   
         <ol className="small-font-left-align">
-          <li><span className="orange-text">Graduation Day Pickup:</span> You can choose to collect your degree certificate in person at the campus. This option allows you to celebrate your achievement with friends, family, and faculty members.</li>
+          <li><span className="orange-text">Graduation Day Pick up:</span> You can choose to collect your degree certificate in person at the campus. This option allows you to celebrate your achievement with friends, family, and faculty members.</li>
           <p className="empty-line">&nbsp;</p>
           <li><span className="orange-text">Get it at the institute office:</span> If you prefer a more streamlined process, you can pick up your certificate at the institute office during regular business hours. This option is convenient for those who have busy schedules.</li>
           <p className="empty-line">&nbsp;</p>
@@ -67,16 +95,16 @@ function DegreeCertificateCollection() {
 
         <div className="radio-buttons">
             <label>
-                <input type="radio" name="pickupOption" value="graduationDay" onChange={handleOptionChange}/>
-                Graduation Day Pickup
+                <input type="radio" name="pickupOption" value="Graduation Day Pick up" onChange={handleOptionChange}/>
+                Graduation Day Pick up
             </label>
             <label>
-                <input type="radio" name="pickupOption" value="registrationOffice" onChange={handleOptionChange}/>
+                <input type="radio" name="pickupOption" value="Pick up at Registration Office" onChange={handleOptionChange}/>
                 Pick up at Registration Office
             </label>
             <label>
-                <input type="radio" name="pickupOption" value="postalOffice" onChange={handleOptionChange}/>
-                Postal Office
+                <input type="radio" name="pickupOption" value="Postal Delivery" onChange={handleOptionChange}/>
+                Postal Delivery
             </label>
         </div>
 

@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/PickUpAtRegistrationOfficeMobile.css';
 import logo from '../images/KMITLLogo.png';
 import kmitlRegisOfficeImage from '../images/kmitlimg2.jpg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function PickUpatRegistrationOfficeMobile() {
-  const userName = "Thongchai Jaidee";
-  const [selectedOption, setSelectedOption] = useState('');
+  const [userData, setUserData] = useState({});
+  const userName = userData.displayName;
+  
   const navigate = useNavigate();
+
+  const getUser = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/login/success", {
+        withCredentials: true,
+      });
+      setUserData(response.data.user);
+    } catch (err) {
+      console.log(err);
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const handleLogout = () => {
-    navigate('/');
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleHome = () => {
     navigate('/Home');
   };
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
-  };
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
   };
 
   return (
@@ -43,7 +59,7 @@ function PickUpatRegistrationOfficeMobile() {
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">🎓 Pick Up at Registration Office 🎓</p>
-        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image" />
+        <img src={kmitlRegisOfficeImage} alt="Graduation Image" className="grad-image-mb" />
 
         <p className="pc-description2">🎉 Congratulation 🎉</p>
         <p className="pc-description-mb">Opting to pick up your degree certificate at the registration office during our regular business hours is a smart choice for those with busy schedules.</p>

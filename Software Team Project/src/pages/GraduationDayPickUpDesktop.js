@@ -1,24 +1,40 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/GraduationDayPickUpDesktop.css';
 import logo from '../images/KMITLLogo.png';
 import kmitlGradImage from '../images/kmitlGrad1.webp'; 
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios'
 
 function GraduationDayPickupDesktop() {
-  const userName = "Thongchai Jaidee";
-  const [selectedOption, setSelectedOption] = useState('');
+  const [userData, setUserData] = useState({});
+  const userName = userData.displayName;
+  
   const navigate = useNavigate();
+
+  const getUser = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/login/success", {
+        withCredentials: true,
+      });
+      setUserData(response.data.user);
+    } catch (err) {
+      console.log(err);
+      navigate("/");
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const handleLogout = () => {
-    navigate('/');
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleHome = () => {
     navigate('/Home');
   };
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
-  };
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
   };
 
   return (

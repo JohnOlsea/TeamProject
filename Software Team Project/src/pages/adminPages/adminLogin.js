@@ -21,8 +21,8 @@ function AdminLogin() {
     password: ''
   });
   const mockUserData = {
-    email: 'sea@a.com',
-    password: 'sss'
+    email: 'a@a.com',
+    password: 'a'
   };
   const [authenticated, setAuthenticated] = useState(false);
   const [inputError, setInputError] = useState({

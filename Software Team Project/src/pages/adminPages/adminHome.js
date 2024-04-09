@@ -7,7 +7,7 @@ function AdminHome() {
   const userName = "Admin";
   const navigate = useNavigate();
   const handleLogout = () => {
-    navigate('/adminLogin');
+    navigate('/login');
   };
   const handlePrint = () => {
     navigate('/adminPrint');

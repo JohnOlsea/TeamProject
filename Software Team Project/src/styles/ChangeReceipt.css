@@ -1,0 +1,27 @@
+.receipt-container{
+    display:grid;
+    justify-items: center;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
+
+.change-receipt-button {
+    color: #FF6E2F;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 100%;
+    border-radius: 5px;
+    width: 40%;
+    padding: 8px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.change-receipt-button:hover {
+    background-color: #f0f0f0;
+}
+
+.orange-text {
+    color: #FF6E2F; 
+}

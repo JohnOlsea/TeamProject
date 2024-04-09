@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import logo from '../images/KMITLLogo.png';
-import '../styles/SeeYourOption.css';
+import '../styles/ChangeReceipt.css';
 import receiptImage from '../images/receipt.jpg'; 
 import { useNavigate } from 'react-router-dom';
 import { styled } from 'styled-components';

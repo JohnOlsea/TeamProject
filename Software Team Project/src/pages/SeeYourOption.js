@@ -94,11 +94,11 @@ function SeeYourOption({ selectedOption }) {
         <table>
           <tbody>
             <tr>
-              <th>Name:</th>
+              <th>Name :</th>
               <td>{addressInfo.receiver}</td>
             </tr>
             <tr>
-              <th>Tel.:</th>
+              <th>Tel. :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="phonenumber" value={addressInfo.phonenumber} onChange={handleInputChange} />
@@ -108,7 +108,7 @@ function SeeYourOption({ selectedOption }) {
               </td>
             </tr>
             <tr>
-              <th>Address:</th>
+              <th>Address :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="address" value={addressInfo.address} onChange={handleInputChange} />
@@ -118,7 +118,7 @@ function SeeYourOption({ selectedOption }) {
               </td>
             </tr>
             <tr>
-              <th>Subdistrict:</th>
+              <th>Subdistrict :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="subdistrict" value={addressInfo.subdistrict} onChange={handleInputChange} />
@@ -128,7 +128,7 @@ function SeeYourOption({ selectedOption }) {
               </td>
             </tr>
             <tr>
-              <th>District:</th>
+              <th>District :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="district" value={addressInfo.district} onChange={handleInputChange} />
@@ -138,7 +138,7 @@ function SeeYourOption({ selectedOption }) {
               </td>
             </tr>
             <tr>
-              <th>Province:</th>
+              <th>Province :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="province" value={addressInfo.province} onChange={handleInputChange} />
@@ -148,7 +148,7 @@ function SeeYourOption({ selectedOption }) {
               </td>
             </tr>
             <tr>
-              <th>PostCode:</th>
+              <th>PostCode :</th>
               <td>
                 {editMode ? (
                   <input type="text" name="postalCode" value={addressInfo.postalCode} onChange={handleInputChange} />

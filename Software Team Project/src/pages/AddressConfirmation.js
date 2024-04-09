@@ -82,6 +82,7 @@ function AddressConfirmation() {
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
+      
       <div className="announcement-addressconfirm">
       <p className="announcement-title-addressconfirm">⚠ Address Confirmation ⚠</p>
       </div>

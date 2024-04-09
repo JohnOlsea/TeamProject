@@ -7,8 +7,8 @@
     border-radius: 8px;
     cursor: pointer;
     font-size: 15px;
-    font-family: Lato;
-}
+    font-family: "Kanit", sans-serif;
+  }
   
 .login-button:hover {
     background-color: #FFE6B2;

@@ -12,6 +12,7 @@ import PaymentCompleted from './pages/PaymentCompleted'
 import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import SeeYourOption from './pages/SeeYourOption.js'
+import ChangeReceipt from './pages/ChangeReceipt.js'
 
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
@@ -38,13 +39,12 @@ function App() {
           <Route path='graduationDayPickup' element={<GraduationDayPickup />} />
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
           <Route path='seeyouroption' element={<SeeYourOption />} />
-
+          <Route path='changeReceipt' element={<ChangeReceipt />} />
           <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
-
         </Routes>
       </main>
     </BrowserRouter>

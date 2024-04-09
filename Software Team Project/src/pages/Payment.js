@@ -2,6 +2,7 @@ import React, { useState, useRef} from 'react';
 import '../styles/Payment.css';
 import logo from '../images/KMITLLogo.png';
 import kmitlQRCode from '../images/kmitlQRCode.png'; 
+import receiptImage from '../images/receipt.jpg'; 
 import { useNavigate } from 'react-router-dom';
 
 function Payment() {

@@ -1,0 +1,61 @@
+.syo-change-your-option-button {
+    color: #FF6E2F;
+    background-color: white;
+    border: 2px solid black;
+    font-weight: bold;
+    font-size: 100%;
+    border-radius: 5px;
+    width: 50%;
+    padding: 8px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.syo-change-your-option-button:hover {
+    background-color: #f0f0f0;
+}
+
+.orange-text {
+    color: #FF6E2F; 
+}
+  
+.option-details {
+    margin-top: 1%;
+    text-align: center;
+}
+
+.receipt-div{
+    display: flex;
+    padding: 2%;
+}
+
+.address-info-table {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 2%;
+    margin-top: 2%;
+    display: grid;
+    justify-items: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    background-color: #e0e0e0; /* Background color for table headers */
+    padding: 2%;
+    border: 1px solid #000000;
+    text-align: left;
+    font-size: 90%;
+  }
+  
+  td {
+    padding: 2%;
+    text-align: left;
+  }
+  
+  table, td {
+    border: 1px solid #000000;
+  }

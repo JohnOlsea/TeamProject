@@ -121,6 +121,7 @@ function AddressConfirmation() {
           </button>
         </div>
       </nav>
+      
       <div className="announcement-addressconfirm">
         <p className="announcement-title-addressconfirm">
           ⚠ Address Confirmation ⚠
@@ -241,13 +242,11 @@ function AddressConfirmation() {
           {errorMessage}
         </p>
       )}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "10%",
-          marginBottom: "5%",
-        }}
+      <div style={{display:"flex", 
+                   justifyContent:"center", 
+                   marginTop:"5%",
+                   marginBottom:"5%",
+                  }}
       >
         <button
           className="back-button"

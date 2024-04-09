@@ -91,31 +91,31 @@ function PersonalInfo() {
         <table>
           <tbody>
             <tr>
-              <th>Student ID:</th>
+              <th>Student ID :</th>
               <td>{personalInfo.studentId}</td>
             </tr>
             <tr>
-              <th>Name Title:</th>
+              <th>Name Title :</th>
               <td>{personalInfo.nameTitle}</td>
             </tr>
             <tr>
-              <th>First Name:</th>
+              <th>First Name :</th>
               <td>{personalInfo.firstName}</td>
             </tr>
             <tr>
-              <th>Last Name:</th>
+              <th>Last Name :</th>
               <td>{personalInfo.lastName}</td>
             </tr>
             <tr>
-              <th>Major:</th>
+              <th>Major :</th>
               <td>{personalInfo.major}</td>
             </tr>
             <tr>
-              <th>Faculty Name:</th>
+              <th>Faculty Name :</th>
               <td>{personalInfo.facultyName}</td>
             </tr>
             <tr>
-              <th>Certificate Degree:</th>
+              <th>Certificate Degree :</th>
               <td>{personalInfo.certificateDegree}</td>
             </tr>
           </tbody>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../styles/DegreeCertificateCollection.css';
 import logo from '../images/KMITLLogo.png';
 import { useNavigate } from 'react-router-dom';
+import SeeYourOption from './SeeYourOption';
 import axios from "axios";
 
 
@@ -107,15 +108,16 @@ function DegreeCertificateCollection() {
                 Postal Delivery
             </label>
         </div>
-
-
       </div>
 
       <div className="button-container">
         <button className="submit-button" onClick={handleSubmit}>Confirm</button>
+      </div>
+      <div className="button-container">
         <button className="back-to-homepage-button-d" onClick={handleHome}>Back to Home Page</button>
       </div>
 
+      {selectedOption && <SeeYourOption selectedOption={selectedOption} />}
     </div>
   );
 }

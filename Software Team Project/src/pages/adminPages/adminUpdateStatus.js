@@ -1,24 +1,28 @@
 import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
 import '../../styles/adminStyles/adminUpdateStatus.css';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 function AdminUpdateStatus() {
+  const { state: { selectedData } } = useLocation();
   const userName = "Admin";
   const navigate = useNavigate();
+
   const handleLogout = () => {
     navigate('/adminLogin');
   };
+
   const handleBack = () => {
     navigate('/adminHome');
   };
-  // Mock data
-  const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", status: "Paid", checked: false },
-    { id: 64011546, name: "Phattara Srilachot", status: "Paid", checked: false },
-    { id: 64011393, name: "Hannah Ebenezar", status: "Paid", checked: false },
 
-  ]);
+  const handleConfirm = () => {
+    const updatedData = data.map(item => ({ ...item }));
+    navigate('/adminShowUpdatedStatus', { state: { updatedData } });
+  };
+  
+
+  const [data, setData] = useState(selectedData || []);
 
   const handleStatusChange = (index, status) => {
     const newData = [...data];
@@ -41,7 +45,6 @@ function AdminUpdateStatus() {
 
   return (
     <div className="app-container">
-
       <header className="aus-header">
         <div className="aus-header-content">
           <img src={logo} alt="Logo" className="aus-logo" />
@@ -69,7 +72,7 @@ function AdminUpdateStatus() {
               <th>ID</th>
               <th>Name</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Shipping ID</th>
             </tr>
           </thead>
           <tbody>
@@ -78,14 +81,17 @@ function AdminUpdateStatus() {
                 <td><input type="checkbox" checked={row.checked} onChange={() => handleCheckboxChange(index)} /></td>
                 <td>{row.id}</td>
                 <td>{row.name}</td>
-                <td>{row.status}</td>
                 <td>
-                  <select onChange={(e) => handleStatusChange(index, e.target.value)}>
+                  <select value={row.status} onChange={(e) => handleStatusChange(index, e.target.value)}>
                     <option value="Paid">Paid</option>
                     <option value="Unpaid">Unpaid</option>
+                    <option value="Reject">Reject</option>
+                    <option value="Verified">Verified</option>
                     <option value="Sent">Sent</option>
+                    <option value="Non-Delivery">Non-Delivery</option>
                   </select>
                 </td>
+                <td>{row.shippingID}</td>
               </tr>
             ))}
           </tbody>
@@ -94,7 +100,7 @@ function AdminUpdateStatus() {
       
       <div className="button-container">
         <button className="aus-button" onClick={handleBack}>Back</button>
-        <button className="aus-button">Confirm</button>
+        <button className="aus-button" onClick={handleConfirm}>Confirm</button>
       </div>
     </div>
   );

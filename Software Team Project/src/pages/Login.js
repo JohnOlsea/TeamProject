@@ -98,7 +98,7 @@ function Login() {
         <h4
           style={{
             marginBottom: "8px",
-            fontFamily: "Lato",
+            fontFamily: "Kanit, sans-serif",
           }}
         >
           Email
@@ -109,7 +109,7 @@ function Login() {
         <h4
           style={{
             marginBottom: "8px",
-            fontFamily: "Lato",
+            fontFamily: "Kanit, sans-serif",
           }}
         >
         Password

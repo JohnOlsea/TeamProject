@@ -98,15 +98,16 @@
 
 .ap-table {
     border-collapse: collapse;
-    width: 60%;
-    margin-left: 20%;
-    margin-top: 2%;
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 3%;
 }
 
 .ap-table th,
 .ap-table td {
-    border: 1px solid black;
+    border: 1.5px solid black;
     padding: 8px;
+    width: 10%;
     text-align: left;
 }
 
@@ -151,13 +152,15 @@
 @media print {
     /* Hide header and navigation */
     .ap-header,
-    .ap-navbar {
+    .ap-navbar,
+    .ap-button {
       display: none;
     }
   
     /* Adjust table width */
     .table-container {
       width: 100%;
+      display: none;
     }
   
     /* Adjust button container */
@@ -165,4 +168,70 @@
       display: none;
     }
   }
+  @media screen {
+    .address-container {
+      display: none;
+    }
+  }
+
+  @media print {
+    .ap-logo-pr {
+      width: 77px; 
+      height: auto;
+      float: left; /* Float the logo to the left */
+      margin-right: 10px; /* Add some space between the logo and sender info */
+    }
+  
+    .address-container {
+      display: block;
+      margin-top: 20px;
+    }
+  
+    .address-section {
+      border: 2px solid #000;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 9.5cm;
+      height: 7.5cm;
+      page-break-inside: avoid;
+      overflow: hidden; /* Hide overflow */
+    }
+  
+    .sender-info-t {
+      float: right; /* Float the sender info to the left */
+      width: calc(100% - 100px); /* Adjust width to accommodate logo */
+    }
+  
+    .consignee-info {
+      clear: both; /* Clear floating elements */
+      margin-top: 10px; /* Add space between consignee info and logo */
+    }
+  
+    .address-container h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-family: 'Prompt', sans-serif;
+    }
+  
+    .address-container p {
+      margin: 5px 0;
+      font-size: 14px;
+      font-family: 'Prompt', sans-serif;
+    }
+  
+    .divider {
+      border-top: 1px solid black; /* Add a straight line between sender and consignee */
+      margin-top: 90px;
+      clear: both; /* Clear floating elements */
+    }
+  }
+  
+
+  
+  
+  
+  
+  
   

@@ -19,10 +19,14 @@ function AdminHome() {
   };
   // Mock data
   const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", status: "Paid", checked: false },
-    { id: 64011555, name: "Phuttiphat Leaungmanotham", status: "Unpaid", checked: false },
-    { id: 64011655, name: "Teerapat Wattanamanont", status: "Sent", checked: false },
-    { id: 64011378, name: "Chiho Li", status: "Paid", checked: false },
+    { id: 64011671, name: "Thanawat Rodklay", tel: "099-999-9999", address:"456 Elm Street", 
+    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", status: "Paid", checked: false },
+    { id: 64011555, name: "Phuttiphat Leaungmanotham", tel: "099-999-9999", address:"456 Elm Street", 
+    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", status: "Unpaid", checked: false },
+    { id: 64011655, name: "Teerapat Wattanamanont", tel: "099-999-9999", address:"456 Elm Street", 
+    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", status: "Sent", checked: false },
+    { id: 64011378, name: "Chiho Li", tel: "099-999-9999", address:"456 Elm Street", 
+    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240",status: "Paid", checked: false },
     { id: 64011331, name: "Akararat Pattanamontri", status: "Paid", checked: false },
     { id: 64011426, name: "Kasita Sansanthad", status: "Paid", checked: false },
     { id: 64011397, name: "Jade Chuapakdee", status: "Paid", checked: false },

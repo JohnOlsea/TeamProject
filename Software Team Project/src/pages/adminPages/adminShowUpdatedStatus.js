@@ -36,7 +36,6 @@ function AdminShowUpdatedStatus() {
           <button className="asus-logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
-
       <div className="table-container">
         <table className="asus-table">
           <thead>

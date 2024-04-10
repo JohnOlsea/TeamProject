@@ -1,19 +1,19 @@
 .login-button {
-    height: 35px;
-    width: 210px;
-    background-color: #f0ad4e;
-    color: #ffffff;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    font-family: "Kanit", sans-serif;
-  }
+  height: 35px;
+  width: 210px;
+  background-color: #f0ad4e;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: "Kanit", sans-serif;
+}
   
 .login-button:hover {
-    background-color: #FFE6B2;
+  background-color: #FFE6B2;
 }
   
 .login-button:active {
-    background-color: #D2AA68;
+  background-color: #D2AA68;
 }

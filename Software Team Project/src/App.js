@@ -29,6 +29,8 @@ function App() {
     <BrowserRouter>
       <main>
         <Routes>
+
+          {/* User Routes */}
           <Route path='/' element={<Login />} />
           <Route path='login' element={<Login />} />
           <Route path='home' element={<Home />} />
@@ -42,6 +44,8 @@ function App() {
           <Route path='seeyouroption' element={<SeeYourOption />} />
           <Route path='changeReceipt' element={<ChangeReceipt />} />
           <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
+
+          {/* Admin Routes */}
           <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />

@@ -62,7 +62,6 @@ function SeeYourOption({ selectedOption }) {
     setAddressInfo({ ...addressInfo, [name]: value });
   };
 
-  // Mocking the option text (to be replaced by data from the database)
   const optionText = "Postal Delivery";
 
   return (

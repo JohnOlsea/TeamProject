@@ -17,6 +17,9 @@ function PickUpAtRegistrationOfficeDesktop() {
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
   };
+  const handlePayNow = () => {
+    navigate('/paymentNondelivery')
+  }
   const handleOptionChange = (event) => {
     setSelectedOption(event.target.value);
   };
@@ -55,7 +58,20 @@ function PickUpAtRegistrationOfficeDesktop() {
       </div>
 
       <div className="button-container">
-        <button className="pickUpAtRegis-back-to-homepage-button" onClick={handleHome}>Back to Home Page</button>
+        <button 
+          className="pickUpAtRegis-back-to-homepage-button" 
+          onClick={handlePayNow}
+          style={{marginLeft:"3%", marginRight:"2%"}}
+        >
+          Pay Now
+        </button>
+        <button 
+          className="pickUpAtRegis-back-to-homepage-button" 
+          onClick={handleHome}
+          style={{marginRight:"3%"}}
+        >
+          Back to Home Page
+        </button>
       </div>
 
     </div>

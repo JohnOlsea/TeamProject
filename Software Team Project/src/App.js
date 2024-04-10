@@ -13,6 +13,7 @@ import GraduationDayPickup from './pages/GraduationDayPickUp'
 import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import SeeYourOption from './pages/SeeYourOption.js'
 import ChangeReceipt from './pages/ChangeReceipt.js'
+import PaymentForGraduaPick from './pages/PaymentGra_Pick.js'
 
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
@@ -40,6 +41,7 @@ function App() {
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
           <Route path='seeyouroption' element={<SeeYourOption />} />
           <Route path='changeReceipt' element={<ChangeReceipt />} />
+          <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
           <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
           <Route path='adminPrint' element={<AdminPrint />} />

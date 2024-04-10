@@ -43,7 +43,6 @@ function Home() {
     getUser();
   }, []);
 
-  // const userName = "Thongchai Jaidee";
   const userName = userData.displayName;
 
   const navigate = useNavigate();
@@ -51,7 +50,9 @@ function Home() {
   const handleLogout = () => {
     window.open("http://localhost:5000/logout", "_self");
   };
-
+  const handleSeeYourOption = () => {
+    navigate("/seeyouroption")
+  }
   const handlePersonalInfo = () => {
     navigate("/personalInfo");
   };
@@ -130,29 +131,32 @@ function Home() {
           forward to celebrating your success with you!
         </p>
       </div>
+      {Object.keys(option).length > 0 ? (
+          <React.Fragment>
+            <p className="small-font-center-align" style={{ color: '#0aec0a'}}>Option: {option}</p>
+          </React.Fragment>
+        ) : (
+            <p className="small-font-center-align" style={{ color: 'red'}}>
+              Option: No option selected
+            </p>
+        )}
       <div className="button-container">
         {Object.keys(option).length > 0 ? (
           <React.Fragment>
-            <p>Option: {option}</p>
             <button
               className="see-option-button"
-              onClick={handleDegreeCertificateCollection}
+              onClick={handleSeeYourOption}
             >
               See your option
             </button>
           </React.Fragment>
         ) : (
-          <div className="button-container">
-            <p>
-              Option: No option selected
-            </p>
             <button
               className="choose-option-button"
               onClick={handleDegreeCertificateCollection}
             >
                 Choose Your Option
             </button>
-          </div>
         )}
       </div>
     </div>

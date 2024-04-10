@@ -5,14 +5,8 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function PaymentCompleted() {
-  const userName = "Thongchai Jaidee";
-  const studentId = 64011555;
-  const address = "1 Chalong Krung 1 Alley, Lat Krabang";
-  const province = "Bangkok";
-  const country = "Thailand";
-  const postalCode = 10520;
   const [userData, setUserData] = useState({});
-  const [image, setImage] = useState({})
+  const [image, setImage] = useState(null)
   const [info, setInfo] = useState({
     "student_id": '',
     "name": '',

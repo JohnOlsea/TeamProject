@@ -39,9 +39,6 @@ function GraduationDayPickupMobile() {
   const handlePayNow = () => {
     navigate('/paymentNondelivery')
   }
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
 
   return (
     <div className="app-container">

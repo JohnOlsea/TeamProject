@@ -36,7 +36,9 @@ function DegreeCertificateCollection() {
         email: userData.email,
         grant_option: selectedOption
       });
-      
+      await axios.post('http://localhost:5000/create_image_path', {
+        email: userData.email
+      })
       switch (selectedOption) {
         case 'Graduation Day Pick up':
           navigate('/graduationDayPickup');

@@ -140,6 +140,14 @@ body, html {
   font-weight: bold;
 }
 
+.small-font-center-align {
+  font-size: 125%;
+  text-align: center;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: bold;
+}
+
 .empty-line {
   margin-top: 5px; 
   margin-bottom: 5px; 
@@ -162,10 +170,10 @@ body, html {
   font-weight: bold;
   font-size: 120%;
   border-radius: 5px;
-  width: 100%;
+  width: 60%;
   padding: 10px;
   margin-top: 2%;
-  margin-bottom: 5%;
+  margin-bottom: 0%;
   cursor: pointer;
 }
 
@@ -176,9 +184,9 @@ body, html {
   font-weight: bold;
   font-size: 120%;
   border-radius: 5px;
-  width: 70%;
+  width: 60%;
   padding: 10px;
   margin-top: 2%;
-  margin-bottom: 5%;
+  margin-bottom: 0%;
   cursor: pointer;
 }

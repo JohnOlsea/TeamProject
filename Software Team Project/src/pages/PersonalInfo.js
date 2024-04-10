@@ -8,13 +8,13 @@ function PersonalInfo() {
   const [userData, setUserData] = useState({});
 
   const [personalInfo, setPersonalInfo] = useState({
-    studentId: "",
-    nameTitle: "",
-    firstName: "",
-    lastName: "",
-    major: "",
-    facultyName: "",
-    certificateDegree: "",
+    studentId: "-",
+    nameTitle: "-",
+    firstName: "-",
+    lastName: "-",
+    major: "-",
+    facultyName: "-",
+    certificateDegree: "-",
   });
 
   const getUser = async () => {
@@ -27,31 +27,35 @@ function PersonalInfo() {
       getInfo(email);
     } catch (err) {
       console.log(err);
-      navigate('/');
+      navigate("/");
     }
   };
 
-  const getInfo = async(email) => {
+  const getInfo = async (email) => {
     if (email) {
-        try {
-            const response = await axios.post("http://localhost:5000/get_personal_info", {
-                email: email
-            });
-            setPersonalInfo(
-              {studentId:response.data[0].student_id,
-                nameTitle: response.data[0].name_title,
-                firstName: response.data[0].firstname,
-                lastName: response.data[0].surname,
-                major: response.data[0].major,
-                facultyName: response.data[0].faculty,
-                certificateDegree: response.data[0].degree});
-        } catch (err) {
-            console.log(err);
-        }
+      try {
+        const response = await axios.post(
+          "http://localhost:5000/get_personal_info",
+          {
+            email: email,
+          }
+        );
+        setPersonalInfo({
+          studentId: response.data[0].student_id,
+          nameTitle: response.data[0].name_title,
+          firstName: response.data[0].firstname,
+          lastName: response.data[0].surname,
+          major: response.data[0].major,
+          facultyName: response.data[0].faculty,
+          certificateDegree: response.data[0].degree,
+        });
+      } catch (err) {
+        console.log(err);
+      }
     } else {
-        console.log("email is undefined");
+      console.log("email is undefined");
     }
-}
+  };
 
   useEffect(() => {
     getUser();
@@ -59,7 +63,7 @@ function PersonalInfo() {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout","_self") 
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleHome = () => {
     navigate("/Home");
@@ -92,7 +96,7 @@ function PersonalInfo() {
           <tbody>
             <tr>
               <th>Student ID :</th>
-              <td>{personalInfo.studentId}</td>
+              <td>{userData.email ? userData.email.split("@")[0] : ""}</td>
             </tr>
             <tr>
               <th>Name Title :</th>
@@ -100,11 +104,11 @@ function PersonalInfo() {
             </tr>
             <tr>
               <th>First Name :</th>
-              <td>{personalInfo.firstName}</td>
+              <td>{userData.given_name}</td>
             </tr>
             <tr>
               <th>Last Name :</th>
-              <td>{personalInfo.lastName}</td>
+              <td>{userData.family_name}</td>
             </tr>
             <tr>
               <th>Major :</th>

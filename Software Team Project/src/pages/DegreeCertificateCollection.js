@@ -77,7 +77,7 @@ function DegreeCertificateCollection() {
             </label>
             <label>
                 <input type="radio" name="pickupOption" value="postalOffice" onChange={handleOptionChange}/>
-                Postal Office
+                Postal Delivery
             </label>
         </div>
       </div>

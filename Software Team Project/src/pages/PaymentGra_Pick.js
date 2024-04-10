@@ -5,7 +5,7 @@ import kmitlQRCode from '../images/kmitlQRCode.png';
 import receiptImage from '../images/receipt.jpg'; 
 import { useNavigate } from 'react-router-dom';
 
-function ChangeReceipt() {
+function PaymentNonDelivery() {
   const userName = "Thongchai Jaidee";
   const [receiptUploaded, setReceiptUploaded] = useState(false);
   const [receiptFile, setReceiptFile] = useState(null);
@@ -38,7 +38,7 @@ function ChangeReceipt() {
   const handleSubmit = () => {
     setSubmitClicked(true);
     if (receiptUploaded) {
-      navigate('/seeyouroption');
+      navigate('/Home');
     }
   };  
 
@@ -49,7 +49,7 @@ function ChangeReceipt() {
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
           <div>
-            <h1 className="title">Change Receipt</h1>
+            <h1 className="title">Payment</h1>
             <p className="subtitle">{userName}</p>
           </div>
         </div>
@@ -95,4 +95,4 @@ function ChangeReceipt() {
   );
 }
 
-export default ChangeReceipt;
+export default PaymentNonDelivery;

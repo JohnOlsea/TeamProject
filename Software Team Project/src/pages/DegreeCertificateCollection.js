@@ -116,8 +116,6 @@ function DegreeCertificateCollection() {
       <div className="button-container">
         <button className="back-to-homepage-button-d" onClick={handleHome}>Back to Home Page</button>
       </div>
-
-      {selectedOption && <SeeYourOption selectedOption={selectedOption} />}
     </div>
   );
 }

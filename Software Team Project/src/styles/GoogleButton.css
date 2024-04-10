@@ -1,20 +1,20 @@
 .google-button {
-    height: 35px;
-    width: 210px;
-    background-color: #ffffff;
-    color: #000000;
-    border-color: #000000;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 15px;
-    margin-bottom: 20%;
-    font-family: "Kanit", sans-serif;
-  }
+  height: 35px;
+  width: 210px;
+  background-color: #ffffff;
+  color: #000000;
+  border-color: #000000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 20%;
+  font-family: "Kanit", sans-serif;
+}
   
 .google-button:hover {
-    background-color: #e0e0df;
-  }
-  
+  background-color: #e0e0df;
+}
+
 .google-button:active {
-    background-color: #9f9e9c;
-  }
+  background-color: #9f9e9c;
+}

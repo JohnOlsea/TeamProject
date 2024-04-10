@@ -7,8 +7,13 @@ import { useNavigate } from 'react-router-dom';
 function AdminHome() {
   const userName = "Admin";
   const navigate = useNavigate();
+
   const handleLogout = () => {
     navigate('/login');
+  };
+
+  const handlePrintAddresses = () => {
+    navigate('/adminPrint');
   };
   
   const handleCancel = () => {
@@ -52,9 +57,6 @@ function AdminHome() {
     setData(sortedData);
   };
   
-  
-  
-  
   const handleSortOptionSelected = (selectedOption) => {
     const sortedData = [...data].sort((a, b) => {
       if (a.optionSelected === selectedOption && b.optionSelected !== selectedOption) {
@@ -72,7 +74,6 @@ function AdminHome() {
   
     setData(sortedData);
   };
-  
   
   const renderVerifyReceipt = (index) => {
     const paymentStatus = data[index].paymentStatus;
@@ -139,7 +140,6 @@ function AdminHome() {
 
   
   const handleViewReceipt = (receipt) => {
-    // Your logic here
   };
 
   const handleSettingsClick = (e, shippingID, index) => {
@@ -247,10 +247,7 @@ function AdminHome() {
       
       <nav className="am-navbar">
         <div className="navbar-left">
-          <button className="see-all-students-nav-button">See All Students</button>
-        </div>
-        <div className="navbar-left">
-          <button className="print-student-address-nav-button">Print Student Address</button>
+          <button className="print-student-address-nav-button" onClick={handlePrintAddresses}>Print Student Address</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button">Logout</button>

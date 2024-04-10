@@ -36,6 +36,12 @@ function PickUpatRegistrationOfficeMobile() {
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
   };
+  const handlePayNow = () => {
+    navigate('/paymentNondelivery')
+  }
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
 
   return (
     <div className="app-container">
@@ -71,7 +77,20 @@ function PickUpatRegistrationOfficeMobile() {
       </div>
 
       <div className="button-container">
-        <button className="back-to-homepage-button-mb" onClick={handleHome}>Back to Home Page</button>
+      <button 
+          className="pickUpAtRegis-back-to-homepage-button" 
+          onClick={handlePayNow}
+          style={{marginLeft:"3%", marginRight:"2%"}}
+        >
+          Pay Now
+        </button>
+        <button 
+          className="pickUpAtRegis-back-to-homepage-button" 
+          onClick={handleHome}
+          style={{marginRight:"3%"}}
+        >
+          Back to Home Page
+        </button>
       </div>
 
     </div>

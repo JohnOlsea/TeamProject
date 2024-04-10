@@ -21,15 +21,24 @@ function AdminHome() {
       const response = await axios.get(
         "http://localhost:5000/admin/get_all_student_option_info"
       );
-      console.log(response.data);
-      response.data.forEach((student_info) => {
-      ;  
-      })
-      setData(response.data)
+      // console.log(response.data);
+      var temp = response.data;
+      temp.forEach((student_info) => {
+        student_info.checked = false;
+        if (student_info.grant_option === null) {
+          student_info.grant_option = "Not Selected Yet";
+        } else if (
+          student_info.grant_option === "Pick Up at Registration Office" ||
+          student_info.grant_option === "Graduation Day Pickup"
+        ) {
+          student_info.grant_option = "Non-Delivery";
+        }
+      });
+      setData(response.data);
     } catch (err) {
       console.log(err);
     }
-  };  
+  };
 
   useEffect(() => {
     getAllStudentOptionInfo();
@@ -79,16 +88,16 @@ function AdminHome() {
 
   const handleSortPaymentStatus = (selectedOption) => {
     const sortedData = [...data].sort((a, b) => {
-      if (selectedOption === "Paid") {
-        return a.payment_status === "Paid"
+      if (selectedOption === "paid") {
+        return a.payment_status === "paid"
           ? -1
-          : b.payment_status === "Paid"
+          : b.payment_status === "paid"
           ? 1
           : 0;
-      } else if (selectedOption === "Unpaid") {
-        return a.payment_status === "Unpaid"
+      } else if (selectedOption === "unpaid") {
+        return a.payment_status === "unpaid"
           ? -1
-          : b.payment_status === "Unpaid"
+          : b.payment_status === "unpaid"
           ? 1
           : 0;
       }
@@ -99,7 +108,35 @@ function AdminHome() {
   };
 
   const handleSortOptionSelected = (selectedOption) => {
+    // const sortedData = [...data].sort((a, b) => {
+    //   if (
+    //     a.grant_option === selectedOption &&
+    //     b.grant_option !== selectedOption
+    //   ) {
+    //     return -1;
+    //   } else if (
+    //     a.grant_option !== selectedOption &&
+    //     b.grant_option === selectedOption
+    //   ) {
+    //     return 1;
+    //   } else if (
+    //     a.grant_option === "Non-Delivery" &&
+    //     b.grant_option === "Postal Delivery"
+    //   ) {
+    //     return -1;
+    //   } else if (
+    //     a.grant_option === "Postal Delivery" &&
+    //     b.grant_option === "Non-Delivery"
+    //   ) {
+    //     return 1;
+    //   } else {
+    //     console.log(a, b);
+    //     return a.grant_option.localeCompare(b.grant_option);
+    //   }
+    // });
+
     const sortedData = [...data].sort((a, b) => {
+      // Priority for selected option (replace 'selectedOption' with your actual variable)
       if (
         a.grant_option === selectedOption &&
         b.grant_option !== selectedOption
@@ -110,19 +147,17 @@ function AdminHome() {
         b.grant_option === selectedOption
       ) {
         return 1;
-      } else if (
-        a.grant_option === "Non-Delivery" &&
-        b.grant_option === "Postal Delivery"
-      ) {
-        return -1;
-      } else if (
-        a.grant_option === "Postal Delivery" &&
-        b.grant_option === "Non-Delivery"
-      ) {
-        return 1;
-      } else {
-        return a.grant_option.localeCompare(b.grant_option);
       }
+
+      // Specific order for "Postal Delivery", "Non-Delivery", "Not Selected Yet"
+      const optionOrder = {
+        "Postal Delivery": 2,
+        "Non-Delivery": 1,
+        "Not Selected Yet": 0,
+      };
+
+      // Compare based on predefined order
+      return optionOrder[a.grant_option] - optionOrder[b.grant_option];
     });
 
     setData(sortedData);
@@ -132,7 +167,7 @@ function AdminHome() {
     const payment_status = data[index].payment_status;
     const status = verificationStatus[index];
 
-    if (payment_status === "Unpaid") {
+    if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
       return (
@@ -183,7 +218,7 @@ function AdminHome() {
   };
 
   const renderReceipt = (receipt, payment_status) => {
-    if (payment_status === "Unpaid") {
+    if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
       return (
@@ -206,9 +241,9 @@ function AdminHome() {
     index
   ) => {
     if (
-      grant_option === "Graduation Day Pickup" ||
-      grant_option === "Pick Up at Registration Office" ||
-      payment_status === "Unpaid"
+      grant_option === "Not Selected Yet" ||
+      grant_option === "Non-Delivery" ||
+      payment_status === "unpaid"
     ) {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
@@ -351,6 +386,13 @@ function AdminHome() {
                     >
                       &#9660; Postal Delivery
                     </a>
+                    <a
+                      onClick={() =>
+                        handleSortOptionSelected("Not Selected Yet")
+                      }
+                    >
+                      &#9660; Not Selected Yet
+                    </a>
                   </div>
                 </div>
               </th>
@@ -359,10 +401,10 @@ function AdminHome() {
                 <div className="dropdown">
                   <button className="dropbtn">&#9660;</button>
                   <div className="dropdown-content">
-                    <a onClick={() => handleSortPaymentStatus("Paid")}>
+                    <a onClick={() => handleSortPaymentStatus("paid")}>
                       &#9660; Paid
                     </a>
-                    <a onClick={() => handleSortPaymentStatus("Unpaid")}>
+                    <a onClick={() => handleSortPaymentStatus("unpaid")}>
                       &#9660; Unpaid
                     </a>
                   </div>
@@ -387,12 +429,13 @@ function AdminHome() {
                 <td>{row.student_id}</td>
                 <td style={{ textAlign: "left" }}>{row.name}</td>
                 <td>
-                  {row.grant_option === "Graduation Day Pickup" ||
-                  row.grant_option === "Pick Up at Registration Office"
+                  {!row.grant_option
+                    ? "Not selected Yet"
+                    : row.grant_option === "Non-Delivery"
                     ? "Non-Delivery"
                     : row.grant_option}
                 </td>
-                <td>{row.payment_status}</td>
+                <td>{row.payment_status == "unpaid" ? "Unpaid" : "Paid"}</td>
                 {renderReceipt(row.receipt, row.payment_status)}
                 {renderVerifyReceipt(index)}
                 {renderShippingID(

@@ -11,6 +11,7 @@ function SeeYourOption() {
   const [userData, setUserData] = useState({});
   const [selectedOption, setSelectedOption] = useState("");
   const [image, setImage] = useState(null);
+  const [receipt_verification, setReceiptVerification] = useState(null);
   const [student_id, setStudentID] = useState("");
   const [firstname, setFirstname] = useState("");
   const [lastname, setLastname] = useState("");
@@ -51,10 +52,11 @@ function SeeYourOption() {
       setFirstname(fname);
       setLastname(sname);
       getOption(email, fname, sname);
+      getReceiptVerification(email);
       getPersonalInfo(email);
       getShippingID(email);
       getAddress(email);
-      getImage();
+      getImage(email);
     } catch (err) {
       console.log(err);
       navigate("/");
@@ -120,15 +122,37 @@ function SeeYourOption() {
     }
   };
 
-  const getImage = async () => {
-    const response = await axios
-      .get("http://localhost:5000/get_reciept_image?sid=64011671")
-      .then((res) => {
-        // setImage(res.data[0].image)
-        console.log("Image Path:", res.data.image_path);
-        setImage(res.data.image_path);
-      })
-      .catch((err) => console.log(err));
+  const getReceiptVerification = async (email) => {
+    try {
+      const student_id = email.split("@")[0];
+      const response = await axios.get(
+        `http://localhost:5000/get_receipt_verification/${student_id}`
+      );
+      console.log("receipt verification, ", response.data);
+      if (response.data[0].receipt_verification != null) {
+        console.log("Not null");
+        setReceiptVerification(response.data[0].receipt_verification);
+      } else {
+        setShippingID("-");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const getImage = async (email) => {
+    try {
+      const student_id = email.split("@")[0];
+      const response = await axios
+        .get(`http://localhost:5000/get_receipt_image?sid=${student_id}`)
+        .then((res) => {
+          console.log("Image Path:", res.data.image_path);
+          setImage(res.data.image_path);
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const getAddress = async (email) => {
@@ -139,16 +163,18 @@ function SeeYourOption() {
           `http://localhost:5000/get_address/${student_id}`
         );
         const info = response.data[0];
-        setAddressInfo({
-          student_id: info.student_id,
-          name: info.name,
-          tel_no: info.tel_no,
-          address: info.address,
-          subdistrict: info.subdistrict,
-          district: info.district,
-          province: info.province,
-          post_code: info.post_code,
-        });
+        if (info) {
+          setAddressInfo({
+            student_id: info.student_id,
+            name: info.name,
+            tel_no: info.tel_no,
+            address: info.address,
+            subdistrict: info.subdistrict,
+            district: info.district,
+            province: info.province,
+            post_code: info.post_code,
+          });
+        }
       } catch (err) {
         console.log(err);
       }
@@ -205,8 +231,6 @@ function SeeYourOption() {
     setAddressInfo({ ...addressInfo, [name]: value });
   };
 
-  const optionText = "Postal Delivery";
-
   return (
     <div className="app-container">
       <header className="header">
@@ -243,17 +267,34 @@ function SeeYourOption() {
           Change Your Option
         </button>
       </div>
-      {!image ? (
-        <div className="receipt-div" style={{ justifyContent: "center" }}>
-          <button
-            className="upload-reciept-button"
-            onClick={handleChangeReceipt}
-            style={{}}
-          >
-            Upload Receipt
-          </button>
+
+      {image ? (
+        <div className="option-details">
+          <h2>
+            Payment Verification:{" "}
+            <span className="orange-text">{receipt_verification}</span>
+          </h2>
         </div>
       ) : (
+        <div className="option-details">
+          <h2>
+            Payment Status: <span className="orange-text">Unpaid</span>
+          </h2>
+        </div>
+      )}
+
+      {!image ? (
+        <div>
+          <div className="receipt-div" style={{ justifyContent: "center" }}>
+            <button
+              className="upload-receipt-button-syo"
+              onClick={handleChangeReceipt}
+            >
+              Upload Receipt
+            </button>
+          </div>
+        </div>
+      ) : receipt_verification !== "Verified" ? (
         <div className="receipt-div">
           <button
             className="syo-change-your-option-button"
@@ -269,6 +310,8 @@ function SeeYourOption() {
             Change Receipt
           </button>
         </div>
+      ) : (
+        <div></div>
       )}
       {selectedOption == "Postal Delivery" ? (
         <div className="address-info-table">
@@ -378,12 +421,21 @@ function SeeYourOption() {
               Save
             </button>
           ) : image ? (
-            <button
-              className="edit-and-save-option-button"
-              onClick={handleEdit}
-            >
-              Edit
-            </button>
+            delivery_status === "Unshipped" ? (
+              <button
+                className="edit-and-save-option-button"
+                onClick={handleEdit}
+              >
+                Edit
+              </button>
+            ) : (
+                <button
+                  className="edit-and-save-option-button-inactive"
+                >
+                  Edit
+                </button>
+                
+            )
           ) : (
             <p
               style={{
@@ -436,12 +488,17 @@ function SeeYourOption() {
 
       {selectedOption === "Postal Delivery" && (
         <div className="option-details">
-          <h2>Delivery Status: {delivery_status} </h2>
+          <h2>
+            Delivery Status:{" "}
+            <span className="orange-text">{delivery_status}</span>{" "}
+          </h2>
         </div>
       )}
       {selectedOption === "Postal Delivery" && (
         <div className="shipid-details">
-          <h2>Shipping ID: {shipping_id} </h2>
+          <h2>
+            Shipping ID: <span className="orange-text">{shipping_id}</span>{" "}
+          </h2>
         </div>
       )}
     </div>

@@ -31,6 +31,7 @@ function Payment() {
   
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
+
   const handleLogout = () => {
     window.open("http://localhost:5000/logout", "_self");
   };
@@ -57,14 +58,12 @@ function Payment() {
   const handleSubmit = async () => {
     setSubmitClicked(true);
     if (receiptUploaded) {
-
       const formData = new FormData();
       formData.append('image', receiptFile);
       formData.append('student_id', userData.email.split("@")[0]);
-      axios.post("http://localhost:5000/upload_reciept", formData)
+      axios.post("http://localhost:5000/upload_receipt", formData)
       .then(res => console.log(res))
       .catch(err => console.log(err));
-      // navigate('/imageTest')
       navigate('/AddressConfirmation');
     }
   };  

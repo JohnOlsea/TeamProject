@@ -34,7 +34,7 @@ function PaymentCompleted() {
   };
 
   const getImage = async () => {
-    const response = await axios.get('http://localhost:5000/get_reciept_image?sid=64011671')
+    const response = await axios.get('http://localhost:5000/get_receipt_image?sid=64011671')
         .then(res => {
             // setImage(res.data[0].image)
             console.log(res.data.image_path);

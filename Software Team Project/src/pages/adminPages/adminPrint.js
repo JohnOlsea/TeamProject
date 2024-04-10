@@ -5,12 +5,12 @@ import '../../styles/adminStyles/adminPrint.css';
 import { styled } from 'styled-components';
 
 function AdminPrint() {
-  const { state: { selectedData } } = useLocation();
+  const { state} = useLocation();
   const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", tel: "099-999-9999", address:"456 Elm Street ddddddddddddddddddddddddddd", 
-    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", checked: false },
-    { id: 64011555, name: "Phuttiphat Leaungmanotham", tel: "099-999-9999", address:"456 Elm Street", 
-    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", checked: false },
+    { id: 64011671, name: "Thanawat Rodklay", tel: "089-989-9999", address:"1 Chalong Krung 1 Alley", 
+    subdistrict:"Lat Krabang",district:"Lat Krabang",province:"Bangkok",postcode:"10520", checked: false },
+    { id: 64011555, name: "Phuttiphat Leaungmanotham", tel: "087-123-5678", address:"Ramkamheang 35", 
+    subdistrict:"Sapansung",district:"Min Buri",province:"Bangkok",postcode:"10240", checked: false },
     { id: 64011655, name: "Teerapat Wattanamanont", tel: "099-999-9999", address:"456 Elm Street", 
     subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", checked: false },
     { id: 64011378, name: "Chiho Li", tel: "099-999-9999", address:"456 Elm Street", 
@@ -74,14 +74,11 @@ function AdminPrint() {
   const handlePrint = () => {
     const selectedRows = data.filter(row => row.checked);
     if (selectedRows.length > 0) {
-      // Hide non-selected rows
       const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
       nonSelectedRows.forEach(row => row.style.display = 'none');
   
-      // Print the document
       window.print();
   
-      // Show all rows again
       nonSelectedRows.forEach(row => row.style.display = 'block');
     } else {
       alert('Please select at least one row to print.');
@@ -96,22 +93,23 @@ function AdminPrint() {
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="ap-logo" />
           <div>
-            <h1 className="ap-title">Print Page</h1>
+            <h1 className="ap-title">Print</h1>
+            <p className="ap-admin">{userName}</p>
           </div>
-          <p className="ap-admin">{userName}</p>
         </div>
       </header>
 
       <nav className="ap-navbar">
-        <div className="ap-navbar-left">
-            <p className="ap-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
+        <div className="navbar-left">
+          <button className="see-all-students-nav-button" onClick={handleBack}>Back to Home</button>
         </div>
-        <div className="ap-navbar-right">
-          <button className="ap-logout-button" onClick={handleLogout}>Logout</button>
+        <div className="navbar-right">
+          <button className="logout-button">Logout</button>
         </div>
       </nav>
+      <p></p>
 
-      <div className="table-container">
+      <div className="am-table-container">
         <table className="ap-table">
           <thead>
             <tr>
@@ -153,8 +151,8 @@ function AdminPrint() {
       <div className="sender-info">
         <div className="sender-info-t">
           <h2 style={{color:"orange"}}>Sender</h2>
-          <p>Sender : {row.name}</p>
-          <p>Tel. : {row.tel}</p>
+          <p>Sender : KMTIL</p>
+          <p>Tel. : 02-329-8000</p>
         </div>
       </div>
       <div className="divider"></div>

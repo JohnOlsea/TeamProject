@@ -1,18 +1,19 @@
 .ap-header {
-    background-color: #FF6E2F;
-    height: 70%; 
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    font-size: 24px; 
-    color: White;
+  background-color: #FF6E2F;
+  height: 70%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; 
+  color: White;
 }
 
 .ap-title {
-    font-size: 150%;
-    margin-bottom: 5px; 
-    display: inline-block; 
-    white-space: nowrap;
+  font-size: 150%;
+  margin-bottom: 5px; 
+  margin-left: 20%; 
+  font-size: 35px;
+  display: inline-block; 
 }
 
 .ap-header-content {
@@ -30,15 +31,15 @@
 }
 
 .ap-subtitle {
-    font-size: 16px;
-    font-weight: bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .ap-admin {
-    font-size: 150%;
-    font-weight: bold;
-    margin-top: 15%; 
-    margin-left: 130%;
+  font-size: 150%;
+  margin-left: 20%; 
+  margin-top: 15%; 
+  font-size: 20px;
 }
 
 .ap-navbar {
@@ -98,9 +99,10 @@
 
 .ap-table {
     border-collapse: collapse;
-    width: 80%;
-    margin-left: 10%;
-    margin-top: 3%;
+    width: 95%;
+    margin-left: 2%;
+    margin-top: 0%;
+    z-index: 0;
 }
 
 .ap-table th,
@@ -148,22 +150,19 @@
     overflow-y: auto; 
 }
 
-/* Styles for the print version */
 @media print {
-    /* Hide header and navigation */
+    .am-table-container,
     .ap-header,
     .ap-navbar,
     .ap-button {
       display: none;
     }
   
-    /* Adjust table width */
     .table-container {
       width: 100%;
       display: none;
     }
   
-    /* Adjust button container */
     .button-container {
       display: none;
     }
@@ -178,8 +177,8 @@
     .ap-logo-pr {
       width: 77px; 
       height: auto;
-      float: left; /* Float the logo to the left */
-      margin-right: 10px; /* Add some space between the logo and sender info */
+      float: left;
+      margin-right: 10px; 
     }
   
     .address-container {
@@ -195,17 +194,17 @@
       width: 9.5cm;
       height: 7.5cm;
       page-break-inside: avoid;
-      overflow: hidden; /* Hide overflow */
+      overflow: hidden; 
     }
   
     .sender-info-t {
-      float: right; /* Float the sender info to the left */
-      width: calc(100% - 100px); /* Adjust width to accommodate logo */
+      float: right; 
+      width: calc(100% - 100px); 
     }
   
     .consignee-info {
-      clear: both; /* Clear floating elements */
-      margin-top: 10px; /* Add space between consignee info and logo */
+      clear: both; 
+      margin-top: 10px; 
     }
   
     .address-container h2 {
@@ -222,16 +221,8 @@
     }
   
     .divider {
-      border-top: 1px solid black; /* Add a straight line between sender and consignee */
+      border-top: 1px solid black; 
       margin-top: 90px;
-      clear: both; /* Clear floating elements */
+      clear: both; 
     }
   }
-  
-
-  
-  
-  
-  
-  
-  

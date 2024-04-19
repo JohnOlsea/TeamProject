@@ -48,3 +48,14 @@
     width: 30%; 
   }
 }
+
+.payment-option {
+  text-align: center;
+  margin-top: 7%;
+}
+
+.payment-show-price {
+  text-align: center;
+  margin-top: 0%;
+  color:#FF6E2F;
+}

@@ -9,7 +9,6 @@ function AdminHome() {
   const userName = "Admin";
   const navigate = useNavigate();
   const [data, setData] = useState([]);
-
   const [verificationStatus, setVerificationStatus] = useState({});
   const [changeIndex, setChangeIndex] = useState(null);
   const [showPopup, setShowPopup] = useState(false);
@@ -29,7 +28,7 @@ function AdminHome() {
           student_info.grant_option = "Not Selected Yet";
         } else if (
           student_info.grant_option === "Pick Up at Registration Office" ||
-          student_info.grant_option === "Graduation Day Pickup"
+          student_info.grant_option === "Graduation Day Pick up"
         ) {
           student_info.grant_option = "Non-Delivery";
         }
@@ -56,14 +55,27 @@ function AdminHome() {
     setShowPopup(false);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const selectedData = data.filter((item) => item.checked);
+
     selectedData.forEach((item) => {
       console.log("ID:", item.student_id);
       console.log("Name:", item.name);
       console.log("Verify Receipt:", item.receipt_verification);
-      console.log("Shipping ID:", item.shipping_id);
+      if (item.shipping_id === "") {
+        item.shipping_id = null;  
+        console.log("Shipping ID:", item.shipping_id);
+      }
     });
+
+    try {
+      await axios.post("http://localhost:5000/admin/update_student_option_info", 
+      {data : selectedData})
+      window.location.reload();
+    } catch (err) {
+      console.log(err);
+    }
+
   };
 
   const handleSort = (selectedOption) => {
@@ -164,60 +176,44 @@ function AdminHome() {
   };
 
   const renderVerifyReceipt = (index) => {
-    const payment_status = data[index].payment_status;
-    const status = verificationStatus[index];
-
-    if (payment_status === "unpaid") {
-      return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
-    } else {
+    const paymentStatus = data[index].payment_status;
+    const status = data[index].receipt_verification;
+  
+    if (paymentStatus === "unpaid") {
       return (
-        <td
-          style={{
-            textAlign: "center",
-            backgroundColor:
-              status === "Verified"
-                ? "green"
-                : status === "Rejected"
-                ? "red"
-                : "",
-          }}
-        >
-          {status === "Verified" ? (
-            <span
-              onClick={() => handleVerifyReceipt(index, "Change")}
-              style={{ cursor: "pointer" }}
-            >
-              Change
-            </span>
-          ) : status === "Rejected" ? (
-            <span
-              onClick={() => handleVerifyReceipt(index, "Change")}
-              style={{ cursor: "pointer" }}
-            >
-              Change
-            </span>
-          ) : (
-            <>
-              <button
-                className="reject-button"
-                onClick={() => handleVerifyReceipt(index, "Reject")}
-              >
-                Reject
-              </button>
-              <button
-                className="verify-button"
-                onClick={() => handleVerifyReceipt(index, "Verify")}
-              >
-                Verify
-              </button>
-            </>
-          )}
+        <td style={{ backgroundColor: 'gray', textAlign: 'center' }}></td>
+      );
+    } else {
+      let cellStyle = {};
+      if (status === 'Verified') {
+        cellStyle.backgroundColor = 'green';
+      } else if (status === 'Rejected') {
+        cellStyle.backgroundColor = 'red';
+      } else if (status === null) {
+        cellStyle.backgroundColor = 'gray';
+      }
+  
+      let buttonComponent;
+      if (status === 'Verified' || status === 'Rejected') {
+        buttonComponent = <span onClick={() => handleVerifyReceipt(index, 'Change')} style={{ cursor: 'pointer', color: 'white' }}>Change</span>;
+      } else if (status !== null) {
+        buttonComponent = (
+          <>
+            <button className="reject-button" onClick={() => handleVerifyReceipt(index, 'Reject')}>Reject</button>
+            <button className="verify-button" onClick={() => handleVerifyReceipt(index, 'Verify')}>Verify</button>
+          </>
+        );
+      }
+  
+      return (
+        <td style={{ textAlign: 'center', ...cellStyle }}>
+          {buttonComponent}
         </td>
       );
     }
   };
 
-  const renderReceipt = (receipt, payment_status) => {
+  const renderReceipt = (student_id, payment_status) => {
     if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
@@ -225,7 +221,7 @@ function AdminHome() {
         <td style={{ textAlign: "center" }}>
           <button
             className="view-button"
-            onClick={() => handleViewReceipt(receipt)}
+            onClick={() => handleViewReceipt(student_id)}
           >
             View
           </button>
@@ -237,13 +233,15 @@ function AdminHome() {
   const renderShippingID = (
     shipping_id,
     payment_status,
+    receipt_verification,
     grant_option,
     index
   ) => {
     if (
       grant_option === "Not Selected Yet" ||
       grant_option === "Non-Delivery" ||
-      payment_status === "unpaid"
+      payment_status === "unpaid" || 
+      receipt_verification !== "Verified"
     ) {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
@@ -262,7 +260,18 @@ function AdminHome() {
     }
   };
 
-  const handleViewReceipt = (receipt) => {};
+  const handleViewReceipt = async (student_id) => {
+    try {
+      const response = await axios
+        .get(`http://localhost:5000/get_receipt_image?sid=${student_id}`)
+        .then((res) => {
+          window.open("http://localhost:5000/images/" + res.data.image_path, "_blank");
+        })
+        .catch((err) => console.log(err));
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   const handleSettingsClick = (e, shipping_id, index) => {
     e.preventDefault();
@@ -326,6 +335,7 @@ function AdminHome() {
   const handleSave = () => {
     const newData = [...data];
     if (selectedRowIndex !== null) {
+      newData[selectedRowIndex].checked = true;
       newData[selectedRowIndex].shipping_id = selectedShippingID;
       setData(newData);
     }
@@ -354,7 +364,7 @@ function AdminHome() {
           </button>
         </div>
         <div className="navbar-right">
-          <button className="logout-button">Logout</button>
+          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
       <p></p>
@@ -363,11 +373,7 @@ function AdminHome() {
           <thead>
             <tr>
               <th>
-                <input
-                  type="checkbox"
-                  checked={data.every((item) => item.checked)}
-                  onChange={handleAllCheckboxChange}
-                />
+                Change
               </th>
               <th>ID</th>
               <th style={{ textAlign: "left" }}>Name</th>
@@ -424,6 +430,7 @@ function AdminHome() {
                     type="checkbox"
                     checked={row.checked}
                     onChange={() => handleCheckboxChange(index)}
+                    disabled
                   />
                 </td>
                 <td>{row.student_id}</td>
@@ -436,11 +443,12 @@ function AdminHome() {
                     : row.grant_option}
                 </td>
                 <td>{row.payment_status == "unpaid" ? "Unpaid" : "Paid"}</td>
-                {renderReceipt(row.receipt, row.payment_status)}
+                {renderReceipt(row.student_id, row.payment_status)}
                 {renderVerifyReceipt(index)}
                 {renderShippingID(
                   row.shipping_id,
                   row.payment_status,
+                  row.receipt_verification,
                   row.grant_option,
                   index
                 )}
@@ -472,7 +480,6 @@ function AdminHome() {
       )}
 
       <div className="button-container">
-        <button className="am-cancel-button">Cancel</button>
         <button className="am-update-button" onClick={handleUpdate}>
           Update
         </button>

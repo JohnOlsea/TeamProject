@@ -17,9 +17,11 @@ export const ErrorMessage = styled.p`
 `;
 function Login() {
 
+  const BACKEND_IP_PATH = "localhost";
+
   const getUser = async ()=>{
     try {
-      const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
+      const response =  await axios.get(`http://${BACKEND_IP_PATH}:5000/login/success`, {withCredentials:  true})
       navigate('/home')
     } catch (err) {
       console.log(err);
@@ -55,11 +57,11 @@ function Login() {
 
 
   const handleGoogleLogin = () => {
-      window.open("http://localhost:5000/auth/google","_self")
+      window.open(`http://${BACKEND_IP_PATH}:5000/auth/google`,"_self")
   };
 
   const handleSubmit = async () => {
-    const response = await axios.post("http://localhost:5000/verify", {
+    const response = await axios.post(`http://${BACKEND_IP_PATH}:5000/verify`, {
       email : formData.email,
       password : formData.password
     } ).then((response) => {
@@ -98,7 +100,6 @@ function Login() {
         <h4
           style={{
             marginBottom: "8px",
-            fontFamily: "Kanit, sans-serif",
           }}
         >
           Email
@@ -109,7 +110,6 @@ function Login() {
         <h4
           style={{
             marginBottom: "8px",
-            fontFamily: "Kanit, sans-serif",
           }}
         >
         Password
@@ -119,10 +119,19 @@ function Login() {
         </div>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <button className="login-button" onClick={handleSubmit}>Login</button>
-        <p style={{ textAlign: "center", marginBottom: "8px", fontFamily: "Lato" }}>OR</p>
+        <h4 style={{ textAlign: "center", marginBottom: "16px", }}>OR</h4>
         <button className="google-button" onClick={handleGoogleLogin}>Sign In with Google</button></StyledContainer>
         
       </div>
+
+      <form onSubmit={handleSubmit}>
+      <CardElement />
+      <button type="submit" disabled={!stripe}>
+        Pay
+      </button>
+      {error && <div>{error}</div>}
+    </form>
+
     </div>
   );
 }

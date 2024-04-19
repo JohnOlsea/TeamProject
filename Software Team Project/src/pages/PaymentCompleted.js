@@ -6,7 +6,6 @@ import axios from "axios";
 
 function PaymentCompleted() {
   const [userData, setUserData] = useState({});
-  const [image, setImage] = useState(null)
   const [info, setInfo] = useState({
     "student_id": '',
     "name": '',
@@ -26,22 +25,11 @@ function PaymentCompleted() {
       setUserData(response.data.user);
       const email = response.data.user.email;
       getAddress(email);
-      getImage()
     } catch (err) {
       console.log(err);
       navigate("/");
     }
   };
-
-  const getImage = async () => {
-    const response = await axios.get('http://localhost:5000/get_receipt_image?sid=64011671')
-        .then(res => {
-            // setImage(res.data[0].image)
-            console.log(res.data.image_path);
-            setImage(res.data.image_path)
-        })
-        .catch(err => console.log(err))
-  }
 
   const getAddress = async (email) => {
     if (email) {
@@ -115,7 +103,6 @@ function PaymentCompleted() {
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">Congratulations! 🎉</p>
-        <img src={`http://localhost:5000/images/`+image}></img>
 
         <p className="pc-description">
           Your payment for the delivery of your graduation certificate has been

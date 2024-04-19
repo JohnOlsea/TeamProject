@@ -260,12 +260,21 @@ function SeeYourOption() {
         <h2>
           Your Option: <span className="orange-text">{selectedOption}</span>
         </h2>
-        <button
+        {
+          (receipt_verification !== 'Verified') ? 
+        (<button
           className="syo-change-your-option-button"
           onClick={handleOptionChange}
         >
           Change Your Option
+        </button>) : (
+          <button
+          className="syo-change-your-option-button-inactive"
+        >
+          Change Your Option
         </button>
+        )
+        }
       </div>
 
       {image ? (
@@ -450,39 +459,7 @@ function SeeYourOption() {
           )}
         </div>
       ) : (
-        <div className="personal-info-table">
-          <table>
-            <tbody>
-              <tr>
-                <th>Student ID :</th>
-                <td>{student_id}</td>
-              </tr>
-              <tr>
-                <th>Name Title :</th>
-                <td>{personalInfo.nameTitle}</td>
-              </tr>
-              <tr>
-                <th>First Name :</th>
-                <td>{firstname}</td>
-              </tr>
-              <tr>
-                <th>Last Name :</th>
-                <td>{lastname}</td>
-              </tr>
-              <tr>
-                <th>Major :</th>
-                <td>{personalInfo.major}</td>
-              </tr>
-              <tr>
-                <th>Faculty Name :</th>
-                <td>{personalInfo.facultyName}</td>
-              </tr>
-              <tr>
-                <th>Certificate Degree :</th>
-                <td>{personalInfo.certificateDegree}</td>
-              </tr>
-            </tbody>
-          </table>
+        <div>
         </div>
       )}
 

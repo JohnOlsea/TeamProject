@@ -1,34 +1,52 @@
-import React, { useState, useRef, useEffect} from 'react';
-import '../styles/Payment.css';
-import logo from '../images/KMITLLogo.png';
-import kmitlQRCode from '../images/kmitlQRCode.png'; 
-import receiptImage from '../images/receipt.jpg'; 
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useRef, useEffect } from "react";
+import "../styles/Payment.css";
+import logo from "../images/KMITLLogo.png";
+import kmitlQRCode from "../images/kmitlQRCode.png";
+import receiptImage from "../images/receipt.jpg";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
 
 function Payment() {
   const [receiptUploaded, setReceiptUploaded] = useState(false);
   const [receiptFile, setReceiptFile] = useState(null);
   const [submitClicked, setSubmitClicked] = useState(false);
   const [userData, setUserData] = useState({});
-  
+  const [selectedOption, setSelectedOption] = useState("");
+
   const getUser = async () => {
     try {
       const response = await axios.get("http://localhost:5000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
+      const email = response.data.user.email;
+      const fname = response.data.user.given_name;
+      const sname = response.data.user.family_name;
+      getOption(email, fname, sname);
     } catch (err) {
       console.log(err);
       navigate("/");
     }
   };
 
+  const getOption = async (email, fname, sname) => {
+    try {
+      const student_id = email.split("@")[0];
+      const response = await axios.get(
+        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+      );
+      console.log(response.data);
+      if (response.data.grant_option != null)
+        setSelectedOption(response.data.grant_option);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
     getUser();
   }, []);
-  
+
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
 
@@ -36,9 +54,9 @@ function Payment() {
     window.open("http://localhost:5000/logout", "_self");
   };
   const handlePersonalInfo = () => {
-    navigate('/personalInfo');
+    navigate("/personalInfo");
   };
-  
+
   const handleFileChange = (event) => {
     const file = event.target.files && event.target.files[0];
     if (file) {
@@ -59,15 +77,15 @@ function Payment() {
     setSubmitClicked(true);
     if (receiptUploaded) {
       const formData = new FormData();
-      formData.append('image', receiptFile);
-      formData.append('student_id', userData.email.split("@")[0]);
-      axios.post("http://localhost:5000/upload_receipt", formData)
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-      navigate('/AddressConfirmation');
+      formData.append("image", receiptFile);
+      formData.append("student_id", userData.email.split("@")[0]);
+      axios
+        .post("http://localhost:5000/upload_receipt", formData)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
+      navigate("/AddressConfirmation");
     }
-  };  
-
+  };
 
   return (
     <div className="app-container">
@@ -82,41 +100,67 @@ function Payment() {
       </header>
       <nav className="navbar">
         <div className="navbar-left">
-          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
+          <button className="nav-button" onClick={handlePersonalInfo}>
+            Personal Information
+          </button>
         </div>
         <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </nav>
 
+      <h2 className="payment-option">
+        Option: <span style={{ color: "#FF6E2F" }}>{selectedOption}</span>
+      </h2>
+      {selectedOption === "Postal Delivery" ? (
+        <h2 className="payment-show-price">1,700 THB</h2>
+      ) : (
+        <h2 className="payment-show-price">1,500 THB</h2>
+      )}
       <div className="pm-announcement">
-        <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" /> 
+        <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" />
       </div>
-        {receiptUploaded && (
-          <div style={{ display: "flex", justifyContent:"center"}}>
-            <p style={{ color: "#0aec0a", marginRight:"5%"}}>Receipt uploaded successfully!</p>
-            <button className="remove-receipt-button" onClick={handleRemoveReceipt}>Remove</button>
-          </div>
-        )}
-      <div className="button-container" >
-      <input
+      {receiptUploaded && (
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          <p style={{ color: "#0aec0a", marginRight: "5%" }}>
+            Receipt uploaded successfully!
+          </p>
+          <button
+            className="remove-receipt-button"
+            onClick={handleRemoveReceipt}
+          >
+            Remove
+          </button>
+        </div>
+      )}
+      <div className="button-container">
+        <input
           type="file"
           accept="image/*"
           onChange={handleFileChange}
-          style={{ display: 'none' }}
+          style={{ display: "none" }}
           ref={fileInputRef}
         />
-        <button className="upload-receipt-button" onClick={handleUploadButtonClick}>Upload Receipt</button>
-
+        <button
+          className="upload-receipt-button"
+          onClick={handleUploadButtonClick}
+        >
+          Upload Receipt
+        </button>
       </div>
 
       <div className="button-container">
-        <button className="payment-submit-button" onClick={handleSubmit}>Submit</button>
+        <button className="payment-submit-button" onClick={handleSubmit}>
+          Submit
+        </button>
       </div>
       {submitClicked && !receiptUploaded && (
-          <p style={{ color: 'red', textAlign:'center'}}>Please upload a receipt before submitting.</p>
-        )}
-
+        <p style={{ color: "red", textAlign: "center" }}>
+          Please upload a receipt before submitting.
+        </p>
+      )}
     </div>
   );
 }

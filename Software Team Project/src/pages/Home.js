@@ -6,12 +6,14 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Home() {
+  const BACKEND_IP_PATH = "localhost";
+  
   const [option, setOption] = useState({});
   const [userData, setUserData] = useState({});
   
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get(`http://${BACKEND_IP_PATH}:5000/login/success`, {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -29,7 +31,7 @@ function Home() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `http://${BACKEND_IP_PATH}:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -40,6 +42,8 @@ function Home() {
   };
 
   useEffect(() => {
+    const accessToken = sessionStorage.getItem('accessToken');
+    console.log("access token:", accessToken);
     getUser();
   }, []);
 
@@ -48,7 +52,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open(`http://${BACKEND_IP_PATH}:5000/logout`, "_self");
   };
   const handleSeeYourOption = () => {
     navigate("/seeyouroption")

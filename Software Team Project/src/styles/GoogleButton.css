@@ -8,7 +8,7 @@
   cursor: pointer;
   font-size: 15px;
   margin-bottom: 20%;
-  font-family: "Kanit", sans-serif;
+  font-weight: bold;
 }
   
 .google-button:hover {

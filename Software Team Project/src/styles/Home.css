@@ -26,7 +26,7 @@ body, html {
 
 .header-homepage {
   background-color: #FF6E2F;
-  height: 140px; 
+  height: 50%; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -34,12 +34,19 @@ body, html {
   color: White;
 }
 
+.header {
+  background-color: #FF6E2F;
+  height: 70%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; 
+  color: White;
+}
+  
 .header-content {
   display: flex;
   align-items: center;
-  width: 80%; 
-  max-width: 414px; 
-  height: auto; 
 }
 
 .logo-homepage {

@@ -192,12 +192,14 @@ function AdminHome() {
     shipping_id,
     payment_status,
     grant_option,
+    receipt_verification,
     index
   ) => {
     if (
       grant_option === "Not Selected Yet" ||
       grant_option === "Graduation Day Pickup" ||
       grant_option === "Pickup at Registration Office" ||
+      receipt_verification !== "Verified" ||
       payment_status === "unpaid"
     ) {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
@@ -404,6 +406,7 @@ function AdminHome() {
                   row.shipping_id,
                   row.payment_status,
                   row.grant_option,
+                  row.receipt_verification,
                   index
                 )}
               </tr>

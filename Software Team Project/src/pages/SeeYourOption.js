@@ -201,8 +201,11 @@ function SeeYourOption() {
   const handleChangeReceipt = () => {
     navigate("/changeReceipt");
   };
-  const handleOptionChange = () => {
-    navigate("/degreeCertificateCollection");
+  const handleUploadReceipt = () => {
+    navigate("/uploadReceipt")
+  }
+  const handleChangeOption = () => {
+    navigate("/home");
   };
 
   const handleEdit = () => {
@@ -255,18 +258,30 @@ function SeeYourOption() {
           </button>
         </div>
       </nav>
-
-      <div className="option-details">
-        <h2>
-          Your Option: <span className="orange-text">{selectedOption}</span>
-        </h2>
-        <button
-          className="syo-change-your-option-button"
-          onClick={handleOptionChange}
-        >
-          Change Your Option
-        </button>
-      </div>
+      {delivery_status === "Unshipped" ? (
+        <div className="option-details">
+          <h2>
+            Your Option: <span className="orange-text">{selectedOption}</span>
+          </h2>
+          <button
+            className="syo-change-your-option-button"
+            onClick={handleChangeOption}
+          >
+            Change Your Option
+          </button>
+        </div>
+      ) : (
+        <div className="option-details">
+          <h2>
+            Your Option: <span className="orange-text">{selectedOption}</span>
+          </h2>
+          <button
+            className="syo-change-your-option-button-inactive"
+          >
+            Cannot Change Your Option
+          </button>
+        </div>
+      )}
 
       {image ? (
         <div className="option-details">
@@ -288,7 +303,7 @@ function SeeYourOption() {
           <div className="receipt-div" style={{ justifyContent: "center" }}>
             <button
               className="upload-receipt-button-syo"
-              onClick={handleChangeReceipt}
+              onClick={handleUploadReceipt}
             >
               Upload Receipt
             </button>
@@ -429,12 +444,9 @@ function SeeYourOption() {
                 Edit
               </button>
             ) : (
-                <button
-                  className="edit-and-save-option-button-inactive"
-                >
-                  Edit
-                </button>
-                
+              <button className="edit-and-save-option-button-inactive">
+                Edit
+              </button>
             )
           ) : (
             <p

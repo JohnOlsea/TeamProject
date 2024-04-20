@@ -14,6 +14,7 @@ import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import SeeYourOption from './pages/SeeYourOption.js'
 import ChangeReceipt from './pages/ChangeReceipt.js'
 import PaymentForGraduaPick from './pages/PaymentGra_Pick.js'
+import UploadReceipt from './pages/UploadReceipt.js';
 
 // Test
 import ImageTest from './pages/ImageTest'
@@ -46,6 +47,7 @@ function App() {
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
           <Route path='seeyouroption' element={<SeeYourOption />} />
           <Route path='changeReceipt' element={<ChangeReceipt />} />
+          <Route path='uploadReceipt' element={<UploadReceipt />} />
           <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
 
           {/* Admin Routes */}

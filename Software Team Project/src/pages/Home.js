@@ -13,7 +13,7 @@ function Home() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/login/success", {
+      const response = await axios.get("http://localhost:5000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -31,7 +31,7 @@ function Home() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:8000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -50,7 +50,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    window.open("http://localhost:8000/logout", "_self");
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleSeeYourOption = () => {
     navigate("/seeyouroption")
@@ -70,18 +70,25 @@ function Home() {
     setShowPopup(true); 
   };
 
-  const handleClosePopup = () => {
-    setShowPopup(false); 
+  const handleClosePopup = async () => {
+    setShowPopup(false);
+    const response = await axios.post('http://localhost:5000/update_option', {
+      email: userData.email,
+      grant_option: selectedOption
+    });
+    await axios.post('http://localhost:5000/create_image_path', {
+      email: userData.email
+    })
     navigate('/seeYourOption')
   };
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:8000/update_option', {
+      const response = await axios.post('http://localhost:5000/update_option', {
         email: userData.email,
         grant_option: selectedOption
       });
-      await axios.post('http://localhost:8000/create_image_path', {
+      await axios.post('http://localhost:5000/create_image_path', {
         email: userData.email
       })
       switch (selectedOption) {
@@ -125,19 +132,20 @@ function Home() {
         <p className="announcement-title-homepage">🎓📜 Welcome Graduates 📜🎓</p>
         {/* <p className="announcement-title2">How to Obtain Your Degree Certificate</p> */}
 
-        <div>
+        <div style={{marginTop:'5%'}}>
           {Object.keys(option).length > 0 ? (
-            <React.Fragment>
-              <p className="small-font-center-align" style={{ color: '#0aec0a'}}>Option: {option}</p>
+            <React.Fragment >
+              <p className="small-font-center-align" style={{ color: '#0aec0a', fontWeight: 'bold'}}>Option: {option}</p>
+              <button className="home-see-your-option-button" onClick={() => handleSeeYourOption()}>See your option</button>
             </React.Fragment>
           ) : (
-              <p className="small-font-center-align" style={{ color: 'red'}}>
+              <p className="small-font-center-align" style={{ color: 'red', fontWeight: 'bold'}}>
                 Option: No option selected
               </p>
           )}
         </div>
 
-        <p className="small-font-left-align">Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
+        <p className="small-font-left-align" style={{textAlign:"center"}}>Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
         
 
         {/* Buttons for options */}
@@ -146,15 +154,15 @@ function Home() {
           <p className="small-font-left-align">
             Join us on Graduation Day to receive your certificate in person. Experience the joy of celebrating your accomplishments with your peers and loved ones.
           </p>
-          <button className="choose-option-button" onClick={handleSubmit}>Choose this option</button>
+          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
         </div>
 
-        <button className="option-button" onClick={() => handleOptionClick("Pick up at Registration Office")}>Pick up at Registration Office</button>
-        <div className={`option-description ${selectedOption === "Pick up at Registration Office" ? 'active' : ''}`}>
+        <button className="option-button" onClick={() => handleOptionClick("Pickup at Registration Office")}>Pickup at Registration Office</button>
+        <div className={`option-description ${selectedOption === "Pickup at Registration Office" ? 'active' : ''}`}>
           <p className="small-font-left-align">
             You can visit the institute office at any time during working hours to collect your certificate.
           </p>
-          <button className="choose-option-button" onClick={handleSubmit}>Choose this option</button>
+          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
         </div>
 
         <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>Postal Delivery</button>

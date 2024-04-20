@@ -24,9 +24,9 @@ body, html {
   flex-direction: column;
 }
 
-.header {
+.header-homepage {
   background-color: #FF6E2F;
-  height: 70%; 
+  height: 140px; 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,8 +42,8 @@ body, html {
   height: auto; 
 }
 
-.logo {
-  width: 150px; 
+.logo-homepage {
+  width: 40%; 
   height: auto;
   margin-right: 10%; 
   margin-left: 10%; 
@@ -102,7 +102,7 @@ body, html {
   cursor: pointer;
   text-decoration: none;
   width: 100%;
-  font-size: 143%;
+  font-size: 127%;
   font-weight: bold;
 }
 
@@ -118,31 +118,24 @@ body, html {
   text-align: center; 
 }
 
-.announcement-title {
+.announcement-title-homepage {
   font-weight: bold;
   text-decoration: underline;
-  font-size: 140%;
+  font-size: 130%;
   margin-bottom: 5px;
 }
 
 .announcement-title2 {
-  font-size: 140%;
+  font-size: 120%;
   text-decoration: underline;
   margin-top: 10px; 
   font-weight: bold;
 }
 
 .small-font-left-align {
-  font-size: 70%;
+  font-size: 100%;
   text-align: left;
-  margin-left: 5%;
-  margin-right: 5%;
-  font-weight: bold;
-}
-
-.small-font-center-align {
-  font-size: 125%;
-  text-align: center;
+  margin-top: 5%;
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
@@ -162,31 +155,107 @@ body, html {
   justify-content: center;
 }
 
-
 .choose-option-button {
-  color: #FF6E2F;
-  background-color: white;
+  color: rgb(0, 0, 0);
+  background-color: rgb(180, 242, 161);
   border: 2px solid black;
   font-weight: bold;
-  font-size: 120%;
+  font-size: 90%;
   border-radius: 5px;
-  width: 60%;
+  width: 50%;
   padding: 10px;
-  margin-top: 2%;
-  margin-bottom: 0%;
+  margin-bottom: 3%;
+  margin-left: 25%;
+  cursor: pointer;
+  justify-content: center;
+}
+
+.option-button {
+  color: #FF6E2F;
+  background-color: white;
+  border-left: none;
+  border-right: none;
+  border-top: 2px solid black;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  height: 60px;
+  font-size: 100%;
+  font-weight: bold;
+  margin-bottom: 2%;
+  justify-content: center;
+}
+
+.option-button:hover {
+  background-color: #f0f0f0;
+}
+
+.option-description {
+  font-size: 14px;
+  text-align: left;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease; 
+  opacity: 0;
+}
+
+.option-description.active {
+  max-height: 500px; 
+  opacity: 1;
+  justify-content: center;
+}
+
+.popup-homepage {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.selected-option {
+  font-weight: bold;
+}
+
+.popup button {
+  margin-top: 10px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
-.see-option-button {
+.popup-homepage.active {
+  opacity: 1; 
+  visibility: visible; 
+}
+
+.close-popup-button {
   color: #FF6E2F;
   background-color: white;
-  border: 2px solid black;
-  font-weight: bold;
-  font-size: 120%;
-  border-radius: 5px;
-  width: 60%;
-  padding: 10px;
-  margin-top: 2%;
-  margin-bottom: 0%;
+  border-top: 2px solid black;
+  padding: 10px 20px;
   cursor: pointer;
+  font-size: 100%;
+  font-weight: bold;
+  margin-bottom: 2%;
+  width: 70%;
+  justify-content: center;
+}
+
+.close-popup-button:hover {
+  background-color: #f0f0f0;
 }

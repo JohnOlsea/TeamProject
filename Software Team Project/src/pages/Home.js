@@ -48,7 +48,11 @@ function Home() {
           <img src={logo} alt="Logo" className="logo" />
           <div>
             <h1 className="title">Home Page</h1>
+<<<<<<< Updated upstream
             <p className="subtitle">{userName}</p>
+=======
+              <p>{userName}</p>
+>>>>>>> Stashed changes
           </div>
         </div>
       </header>
@@ -75,10 +79,40 @@ function Home() {
           <li><span className="orange-text">Postal Delivery:</span> Prefer the comfort of receiving your certificate at your doorstep? Opt for postal delivery. Simply provide us with your mailing address, and we'll ensure your certificate reaches you securely.</li>
         </ol>
 
+<<<<<<< Updated upstream
         <p className="small-font-left-align">Whichever option you choose, we're committed to ensuring a smooth and efficient process for you.</p>
         <p className="small-font-left-align">If you have any questions or need further assistance, feel free to reach out to our administration team.</p>
         <p className="small-font-left-align">Once again, congratulations on this incredible milestone. We look forward to celebrating your success with you!</p>
         
+=======
+        <p className="homepage-description">Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
+        
+
+        {/* Buttons for options */}
+        <button className="option-button" onClick={() => handleOptionClick("Graduation Day Pickup")}>Graduation Day Pickup</button>
+        <div className={`option-description ${selectedOption === "Graduation Day Pickup" ? 'active' : ''}`}>
+          <p className="small-font-left-align">
+            Join us on Graduation Day to receive your certificate in person. Experience the joy of celebrating your accomplishments with your peers and loved ones.
+          </p>
+          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
+        </div>
+
+        <button className="option-button" onClick={() => handleOptionClick("Pick up at Registration Office")}>Pick up at Registration Office</button>
+        <div className={`option-description ${selectedOption === "Pick up at Registration Office" ? 'active' : ''}`}>
+          <p className="small-font-left-align">
+            You can visit the institute office at any time during working hours to collect your certificate.
+          </p>
+          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
+        </div>
+
+        <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>Postal Delivery</button>
+        <div className={`option-description ${selectedOption === "Postal Delivery" ? 'active' : ''}`}>
+          <p className="small-font-left-align">
+            Prefer the comfort of receiving your certificate at your doorstep? Opt for postal delivery. Simply provide us with your mailing address, and we'll ensure your certificate reaches you securely.
+          </p>
+          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
+        </div>
+>>>>>>> Stashed changes
       </div>
 
       <div className="button-container">

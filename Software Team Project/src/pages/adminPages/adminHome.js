@@ -7,6 +7,44 @@ import { useNavigate } from 'react-router-dom';
 function AdminHome() {
   const userName = "Admin";
   const navigate = useNavigate();
+<<<<<<< Updated upstream
+=======
+  const [data, setData] = useState([]);
+
+  const [verificationStatus, setVerificationStatus] = useState({});
+  const [changeIndex, setChangeIndex] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [selectedShippingID, setSelectedShippingID] = useState("");
+  const [selectedRowIndex, setSelectedRowIndex] = useState(null);
+
+  const getAllStudentOptionInfo = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/admin/get_all_student_option_info"
+      );
+      // console.log(response.data);
+      var temp = response.data;
+      temp.forEach((student_info) => {
+        student_info.checked = false;
+        if (student_info.grant_option === null) {
+          student_info.grant_option = "Not Selected Yet";
+        } else if (
+          student_info.grant_option === "Pick Up at Registration Office" ||
+          student_info.grant_option === "Graduation Day Pickup"
+        ) {
+          student_info.grant_option = "Non-Delivery";
+        }
+      });
+      setData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getAllStudentOptionInfo();
+  }, []);
+>>>>>>> Stashed changes
 
   const handleLogout = () => {
     navigate('/adminLogin');
@@ -247,7 +285,16 @@ function AdminHome() {
       
       <nav className="am-navbar">
         <div className="navbar-left">
+<<<<<<< Updated upstream
           <button className="print-student-address-nav-button" onClick={handlePrintAddresses}>Print Student Address</button>
+=======
+          <button
+            className="print-student-address-nav-button"
+            onClick={handlePrintAddresses}
+          >
+            Print
+          </button>
+>>>>>>> Stashed changes
         </div>
         <div className="navbar-right">
           <button className="logout-button">Logout</button>

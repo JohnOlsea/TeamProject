@@ -17,6 +17,7 @@ export const ErrorMessage = styled.p`
 `;
 function Login() {
 
+<<<<<<< Updated upstream
   const getUser = ()=>{
     // try {
     //   const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
@@ -25,6 +26,16 @@ function Login() {
     //   console.log(err);
     //   navigate('/');
     // }
+=======
+  const getUser = async ()=>{
+    try {
+      const response =  await axios.get("http://localhost:8000/login/success", {withCredentials:  true})
+      navigate('/home')
+    } catch (err) {
+      console.log(err);
+      navigate('/');
+    }
+>>>>>>> Stashed changes
   }
 
   useEffect(() => {
@@ -55,14 +66,33 @@ function Login() {
 
 
   const handleGoogleLogin = () => {
-      window.open("http://localhost:5000/auth/google","_self")
+      window.open("http://localhost:8000/auth/google","_self")
   };
 
+<<<<<<< Updated upstream
   const handleSubmit = () => {
     if (formData.email === mockUserData.email && formData.password === mockUserData.password) {
       setAuthenticated(true);
       navigate('/home');
     } else {
+=======
+  const handleSubmit = async () => {
+    const response = await axios.post("http://localhost:8000/verify", {
+      email : formData.email,
+      password : formData.password
+    } ).then((response) => {
+      if (response.data.role === 'admin') {
+        console.log("You are logged in as an admin");
+        setAuthenticated(true);
+        navigate('/adminHome');
+      } else {
+        console.log("You are logged in as a user");
+        setAuthenticated(true);
+        navigate('/Home');
+      } 
+    }).catch((err) => {
+      console.log(err);
+>>>>>>> Stashed changes
       setAuthenticated(false);
       setInputError({
         email: formData.email !== mockUserData.email,

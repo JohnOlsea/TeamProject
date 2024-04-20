@@ -42,13 +42,18 @@ body, html {
   height: auto; 
 }
 
+<<<<<<< Updated upstream
 .logo {
   width: 150px; 
+=======
+.logo-homepage {
+  width: 40%;
+>>>>>>> Stashed changes
   height: auto;
-  margin-right: 10%; 
-  margin-left: 10%; 
-  margin-top: 10%; 
-  margin-bottom: 10%; 
+  margin-right: 5%;
+  margin-left: 5%;
+  margin-top: 5%;
+  margin-bottom: 5%;
 }
 
 .title {
@@ -132,12 +137,21 @@ body, html {
   font-weight: bold;
 }
 
+<<<<<<< Updated upstream
 .small-font-left-align {
   font-size: 70%;
   text-align: left;
   margin-left: 5%;
   margin-right: 5%;
   font-weight: bold;
+=======
+.homepage-description {
+    font-size: 100%; 
+    text-align: center;
+    margin-left: 5%;
+    margin-right: 5%;
+    font-weight: bold;
+>>>>>>> Stashed changes
 }
 
 .empty-line {

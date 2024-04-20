@@ -17,16 +17,6 @@ export const ErrorMessage = styled.p`
 `;
 function Login() {
 
-<<<<<<< Updated upstream
-  const getUser = ()=>{
-    // try {
-    //   const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
-    //   navigate('/home')
-    // } catch (err) {
-    //   console.log(err);
-    //   navigate('/');
-    // }
-=======
   const getUser = async ()=>{
     try {
       const response =  await axios.get("http://localhost:8000/login/success", {withCredentials:  true})
@@ -35,7 +25,6 @@ function Login() {
       console.log(err);
       navigate('/');
     }
->>>>>>> Stashed changes
   }
 
   useEffect(() => {
@@ -69,13 +58,6 @@ function Login() {
       window.open("http://localhost:8000/auth/google","_self")
   };
 
-<<<<<<< Updated upstream
-  const handleSubmit = () => {
-    if (formData.email === mockUserData.email && formData.password === mockUserData.password) {
-      setAuthenticated(true);
-      navigate('/home');
-    } else {
-=======
   const handleSubmit = async () => {
     const response = await axios.post("http://localhost:8000/verify", {
       email : formData.email,
@@ -92,14 +74,13 @@ function Login() {
       } 
     }).catch((err) => {
       console.log(err);
->>>>>>> Stashed changes
       setAuthenticated(false);
       setInputError({
         email: formData.email !== mockUserData.email,
         password: formData.password !== mockUserData.password
       });
       setErrorMessage('Invalid Email or Password. Please try again.');
-    }
+    })    
   };
   return (
     <div className="app-container">

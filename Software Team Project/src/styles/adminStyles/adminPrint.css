@@ -94,7 +94,8 @@
 .ap-nav-button:hover,
 .print-nav-button:hover,
 .am-btn-choices:hover,
-.ap-button:hover {
+.ap-button:hover,
+.back-to-home-nav-button:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }

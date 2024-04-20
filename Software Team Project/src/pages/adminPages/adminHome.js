@@ -27,13 +27,9 @@ function AdminHome() {
         student_info.checked = false;
         if (student_info.grant_option === null) {
           student_info.grant_option = "Not Selected Yet";
-        } else if (
-          student_info.grant_option === "Pick Up at Registration Office" ||
-          student_info.grant_option === "Graduation Day Pickup"
-        ) {
-          student_info.grant_option = "Non-Delivery";
         }
       });
+      console.log(response.data);
       setData(response.data);
     } catch (err) {
       console.log(err);
@@ -56,35 +52,15 @@ function AdminHome() {
     setShowPopup(false);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = async () => {
     const selectedData = data.filter((item) => item.checked);
     selectedData.forEach((item) => {
-      console.log("ID:", item.student_id);
-      console.log("Name:", item.name);
-      console.log("Verify Receipt:", item.receipt_verification);
-      console.log("Shipping ID:", item.shipping_id);
+      console.log(item);
     });
-  };
-
-  const handleSort = (selectedOption) => {
-    const sortedData = [...data].sort((a, b) => {
-      if (
-        a.grant_option === selectedOption &&
-        b.grant_option !== selectedOption
-      ) {
-        return -1;
-      } else if (
-        a.grant_option !== selectedOption &&
-        b.grant_option === selectedOption
-      ) {
-        return 1;
-      } else {
-        return 0;
-      }
-    });
-
-    setData(sortedData);
-  };
+    await axios.post("http://localhost:5000/admin/update_student_option_info", 
+  {data:selectedData})
+    window.location.reload()
+};
 
   const handleSortPaymentStatus = (selectedOption) => {
     const sortedData = [...data].sort((a, b) => {
@@ -108,32 +84,6 @@ function AdminHome() {
   };
 
   const handleSortOptionSelected = (selectedOption) => {
-    // const sortedData = [...data].sort((a, b) => {
-    //   if (
-    //     a.grant_option === selectedOption &&
-    //     b.grant_option !== selectedOption
-    //   ) {
-    //     return -1;
-    //   } else if (
-    //     a.grant_option !== selectedOption &&
-    //     b.grant_option === selectedOption
-    //   ) {
-    //     return 1;
-    //   } else if (
-    //     a.grant_option === "Non-Delivery" &&
-    //     b.grant_option === "Postal Delivery"
-    //   ) {
-    //     return -1;
-    //   } else if (
-    //     a.grant_option === "Postal Delivery" &&
-    //     b.grant_option === "Non-Delivery"
-    //   ) {
-    //     return 1;
-    //   } else {
-    //     console.log(a, b);
-    //     return a.grant_option.localeCompare(b.grant_option);
-    //   }
-    // });
 
     const sortedData = [...data].sort((a, b) => {
       // Priority for selected option (replace 'selectedOption' with your actual variable)
@@ -151,8 +101,9 @@ function AdminHome() {
 
       // Specific order for "Postal Delivery", "Non-Delivery", "Not Selected Yet"
       const optionOrder = {
-        "Postal Delivery": 2,
-        "Non-Delivery": 1,
+        "Postal Delivery": 3,
+        "Pickup at Registration Office": 2,
+        "Graduation Day Pickup": 1,
         "Not Selected Yet": 0,
       };
 
@@ -165,7 +116,7 @@ function AdminHome() {
 
   const renderVerifyReceipt = (index) => {
     const payment_status = data[index].payment_status;
-    const status = verificationStatus[index];
+    const status = data[index].receipt_verification;
 
     if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
@@ -217,7 +168,7 @@ function AdminHome() {
     }
   };
 
-  const renderReceipt = (receipt, payment_status) => {
+  const renderReceipt = (sid, payment_status) => {
     if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
@@ -225,7 +176,7 @@ function AdminHome() {
         <td style={{ textAlign: "center" }}>
           <button
             className="view-button"
-            onClick={() => handleViewReceipt(receipt)}
+            onClick={() => handleViewReceipt(sid)}
           >
             View
           </button>
@@ -242,7 +193,8 @@ function AdminHome() {
   ) => {
     if (
       grant_option === "Not Selected Yet" ||
-      grant_option === "Non-Delivery" ||
+      grant_option === "Graduation Day Pickup" ||
+      grant_option === "Pickup at Registration Office" ||
       payment_status === "unpaid"
     ) {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
@@ -262,7 +214,16 @@ function AdminHome() {
     }
   };
 
-  const handleViewReceipt = (receipt) => {};
+  const handleViewReceipt = async (sid) => {
+    const response = await axios.get(
+      `http://localhost:5000/get_receipt_image?sid=${sid}`
+    );
+    console.log(response.data.image_path);
+    window.open(
+      `http://localhost:5000/images/${response.data.image_path}`,
+      "_blank"
+    );
+  };
 
   const handleSettingsClick = (e, shipping_id, index) => {
     e.preventDefault();
@@ -280,10 +241,7 @@ function AdminHome() {
         ...prevStatus,
         [index]: newStatus,
       }));
-      if (action === "Change") {
-        setChangeIndex(null);
-        newData[index].checked = false;
-      } else {
+      if (action !== "Change") {
         newData[index].checked = true;
       }
     } else if (action === "Reject") {
@@ -293,7 +251,9 @@ function AdminHome() {
         ...prevStatus,
         [index]: "Rejected",
       }));
-      newData[index].checked = !newData[index].checked;
+      if (action !== "Change") {
+        newData[index].checked = true;
+      }
     }
     setData(newData);
   };
@@ -327,6 +287,7 @@ function AdminHome() {
     const newData = [...data];
     if (selectedRowIndex !== null) {
       newData[selectedRowIndex].shipping_id = selectedShippingID;
+      newData[selectedRowIndex].checked = true;
       setData(newData);
     }
     setShowPopup(false);
@@ -354,7 +315,9 @@ function AdminHome() {
           </button>
         </div>
         <div className="navbar-right">
-          <button className="logout-button">Logout</button>
+          <button className="logout-button" onClick={handleLogout}>
+            Logout
+          </button>
         </div>
       </nav>
       <p></p>
@@ -363,11 +326,7 @@ function AdminHome() {
           <thead>
             <tr>
               <th>
-                <input
-                  type="checkbox"
-                  checked={data.every((item) => item.checked)}
-                  onChange={handleAllCheckboxChange}
-                />
+                Checked
               </th>
               <th>ID</th>
               <th style={{ textAlign: "left" }}>Name</th>
@@ -376,8 +335,11 @@ function AdminHome() {
                 <div className="dropdown">
                   <button className="dropbtn">&#9660;</button>
                   <div className="dropdown-content">
-                    <a onClick={() => handleSortOptionSelected("Non-Delivery")}>
-                      &#9660; Non-Delivery
+                    <a onClick={() => handleSortOptionSelected("Graduation Day Pickup")}>
+                      &#9660; Graduation Day Pickup
+                    </a>
+                    <a onClick={() => handleSortOptionSelected("Pickup at Registration Office")}>
+                      &#9660; Pickup at Registration Office
                     </a>
                     <a
                       onClick={() =>
@@ -424,19 +386,16 @@ function AdminHome() {
                     type="checkbox"
                     checked={row.checked}
                     onChange={() => handleCheckboxChange(index)}
+                    disabled  
                   />
                 </td>
                 <td>{row.student_id}</td>
                 <td style={{ textAlign: "left" }}>{row.name}</td>
                 <td>
-                  {!row.grant_option
-                    ? "Not selected Yet"
-                    : row.grant_option === "Non-Delivery"
-                    ? "Non-Delivery"
-                    : row.grant_option}
+                  {!row.grant_option ? "Not selected Yet" : row.grant_option}
                 </td>
                 <td>{row.payment_status == "unpaid" ? "Unpaid" : "Paid"}</td>
-                {renderReceipt(row.receipt, row.payment_status)}
+                {renderReceipt(row.student_id, row.payment_status)}
                 {renderVerifyReceipt(index)}
                 {renderShippingID(
                   row.shipping_id,
@@ -472,7 +431,6 @@ function AdminHome() {
       )}
 
       <div className="button-container">
-        <button className="am-cancel-button">Cancel</button>
         <button className="am-update-button" onClick={handleUpdate}>
           Update
         </button>

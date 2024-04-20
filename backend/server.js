@@ -159,6 +159,9 @@ app.post("/verify", async (req, res) => {
       "SELECT password, role FROM role WHERE email = ?",
       [email],
       (err, results, fields) => {
+        if (!results) {
+          return res.status(401).json({ error: "Incorrect password or email" });
+        }
         if (results.length == 0) {
           return res.status(401).json({ error: "Incorrect password or email" });
         }

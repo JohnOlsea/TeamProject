@@ -56,6 +56,9 @@ function AdminHome() {
     const selectedData = data.filter((item) => item.checked);
     selectedData.forEach((item) => {
       console.log(item);
+      if (item.shipping_id === "") {
+        item.shipping_id = null
+      }
     });
     await axios.post("http://localhost:5000/admin/update_student_option_info", 
   {data:selectedData})

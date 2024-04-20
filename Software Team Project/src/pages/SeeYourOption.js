@@ -55,7 +55,7 @@ function SeeYourOption() {
       getReceiptVerification(email);
       getPersonalInfo(email);
       getShippingID(email);
-      getAddress(email);
+      getAddress(email, fname, sname);
       getImage(email);
     } catch (err) {
       console.log(err);
@@ -155,7 +155,7 @@ function SeeYourOption() {
     }
   };
 
-  const getAddress = async (email) => {
+  const getAddress = async (email, fname, sname) => {
     if (email) {
       try {
         const student_id = email.split("@")[0];
@@ -174,6 +174,23 @@ function SeeYourOption() {
             province: info.province,
             post_code: info.post_code,
           });
+        } else {
+          await axios.post(`http://localhost:5000/update_address`,
+         {
+          student_id: student_id,
+          name: `${fname} ${sname}` ,
+          tel_no: "-",
+          address: "-",
+          subdistrict: "-",
+          district: "-",
+          province: "-",
+          post_code: "-",
+        }).then((response) => {
+          console.log("Response:", response.data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
         }
       } catch (err) {
         console.log(err);
@@ -202,8 +219,8 @@ function SeeYourOption() {
     navigate("/changeReceipt");
   };
   const handleUploadReceipt = () => {
-    navigate("/uploadReceipt")
-  }
+    navigate("/uploadReceipt");
+  };
   const handleChangeOption = () => {
     navigate("/home");
   };
@@ -275,9 +292,7 @@ function SeeYourOption() {
           <h2>
             Your Option: <span className="orange-text">{selectedOption}</span>
           </h2>
-          <button
-            className="syo-change-your-option-button-inactive"
-          >
+          <button className="syo-change-your-option-button-inactive">
             Cannot Change Your Option
           </button>
         </div>

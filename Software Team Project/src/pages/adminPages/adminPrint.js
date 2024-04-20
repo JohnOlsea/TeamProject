@@ -1,33 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../images/KMITLLogo.png';
 import '../../styles/adminStyles/adminPrint.css';
 import { styled } from 'styled-components';
+import axios from 'axios';
 
 function AdminPrint() {
   const { state} = useLocation();
-  const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", tel: "089-989-9999", address:"1 Chalong Krung 1 Alley", 
-    subdistrict:"Lat Krabang",district:"Lat Krabang",province:"Bangkok",postcode:"10520", checked: false },
-    { id: 64011555, name: "Phuttiphat Leaungmanotham", tel: "087-123-5678", address:"Ramkamheang 35", 
-    subdistrict:"Sapansung",district:"Min Buri",province:"Bangkok",postcode:"10240", checked: false },
-    { id: 64011655, name: "Teerapat Wattanamanont", tel: "099-999-9999", address:"456 Elm Street", 
-    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", checked: false },
-    { id: 64011378, name: "Chiho Li", tel: "099-999-9999", address:"456 Elm Street", 
-    subdistrict:"Uptown",district:"Metro City",province:"Bangkok",postcode:"10240", checked: false },
-    { id: 64011331, name: "Akararat Pattanamontri", checked: false },
-    { id: 64011426, name: "Kasita Sansanthad", checked: false },
-    { id: 64011397, name: "Jade Chuapakdee",  checked: false },
-    { id: 64011683, name: "Thitiwat Sornmanee", checked: false },
-    { id: 64011643, name: "Suriya Chaubey", checked: false },
-    { id: 64011470, name: "Natchapon Manachaipraset", checked: false },
-    { id: 64011546, name: "Phattara Srilachot", checked: false },
-    { id: 64011752, name: "Theint Nandarsu", checked: false },
-    { id: 64011393, name: "Hannah Ebenezar", checked: false },
-
-  ]);
+  const [data, setData] = useState([]);
   const userName = "Admin";
   const navigate = useNavigate();
+
+  const getStudentInfo = async () => {
+    const response = await axios.get("http://localhost:5000/admin/get_all_student_info_to_print")
+    .then((response) => {
+      console.log("Response:", response.data);
+      setData(response.data)
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+    }
+
+  useEffect(() => {
+    getStudentInfo();
+  }, []);
 
   const handleLogout = () => {
     navigate('/adminLogin');
@@ -128,12 +125,12 @@ function AdminPrint() {
               <tr key={index}>
                 <td><input type="checkbox" checked={row.checked} onChange={() => handleCheckboxChange(index)} /></td>
                 <td>{row.name}</td>
-                <td>{row.tel}</td>
+                <td>{row.tel_no}</td>
                 <td>{row.address}</td>
                 <td>{row.subdistrict}</td>
                 <td>{row.district}</td>
                 <td>{row.province}</td>
-                <td>{row.postcode}</td>
+                <td>{row.post_code}</td>
               </tr>
             ))}
           </tbody>

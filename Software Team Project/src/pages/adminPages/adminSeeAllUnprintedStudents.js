@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../images/KMITLLogo.png";
 import settingIcon from "../../images/setting-icon.png";
-import "../../styles/adminStyles/adminHome.css";
+import "../../styles/adminStyles/adminPrint.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function AdminHome() {
+function AdminSeeAllUnprintedStudents() {
   const userName = "Admin";
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -48,7 +48,7 @@ function AdminHome() {
     navigate("/login");
   };
 
-  const handlePrintAddresses = () => {
+  const handleBack = () => {
     navigate("/adminPrint");
   };
 
@@ -105,6 +105,20 @@ function AdminHome() {
     });
 
     setData(sortedData);
+  };
+
+  const handlePrint = () => {
+    const selectedRows = data.filter(row => row.checked);
+    if (selectedRows.length > 0) {
+      const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
+      nonSelectedRows.forEach(row => row.style.display = 'none');
+  
+      window.print();
+  
+      nonSelectedRows.forEach(row => row.style.display = 'block');
+    } else {
+      alert('Please select at least one row to print.');
+    }
   };
 
   const handleSortOptionSelected = (selectedOption) => {
@@ -338,19 +352,19 @@ function AdminHome() {
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
           <div>
-            <h1 className="am-title">Home</h1>
+            <h1 className="am-title">All Unprinted Students</h1>
             <p className="am-admin">{userName}</p>
           </div>
         </div>
       </header>
 
-      <nav className="am-navbar">
-        <div className="navbar-left">
+      <nav className="ap-navbar">
+        <div className="ap-navbar-left">
           <button
-            className="print-student-address-nav-button"
-            onClick={handlePrintAddresses}
+            className="back-nav-button"
+            onClick={handleBack}
           >
-            Print
+            Back 
           </button>
         </div>
         <div className="navbar-right">
@@ -471,14 +485,12 @@ function AdminHome() {
         </div>
       )}
 
-      <div className="button-container">
-        <button className="am-cancel-button">Cancel</button>
-        <button className="am-update-button" onClick={handleUpdate}>
-          Update
-        </button>
-      </div>
+    <div className="button-container">
+        <button className="ap-button" onClick={handlePrint}>Print</button>
+      </div> 
+
     </div>
   );
 }
 
-export default AdminHome;
+export default AdminSeeAllUnprintedStudents;

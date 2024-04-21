@@ -17,8 +17,8 @@
   .box {
     width: 80mm;
     height: 105mm;
-    margin-right: 10px;
-    margin-bottom: 5mm; /* Add spacing between boxes */
+    margin-right: 30px;
+    margin-bottom: 40mm; /* Add spacing between boxes */
     border: 1px solid #000;
   }
   
@@ -29,3 +29,16 @@
       box-shadow: none;
     }
   }
+
+  @media screen {
+    .print-container {
+      display: none;
+    }
+  }
+  
+  @media print {
+    .print-container {
+      display: block;
+    }
+  }
+  

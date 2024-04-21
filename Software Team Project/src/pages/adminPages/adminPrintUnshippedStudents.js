@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../images/KMITLLogo.png";
 import settingIcon from "../../images/setting-icon.png";
-import "../../styles/adminStyles/adminHome.css";
+import "../../styles/adminStyles/adminPrint.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import A4Size from "../a4-size";
 
 function AdminPrintUnshippedStudents() {
   const userName = "Admin";
@@ -479,6 +480,11 @@ function AdminPrintUnshippedStudents() {
         <button className="ap-button" onClick={handlePrint}>Print</button>
       </div>  
       
+      <div className="print-container">
+        <A4Size data={data} />
+      </div>
+
+
     </div>
   );
 }

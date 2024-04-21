@@ -1,36 +1,12 @@
 import React, { useEffect } from 'react';
-import { useState } from 'react';
 import './a4-size.css'; // Import your CSS file
 
-const A4Size = () => {
-    // Mock data
-    const mockdata = [
-      { id: 1, content: 'Data 1' },
-      { id: 2, content: 'Data 2' },
-      { id: 3, content: 'Data 3' },
-      { id: 4, content: 'Data 4' },
-      { id: 5, content: 'Data 5' },
-      { id: 6, content: 'Data 6' },
-      { id: 7, content: 'Data 7' },
-      { id: 8, content: 'Data 7' },
-      { id: 9, content: 'Data 7' },
-      { id: 10, content: 'Data 7' },
-      // Add more mock data as needed
-    ];
-
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        setData(mockdata)
-    }, [])
-  
+const A4Size = ({ data }) => {
   // Split data into groups of 4
   const groupsOfFour = [];
   for (let i = 0; i < data.length; i += 4) {
     groupsOfFour.push(data.slice(i, i + 4));
   }
-
-  window.print()
 
   return (
     <div>
@@ -39,8 +15,13 @@ const A4Size = () => {
           <div className="grid-container">
             {group.map((item, idx) => (
               <div className="box" key={idx}>
-                {item.content}
-                <p>Address</p>
+                <p>Name: {item.name}</p>
+                <p>Tel No: {item.tel_no}</p>
+                <p>Address: {item.address}</p>
+                <p>Subdistrict: {item.subdistrict}</p>
+                <p>District: {item.district}</p>
+                <p>Province: {item.province}</p>
+                <p>Post Code: {item.post_code}</p>
               </div>
             ))}
           </div>

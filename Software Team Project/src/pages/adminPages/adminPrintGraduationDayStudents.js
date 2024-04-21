@@ -108,18 +108,18 @@ function AdminPrintGraduationDayStudents() {
   };
 
   const handlePrint = () => {
-    const selectedRows = data.filter(row => row.checked);
-    if (selectedRows.length > 0) {
-      const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
-      nonSelectedRows.forEach(row => row.style.display = 'none');
-  
-      window.print();
-  
-      nonSelectedRows.forEach(row => row.style.display = 'block');
-    } else {
-      alert('Please select at least one row to print.');
-    }
-  };
+    const printContents = document.querySelector('.am-table-container').innerHTML;
+    const printHeader = '<div class="print-header">Graduation Day Students</div>';
+    const printDate = '<div class="print-info">Print Date: ' + new Date().toLocaleDateString() + '</div>';
+    const printTime = '<div class="print-info">Print Time: ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + '</div>';
+    const printContent = printHeader + printDate + printTime + printContents;
+    const originalContents = document.body.innerHTML;
+    document.body.innerHTML = printContent;
+    window.print();
+    document.body.innerHTML = originalContents;
+};
+
+
 
   const handleSortOptionSelected = (selectedOption) => {
     // const sortedData = [...data].sort((a, b) => {
@@ -375,13 +375,7 @@ function AdminPrintGraduationDayStudents() {
       <table className="am-table">
           <thead>
             <tr>
-              <th>
-                <input
-                  type="checkbox"
-                  checked={data.every((item) => item.checked)}
-                  onChange={handleAllCheckboxChange}
-                />
-              </th>
+      
               <th>ID</th>
               <th style={{ textAlign: "left" }}>Name</th>
               <th>
@@ -429,13 +423,6 @@ function AdminPrintGraduationDayStudents() {
           <tbody>
             {data.map((row, index) => (
               <tr key={index}>
-                <td>
-                  <input
-                    type="checkbox"
-                    checked={row.checked}
-                    onChange={() => handleCheckboxChange(index)}
-                  />
-                </td>
                 <td>{row.student_id}</td>
                 <td style={{ textAlign: "left" }}>{row.name}</td>
                 <td>
@@ -446,6 +433,7 @@ function AdminPrintGraduationDayStudents() {
                     : row.grant_option}
                 </td>
                 <td>{row.payment_status == "unpaid" ? "Unpaid" : "Paid"}</td>
+
               </tr>
             ))}
           </tbody>

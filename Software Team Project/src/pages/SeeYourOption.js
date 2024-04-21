@@ -45,7 +45,7 @@ function SeeYourOption({ selectedOption }) {
     navigate('/changeReceipt');
   };
   const handleOptionChange = () => {
-    navigate('/degreeCertificateCollection');
+    navigate('/home');
   };
 
   const handleEdit = () => {

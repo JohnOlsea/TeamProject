@@ -30,6 +30,7 @@ import AdminPrintUnprintedStudents from './pages/adminPages/adminPrintUnprintedS
 import AdminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery';
 import AdminSeeAllUnprintedStudents from './pages/adminPages/adminSeeAllUnprintedStudents';
 
+import A4size from './pages/a4-size';
 
 function App() {
 
@@ -71,6 +72,9 @@ function App() {
 
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
+
+          <Route path='A4size' element={<A4size/>} />
+          
         </Routes>
       </main>
     </BrowserRouter>

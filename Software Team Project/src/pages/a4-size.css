@@ -1,0 +1,31 @@
+.a4-page {
+    page-break-before: always; /* Ensure each .a4-page starts on a new printed page */
+    width: 21cm;
+    height: 29.7cm;
+    margin: 0 auto;
+    padding: 1cm;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .grid-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .box {
+    width: 80mm;
+    height: 105mm;
+    margin-right: 10px;
+    margin-bottom: 5mm; /* Add spacing between boxes */
+    border: 1px solid #000;
+  }
+  
+  @media print {
+    .a4-page {
+      margin: 0;
+      padding: 0;
+      box-shadow: none;
+    }
+  }

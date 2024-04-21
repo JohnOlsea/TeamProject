@@ -514,16 +514,19 @@ function AdminPrintPostalDelivery() {
               </tr>
             ))}
           </tbody> */}
-            <tbody>
-                {data.map((row, index) => (
-                <tr key={index}>
-                <td>{row.id}</td>
-                <td style={{ textAlign: "left" }}>{row.name}</td>
-                <td>{row.grant_option}</td>
-                <td>{row.payment_status === "Unpaid" ? "Unpaid" : "Paid"}</td>
-                </tr>
-                ))}
-            </tbody>
+<tbody>
+  {data
+    .filter((row) => row.grant_option === "Postal Delivery")
+    .map((row, index) => (
+        <tr key={index}>
+        <td>{row.id}</td>
+        <td style={{ textAlign: "left" }}>{row.name}</td>
+        <td>{row.grant_option}</td>
+        <td>{row.payment_status}</td>
+        {/* Render other columns as needed */}
+      </tr>
+    ))}
+</tbody>
         </table>
       </div>
 

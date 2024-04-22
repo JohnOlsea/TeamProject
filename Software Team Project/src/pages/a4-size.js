@@ -16,13 +16,15 @@ const A4Page = ({ data }) => {
             {group.map((item, idx) => (
               <div className="box" key={idx}>
                 <img src={logo} className="logo-print"/>
-                <p className='a4-content'>Name: {item.name}</p>
-                <p className='a4-content'>Tel No: {item.tel_no}</p>
-                <p className='a4-content'>Address: {item.address}</p>
-                <p className='a4-content'>Subdistrict: {item.subdistrict}</p>
-                <p className='a4-content'>District: {item.district}</p>
-                <p className='a4-content'>Province: {item.province}</p>
-                <p className='a4-content'>Post Code: {item.post_code}</p>
+                <div className='a4-content'>
+                    <p>Name: {item.name}</p>
+                    <p >Tel No: {item.tel_no}</p>
+                    <p>Address: {item.address}</p>
+                    <p>Subdistrict: {item.subdistrict}</p>
+                    <p>District: {item.district}</p>
+                    <p>Province: {item.province}</p>
+                    <p>Post Code: {item.post_code}</p>
+                </div>
               </div>
             ))}
             {/* Fill empty boxes if the group has less than 4 items */}

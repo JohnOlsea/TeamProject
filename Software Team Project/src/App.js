@@ -68,8 +68,6 @@ function App() {
           <Route path='adminPrintUnprintedStudents' element={<AdminPrintUnprintedStudents />} />
           <Route path='adminSeeAllUnprintedStudents' element={<AdminSeeAllUnprintedStudents />}/>
 
-
-
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
 

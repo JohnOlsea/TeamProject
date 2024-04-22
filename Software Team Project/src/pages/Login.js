@@ -99,6 +99,7 @@ function Login() {
           style={{
             marginBottom: "8px",
             fontFamily: "Kanit, sans-serif",
+            marginTop: "50px"
           }}
         >
           Email
@@ -119,7 +120,7 @@ function Login() {
         </div>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <button className="login-button" onClick={handleSubmit}>Login</button>
-        <p style={{ textAlign: "center", marginBottom: "8px", fontFamily: "Lato" }}>OR</p>
+        <p style={{ textAlign: "center", marginBottom: "8px", textWieght: 'bold' }}>OR</p>
         <button className="google-button" onClick={handleGoogleLogin}>Sign In with Google</button></StyledContainer>
         
       </div>

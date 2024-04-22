@@ -5,7 +5,7 @@ import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-function AdminHome() {
+function AdminPrintUnprintedStudents() {
   const userName = "Admin";
   const navigate = useNavigate();
   const [data, setData] = useState([]);
@@ -27,9 +27,13 @@ function AdminHome() {
         student_info.checked = false;
         if (student_info.grant_option === null) {
           student_info.grant_option = "Not Selected Yet";
-          }
+        } else if (
+          student_info.grant_option === "Pick Up at Registration Office" ||
+          student_info.grant_option === "Graduation Day Pickup"
+        ) {
+          student_info.grant_option = "Non-Delivery";
+        }
       });
-      console.log(response.data);
       setData(response.data);
     } catch (err) {
       console.log(err);
@@ -44,7 +48,7 @@ function AdminHome() {
     navigate("/login");
   };
 
-  const handlePrintAddresses = () => {
+  const handleBack = () => {
     navigate("/adminPrint");
   };
 
@@ -52,18 +56,35 @@ function AdminHome() {
     setShowPopup(false);
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = () => {
     const selectedData = data.filter((item) => item.checked);
     selectedData.forEach((item) => {
-      console.log(item);
-      if (item.shipping_id === "") {
-        item.shipping_id = null
+      console.log("ID:", item.student_id);
+      console.log("Name:", item.name);
+      console.log("Verify Receipt:", item.receipt_verification);
+      console.log("Shipping ID:", item.shipping_id);
+    });
+  };
+
+  const handleSort = (selectedOption) => {
+    const sortedData = [...data].sort((a, b) => {
+      if (
+        a.grant_option === selectedOption &&
+        b.grant_option !== selectedOption
+      ) {
+        return -1;
+      } else if (
+        a.grant_option !== selectedOption &&
+        b.grant_option === selectedOption
+      ) {
+        return 1;
+      } else {
+        return 0;
       }
     });
-    await axios.post("http://localhost:5000/admin/update_student_option_info", 
-  {data:selectedData})
-    window.location.reload()
-};
+
+    setData(sortedData);
+  };
 
   const handleSortPaymentStatus = (selectedOption) => {
     const sortedData = [...data].sort((a, b) => {
@@ -86,7 +107,47 @@ function AdminHome() {
     setData(sortedData);
   };
 
+  const handlePrint = () => {
+    const selectedRows = data.filter(row => row.checked);
+    if (selectedRows.length > 0) {
+      const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
+      nonSelectedRows.forEach(row => row.style.display = 'none');
+  
+      window.print();
+  
+      nonSelectedRows.forEach(row => row.style.display = 'block');
+    } else {
+      alert('Please select at least one row to print.');
+    }
+  };
+
   const handleSortOptionSelected = (selectedOption) => {
+    // const sortedData = [...data].sort((a, b) => {
+    //   if (
+    //     a.grant_option === selectedOption &&
+    //     b.grant_option !== selectedOption
+    //   ) {
+    //     return -1;
+    //   } else if (
+    //     a.grant_option !== selectedOption &&
+    //     b.grant_option === selectedOption
+    //   ) {
+    //     return 1;
+    //   } else if (
+    //     a.grant_option === "Non-Delivery" &&
+    //     b.grant_option === "Postal Delivery"
+    //   ) {
+    //     return -1;
+    //   } else if (
+    //     a.grant_option === "Postal Delivery" &&
+    //     b.grant_option === "Non-Delivery"
+    //   ) {
+    //     return 1;
+    //   } else {
+    //     console.log(a, b);
+    //     return a.grant_option.localeCompare(b.grant_option);
+    //   }
+    // });
 
     const sortedData = [...data].sort((a, b) => {
       // Priority for selected option (replace 'selectedOption' with your actual variable)
@@ -104,9 +165,8 @@ function AdminHome() {
 
       // Specific order for "Postal Delivery", "Non-Delivery", "Not Selected Yet"
       const optionOrder = {
-        "Postal Delivery": 3,
-        "Pickup at Registration Office": 2,
-        "Graduation Day Pickup": 1,
+        "Postal Delivery": 2,
+        "Non-Delivery": 1,
         "Not Selected Yet": 0,
       };
 
@@ -119,7 +179,7 @@ function AdminHome() {
 
   const renderVerifyReceipt = (index) => {
     const payment_status = data[index].payment_status;
-    const status = data[index].receipt_verification;
+    const status = verificationStatus[index];
 
     if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
@@ -171,7 +231,7 @@ function AdminHome() {
     }
   };
 
-  const renderReceipt = (sid, payment_status) => {
+  const renderReceipt = (receipt, payment_status) => {
     if (payment_status === "unpaid") {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
     } else {
@@ -179,7 +239,7 @@ function AdminHome() {
         <td style={{ textAlign: "center" }}>
           <button
             className="view-button"
-            onClick={() => handleViewReceipt(sid)}
+            onClick={() => handleViewReceipt(receipt)}
           >
             View
           </button>
@@ -192,14 +252,11 @@ function AdminHome() {
     shipping_id,
     payment_status,
     grant_option,
-    receipt_verification,
     index
   ) => {
     if (
       grant_option === "Not Selected Yet" ||
-      grant_option === "Graduation Day Pickup" ||
-      grant_option === "Pickup at Registration Office" ||
-      receipt_verification !== "Verified" ||
+      grant_option === "Non-Delivery" ||
       payment_status === "unpaid"
     ) {
       return <td style={{ backgroundColor: "gray", textAlign: "center" }}></td>;
@@ -219,16 +276,7 @@ function AdminHome() {
     }
   };
 
-  const handleViewReceipt = async (sid) => {
-    const response = await axios.get(
-      `http://localhost:5000/get_receipt_image?sid=${sid}`
-    );
-    console.log(response.data.image_path);
-    window.open(
-      `http://localhost:5000/images/${response.data.image_path}`,
-      "_blank"
-    );
-  };
+  const handleViewReceipt = (receipt) => {};
 
   const handleSettingsClick = (e, shipping_id, index) => {
     e.preventDefault();
@@ -246,7 +294,10 @@ function AdminHome() {
         ...prevStatus,
         [index]: newStatus,
       }));
-      if (action !== "Change") {
+      if (action === "Change") {
+        setChangeIndex(null);
+        newData[index].checked = false;
+      } else {
         newData[index].checked = true;
       }
     } else if (action === "Reject") {
@@ -256,9 +307,7 @@ function AdminHome() {
         ...prevStatus,
         [index]: "Rejected",
       }));
-      if (action !== "Change") {
-        newData[index].checked = true;
-      }
+      newData[index].checked = !newData[index].checked;
     }
     setData(newData);
   };
@@ -292,7 +341,6 @@ function AdminHome() {
     const newData = [...data];
     if (selectedRowIndex !== null) {
       newData[selectedRowIndex].shipping_id = selectedShippingID;
-      newData[selectedRowIndex].checked = true;
       setData(newData);
     }
     setShowPopup(false);
@@ -304,25 +352,23 @@ function AdminHome() {
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
           <div>
-            <h1 className="am-title">Home</h1>
+            <h1 className="am-title">Print Unprinted Students</h1>
             <p className="am-admin">{userName}</p>
           </div>
         </div>
       </header>
 
-      <nav className="am-navbar">
-        <div className="navbar-left">
+      <nav className="ap-navbar">
+        <div className="ap-navbar-left">
           <button
-            className="print-student-address-nav-button"
-            onClick={handlePrintAddresses}
+            className="back-nav-button"
+            onClick={handleBack}
           >
-            Print Student Address
+            Back
           </button>
         </div>
         <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
+          <button className="logout-button">Logout</button>
         </div>
       </nav>
       <p></p>
@@ -331,7 +377,11 @@ function AdminHome() {
           <thead>
             <tr>
               <th>
-                Checked
+                <input
+                  type="checkbox"
+                  checked={data.every((item) => item.checked)}
+                  onChange={handleAllCheckboxChange}
+                />
               </th>
               <th>ID</th>
               <th style={{ textAlign: "left" }}>Name</th>
@@ -340,11 +390,8 @@ function AdminHome() {
                 <div className="dropdown">
                   <button className="dropbtn">&#9660;</button>
                   <div className="dropdown-content">
-                    <a onClick={() => handleSortOptionSelected("Graduation Day Pickup")}>
-                      &#9660; Graduation Day Pickup
-                    </a>
-                    <a onClick={() => handleSortOptionSelected("Pickup at Registration Office")}>
-                      &#9660; Pickup at Registration Office
+                    <a onClick={() => handleSortOptionSelected("Non-Delivery")}>
+                      &#9660; Non-Delivery
                     </a>
                     <a
                       onClick={() =>
@@ -391,22 +438,24 @@ function AdminHome() {
                     type="checkbox"
                     checked={row.checked}
                     onChange={() => handleCheckboxChange(index)}
-                    disabled  
                   />
                 </td>
                 <td>{row.student_id}</td>
                 <td style={{ textAlign: "left" }}>{row.name}</td>
                 <td>
-                  {!row.grant_option ? "Not selected Yet" : row.grant_option}
+                  {!row.grant_option
+                    ? "Not selected Yet"
+                    : row.grant_option === "Non-Delivery"
+                    ? "Non-Delivery"
+                    : row.grant_option}
                 </td>
                 <td>{row.payment_status == "unpaid" ? "Unpaid" : "Paid"}</td>
-                {renderReceipt(row.student_id, row.payment_status)}
+                {renderReceipt(row.receipt, row.payment_status)}
                 {renderVerifyReceipt(index)}
                 {renderShippingID(
                   row.shipping_id,
                   row.payment_status,
                   row.grant_option,
-                  row.receipt_verification,
                   index
                 )}
               </tr>
@@ -437,12 +486,10 @@ function AdminHome() {
       )}
 
       <div className="button-container">
-        <button className="am-update-button" onClick={handleUpdate}>
-          Update
-        </button>
-      </div>
+        <button className="ap-button" onClick={handlePrint}>Print</button>
+      </div> 
     </div>
   );
 }
 
-export default AdminHome;
+export default AdminPrintUnprintedStudents;

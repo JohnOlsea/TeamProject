@@ -665,6 +665,47 @@ app.get("/admin/get_all_student_info_to_print", async (req, res) => {
 });
 
 
+// Get all data to print
+app.get("/admin/print/all_student", async (req, res) => {
+  const sql_get_student_ids = `SELECT * FROM student_option_info `;
+
+  try {
+    connection.query(sql_get_student_ids, async (err, results) => {
+      if (err) {
+        console.log(err);
+        return res.status(400).send(err);
+      }
+
+      const studentAddressesPromises = results.map(async (student) => {
+        const sql_get_student_addresses = `SELECT * FROM address_info WHERE student_id = ?`;
+
+        return new Promise((resolve, reject) => {
+          connection.query(sql_get_student_addresses, [student.student_id], (err, addressResults) => {
+            if (err) {
+              console.log(err);
+              reject(err);
+            } else {
+              resolve(addressResults);
+            }
+          });
+        });
+      });
+
+      try {
+        const studentAddresses = await Promise.all(studentAddressesPromises);
+        const flattenedAddresses = studentAddresses.flat(); // Flatten the array of arrays
+        res.json(flattenedAddresses);
+      } catch (err) {
+        console.log(err);
+        res.status(500).send(err);
+      }
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).send(err);
+  }
+});
+
 // Setting port to run on
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);

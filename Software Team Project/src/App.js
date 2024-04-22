@@ -14,18 +14,22 @@ import PickUpatRegistrationOffice from './pages/PickUpAtRegistrationOffice'
 import SeeYourOption from './pages/SeeYourOption.js'
 import ChangeReceipt from './pages/ChangeReceipt.js'
 import PaymentForGraduaPick from './pages/PaymentGra_Pick.js'
-import UploadReceipt from './pages/UploadReceipt.js';
-
-// Test
-import ImageTest from './pages/ImageTest'
 
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
+import AdminPrintAllStudents from './pages/adminPages/adminPrintAllStudents';
 import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
 import AdminUpdateStatus from './pages/adminPages/adminUpdateStatus';
-import AdminLogin from './pages/adminPages/adminLogin';
+import AdminPrintGraduationDayStudents from './pages/adminPages/adminPrintGraduationDayStudents';
+import AdminPrintRegistrationOffice from './pages/adminPages/adminPrintRegistrationOfficeStudents'
+import adminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery'
+import AdminPrintUnshippedStudents from './pages/adminPages/adminPrintUnshippedStudents'
+import AdminPrintUnprintedStudents from './pages/adminPages/adminPrintUnprintedStudents'
+import AdminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery';
+import AdminSeeAllUnprintedStudents from './pages/adminPages/adminSeeAllUnprintedStudents';
 
+import A4size from './pages/a4-size';
 
 function App() {
 
@@ -47,19 +51,28 @@ function App() {
           <Route path='pickUpatRegistrationOffice' element={<PickUpatRegistrationOffice />} />
           <Route path='seeyouroption' element={<SeeYourOption />} />
           <Route path='changeReceipt' element={<ChangeReceipt />} />
-          <Route path='uploadReceipt' element={<UploadReceipt />} />
           <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
 
           {/* Admin Routes */}
-          <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
+
+
           <Route path='adminPrint' element={<AdminPrint />} />
+          <Route path='adminPrintAllStudents' element={<AdminPrintAllStudents />}/>
+          <Route path='adminPrintGraduationDayStudents' element={<AdminPrintGraduationDayStudents />}/>
+          <Route path='adminPrintRegistrationOffice' element={<AdminPrintRegistrationOffice />} />
+          <Route path='adminPrintPostalDelivery' element={<AdminPrintPostalDelivery />} />
+          <Route path='adminPrintUnshippedStudents' element={<AdminPrintUnshippedStudents />} />
+          <Route path='adminPrintUnprintedStudents' element={<AdminPrintUnprintedStudents />} />
+          <Route path='adminSeeAllUnprintedStudents' element={<AdminSeeAllUnprintedStudents />}/>
+
+
+
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
 
-          <Route path='imageTest' element={<ImageTest />} />
-
-
+          <Route path='A4size' element={<A4size/>} />
+          
         </Routes>
       </main>
     </BrowserRouter>

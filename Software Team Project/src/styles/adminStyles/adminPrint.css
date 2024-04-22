@@ -276,4 +276,80 @@
     }
   }
 
+  @media print {
+    @page {
+      margin: 0; /* Set page margins */
+      size: auto; /* Set page size */
+    }
+  
+    /* Hide all content on the first page */
+    body::before {
+      content: none !important;
+    }
+  
+    /* Rest of your print-specific styles */
+    .am-header,
+    .ap-navbar,
+    .ap-button {
+      display: none;
+    }
+  
+    .table-container {
+      width: 100%;
+      display: none;
+    }
+  
+    .button-container {
+      display: none;
+    }
+  
+    .address-container {
+      display: block;
+      margin-top: 20px;
+    }
+  
+    .address-section {
+      border: 2px solid #000;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 9.5cm;
+      height: 7.5cm;
+      page-break-before: avoid; /* Prevent page break before this element */
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+  
+    .sender-info-t {
+      float: right;
+      width: calc(100% - 100px);
+    }
+  
+    .consignee-info {
+      clear: both;
+      margin-top: 10px;
+    }
+  
+    .address-container h2 {
+      margin-top: 0;
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-family: 'Prompt', sans-serif;
+    }
+  
+    .address-container p {
+      margin: 5px 0;
+      font-size: 14px;
+      font-family: 'Prompt', sans-serif;
+    }
+  
+    .divider {
+      border-top: 1px solid black;
+      margin-top: 90px;
+      clear: both;
+    }
+  }
+  
+
+  
   

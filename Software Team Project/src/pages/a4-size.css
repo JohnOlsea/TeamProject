@@ -15,10 +15,13 @@
   }
   
   .box {
+    border: 10px solid black;
+    border-radius: 3px;
     width: 80mm;
     height: 105mm;
     margin-right: 30px;
-    margin-bottom: 40mm; /* Add spacing between boxes */
+    margin-bottom: 20mm; 
+    margin-top: 50px;
     border: 1px solid #000;
   }
   
@@ -41,4 +44,18 @@
       display: block;
     }
   }
+
+.a4-content {
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.logo-print {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 30%;
+    height: auto;
+}
+
+
   

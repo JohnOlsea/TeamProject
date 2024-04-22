@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styles/PersonalInfo.css';
-import logo from '../images/KMITLLogo.png'; 
 import '../styles/AddressConfirmation.css';
+import logo from '../images/KMITLLogo.png'; 
 import { useNavigate } from 'react-router-dom';
 import PersonalInfo from './PersonalInfo';
 
@@ -60,9 +60,11 @@ function AddressConfirmation() {
       navigate('/PaymentCompleted');
     }
   };
+
   const handleBack = () => {
     navigate('/Payment');
   };
+  
   return (
     <div className="app-container">
       <header className="header">

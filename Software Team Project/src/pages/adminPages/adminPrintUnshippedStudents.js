@@ -114,6 +114,7 @@ function AdminPrintUnshippedStudents() {
       const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
       nonSelectedRows.forEach(row => row.style.display = 'none');
   
+      // Print only the desired content
       window.print();
   
       nonSelectedRows.forEach(row => row.style.display = 'block');
@@ -121,6 +122,8 @@ function AdminPrintUnshippedStudents() {
       alert('Please select at least one row to print.');
     }
   };
+  
+  
 
   const handleSortOptionSelected = (selectedOption) => {
     // const sortedData = [...data].sort((a, b) => {

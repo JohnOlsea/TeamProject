@@ -281,9 +281,6 @@ function AdminPrint() {
       
       <nav className="am-navbar">
         <div className="ap-navbar-left">
-          <button className="print-nav-button" onClick={handleSeeAllUnprintedStudents}>See All Unprinted Students</button>
-        </div>
-        <div className="ap-navbar-left">
           <button className="back-to-home-nav-button" onClick={handleBacktToHome}>Back to Home</button>
         </div>
         <div className="navbar-right">

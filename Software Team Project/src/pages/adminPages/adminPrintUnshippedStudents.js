@@ -41,8 +41,22 @@ function AdminPrintUnshippedStudents() {
     }
   };
 
+  const getAllStudentAddressInfo = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:8000/admin/get_all_students_in"
+      );
+      setData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+
+
   useEffect(() => {
     getAllStudentOptionInfo();
+    getAllStudentAddressInfo();
   }, []);
 
   const handleLogout = () => {

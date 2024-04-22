@@ -68,6 +68,7 @@ function AdminPrint() {
   };
   
 
+
   const handlePrint = () => {
     const selectedRows = data.filter(row => row.checked);
     if (selectedRows.length > 0) {
@@ -75,6 +76,7 @@ function AdminPrint() {
       nonSelectedRows.forEach(row => row.style.display = 'none');
   
       window.print();
+      window.open('www.google.com')
   
       nonSelectedRows.forEach(row => row.style.display = 'block');
     } else {

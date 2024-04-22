@@ -374,7 +374,6 @@ app.post("/update_address", async (req, res) => {
     province,
     post_code,
   } = req.body;
-
   const sql = `
   INSERT INTO address_info (student_id, name, tel_no, address, subdistrict, district, province, post_code)
   VALUES (?, ?, ?, ?, ?, ?, ?, ?)

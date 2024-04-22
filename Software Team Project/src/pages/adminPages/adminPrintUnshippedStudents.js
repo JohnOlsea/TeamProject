@@ -75,15 +75,18 @@ function AdminPrintUnshippedStudents() {
     if (selectedRows.length > 0) {
       const nonSelectedRows = document.querySelectorAll('.address-section:not(.selected)');
       nonSelectedRows.forEach(row => row.style.display = 'none');
-      console.log("Selected row", selectedRows)
   
       window.print();
   
       nonSelectedRows.forEach(row => row.style.display = 'none');
+
+      console.log("nonselected row debug", nonSelectedRows)
+      console.log("selectedrow debug", selectedRows)
     } else {
       alert('Please select at least one row to print.');
     }
   };
+  
 
 
   return (

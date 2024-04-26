@@ -8,80 +8,7 @@ import axios from "axios";
 function AdminPrintGraduationDayStudents() {
   const userName = "Admin";
   const navigate = useNavigate();
-  const [data, setData] = useState([
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011671, name: "Thanawat Rodklay", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011655, name: "Teerapat Wattanamanont", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Rejected", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011555, name: "Phutthiphat Lueangmanotham", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Waiting", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011331, name: "Akararat Pattanamontri", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: null, shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011378, name: "Chiho Li", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011470, name: "Natchapon Manachaiprasert", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011643, name: "Suriya Chaubey", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011397, name: "Jade Chuapakdee", grant_option: "Postal Delivery", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011546, name: "Phatthara Srilachot", grant_option: "Pick Up at Registration Office", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: null },
-    { id: 64011683, name: "Thitiwat Sornmanee", grant_option: "Graduation Day Pickup", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011478, name: "Nattawat Chaokraisith", grant_option: "Pick Up at Registration Office", payment_status: "Unpaid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-    { id: 64011366, name: "Chananon Kanunghet", grant_option: "Graduation Day Pickup", payment_status: "Paid", checked: false, receipt: "123456", receipt_verification: "Verified", shipping_id: "EGXXXXXXXXXTH" },
-  ]);
+  const [data, setData] = useState([]);
 
   const getAllStudentOptionInfo = async () => {
     try {
@@ -155,7 +82,7 @@ function AdminPrintGraduationDayStudents() {
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
           <div>
-            <h1 className="ap-title">Print All Students</h1>
+            <h1 className="ap-title">Print All Graduation Day Students</h1>
             <p className="ap-admin">{userName}</p>
           </div>
         </div>
@@ -174,7 +101,7 @@ function AdminPrintGraduationDayStudents() {
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
-      <h2 style={{textAlign:'center'}}>All students selecting Pickup at Registration Office</h2>
+      <h2 style={{textAlign:'center'}}>All students selecting Graduation Day Pickup</h2>
       <div className="ap-table-container">
         <table className="ap-table">
           <thead>
@@ -202,7 +129,7 @@ function AdminPrintGraduationDayStudents() {
                 <tr key={index}>
                 <td>{row.student_id}</td>
                 <td style={{ textAlign: "left" }}>{row.name}</td>
-                <td>{row.payment_status === "Unpaid" ? "Unpaid" : "Paid"}</td>
+                <td>{row.payment_status}</td>
                 </tr>
                 ))}
             </tbody>

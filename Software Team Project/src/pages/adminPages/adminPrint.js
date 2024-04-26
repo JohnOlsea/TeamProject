@@ -42,13 +42,13 @@ function AdminPrint() {
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
           <div>
-            <h1 className="am-title">Home</h1>
+            <h1 className="am-title">Print</h1>
             <p className="am-admin">{userName}</p>
           </div>
         </div>
       </header>
       
-      <nav className="am-navbar">
+      <nav className="ap-navbar">
         <div className="ap-navbar-left">
           <button className="back-to-home-nav-button" onClick={handleBacktToHome}>Back to Home</button>
         </div>

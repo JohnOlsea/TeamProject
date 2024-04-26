@@ -4,9 +4,9 @@ import logo from "../../images/KMITLLogo.png";
 import "../../styles/adminStyles/adminPrint.css";
 import { styled } from "styled-components";
 import axios from "axios";
-import A4Page from "../a4-size";
 
 function AdminPrintUnshippedStudents() {
+  const { state } = useLocation();
   const [data, setData] = useState([]);
   const userName = "Admin";
   const navigate = useNavigate();
@@ -28,7 +28,7 @@ function AdminPrintUnshippedStudents() {
   }, []);
 
   const handleLogout = () => {
-    navigate("/login");
+    navigate("/adminLogin");
   };
 
   const handleBack = () => {
@@ -47,32 +47,67 @@ function AdminPrintUnshippedStudents() {
     setData(newData);
 
     const addressSections = document.querySelectorAll(".address-section");
-    if (addressSections[index]) {
-      addressSections[index].classList.toggle("selected");
-    }
+    addressSections[index].classList.toggle("selected");
   };
 
-  const handleAllCheckboxChange = () => {
-    const newData = data.map((item) => ({
-      ...item,
-      checked: !data.every((item) => item.checked),
-    }));
-    setData(newData);
+  // const handleAllCheckboxChange = () => {
+  //   const newData = data.map((item) => ({
+  //     ...item,
+  //     checked: !data.every((item) => item.checked),
+  //   }));
+  //   setData(newData);
 
+  //   const addressSections = document.querySelectorAll(".address-section");
+  //   addressSections.forEach((row, index) => {
+  //     if (newData[index].checked) {
+  //       row.classList.add("selected");
+  //     } else {
+  //       row.classList.remove("selected");
+  //     }
+  //   });
+  // };
+
+  const handleAllCheckboxChange = () => {
+    if (data.length > 0) {
+      const newData = data.map((item) => ({
+        ...item,
+        checked: !data.every((item) => item.checked),
+      }));
+      setData(newData);
+    }
+  };
+  
+  // useEffect to update DOM elements after state has been updated
+  useEffect(() => {
     const addressSections = document.querySelectorAll(".address-section");
     addressSections.forEach((row, index) => {
-      if (newData[index].checked) {
+      if (data[index] && data[index].checked) {
         row.classList.add("selected");
       } else {
         row.classList.remove("selected");
       }
     });
-  };
+  }, [data]);
+  
+  
 
   const handlePrint = () => {
-    const checkedStudents = data.filter((student) => student.checked);
-    navigate('/A4size', { state: { data:checkedStudents } });
+    const selectedRows = data.filter((row) => row.checked);
+    if (selectedRows.length > 0) {
+      const nonSelectedRows = document.querySelectorAll(
+        ".address-section:not(.selected)"
+      );
+      nonSelectedRows.forEach((row) => (row.style.display = "none"));
+
+      window.print();
+
+      nonSelectedRows.forEach((row) => (row.style.display = "block"));
+    } else {
+      alert("Please select at least one row to print.");
+    }
   };
+
+  const totalPages = Math.ceil(data.length / 4);
 
   return (
     <div className="app-container">
@@ -80,20 +115,20 @@ function AdminPrintUnshippedStudents() {
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="ap-logo" />
           <div>
-            <h1 className="ap-title">Print</h1>
+            <h1 className="ap-title">Print Unshipped Students</h1>
             <p className="ap-admin">{userName}</p>
           </div>
         </div>
       </header>
 
       <nav className="ap-navbar">
-        <div className="navbar-left">
-          <button className="see-all-students-nav-button" onClick={handleBack}>
+        <div className="ap-navbar-left">
+          <button className="back-to-home-nav-button" onClick={handleBack}>
             Back to Home
           </button>
         </div>
         <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
+          <button className="logout-button">Logout</button>
         </div>
       </nav>
       <p></p>
@@ -145,6 +180,61 @@ function AdminPrintUnshippedStudents() {
         <button className="ap-button" onClick={handlePrint}>
           Print
         </button>
+      </div>
+      <div className="address-container">
+        {data.map((row, index) => (
+          <div key={index} className="address-section">
+            <img src={logo} alt="Logo" className="ap-logo-pr" />
+            <div className="sender-info">
+              <div className="sender-info-t">
+                <h2 style={{ color: "orange" }}>Sender</h2>
+                <p>Sender : KMTIL</p>
+                <p>Tel. : 02-329-8000</p>
+              </div>
+            </div>
+            <div className="divider"></div>
+            <div className="consignee-info">
+              <h2 style={{ color: "orange", marginBottom: "20px" }}>
+                Consignee
+              </h2>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Consignee: </span>
+                {row.name}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Tel Number: </span>
+                {row.tel_no}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Address: </span>
+                {row.address}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Subdistrict: </span>
+                {row.subdistrict}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>District: </span>
+                {row.district}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Province: </span>
+                {row.province}
+              </p>
+              <p>
+                <span style={{ fontWeight: "bold" }}>Postal Code: </span>
+                {row.post_code}
+              </p>
+            </div>
+          </div>
+        ))}
+
+        {/* Add empty boxes to ensure each page has exactly 4 boxes */}
+      {(totalPages * 4 - data.length) % 4 !== 0 && 
+        Array.from({ length: (totalPages * 4 - data.length) % 4 }).map((_, index) => (
+          <div key={`empty-${index}`} className="address-section empty-box"></div>
+        ))
+      }
       </div>
     </div>
   );

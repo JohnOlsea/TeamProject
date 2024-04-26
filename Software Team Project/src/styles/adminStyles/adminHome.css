@@ -118,8 +118,10 @@
 }
 
 .see-all-students-nav-button:hover,
-.print-student-address-nav-button:hover {
+.print-student-address-nav-button:hover,
+.am-update-button:hover {
     background-color: #f0f0f0;
+    cursor: pointer;
 }
 
 .am-table-container {

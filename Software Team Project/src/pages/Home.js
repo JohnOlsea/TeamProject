@@ -117,6 +117,7 @@ function Home() {
           <img src={logo} alt="Logo" className="logo-homepage" />
           <div>
             <h1 className="title">Home Page</h1>
+            <p className="subtitle">{userName}</p>
           </div>
         </div>
       </header>

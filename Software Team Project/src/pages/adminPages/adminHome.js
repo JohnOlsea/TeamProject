@@ -316,7 +316,7 @@ function AdminHome() {
             className="print-student-address-nav-button"
             onClick={handlePrintAddresses}
           >
-            Print Student Address
+            Print
           </button>
         </div>
         <div className="navbar-right">

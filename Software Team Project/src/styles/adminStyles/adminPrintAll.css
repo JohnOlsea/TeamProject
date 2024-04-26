@@ -8,14 +8,6 @@
     color: White;
   }
   
-  .ap-title {
-    font-size: 150%;
-    margin-bottom: 5px; 
-    margin-left: 20%; 
-    font-size: 35px;
-    display: inline-block; 
-  }
-  
   .ap-header-content {
     display: flex;
     align-items: center;
@@ -33,13 +25,6 @@
   .ap-subtitle {
     font-size: 16px;
     font-weight: bold;
-  }
-  
-  .ap-admin {
-    font-size: 150%;
-    margin-left: 20%; 
-    margin-top: 15%; 
-    font-size: 20px;
   }
   
   .ap-navbar {
@@ -75,26 +60,26 @@
     font-size: 150%;
     font-weight: bold;
   }
+
   
-  .ap-nav-button,
-  .back-nav-button,
   .back-to-home-nav-button {
     background-color: white;
     border: 1px solid black;
     color: black;
-    padding: 10px 20px;
+    padding: 11px 20px;
     cursor: pointer;
     text-decoration: none;
-    width: 100%;
-    height: 100%;
-    font-size: 150%;
+    width: 104%;
+    font-size: 143%;
     font-weight: bold;
-  }
+    margin-left: -11px;
+}
   
   .ap-nav-button:hover,
   .print-nav-button:hover,
   .am-btn-choices:hover,
-  .ap-button:hover {
+  .ap-button:hover,
+  .back-to-home-nav-button:hover {
     background-color: #f0f0f0;
     cursor: pointer;
   }
@@ -175,23 +160,7 @@
     display: flex;
     justify-content: center;
   }
-  
-  .ap-button {
-    color: #FF6E2F;
-    background-color: white;
-    border: 2px solid black;
-    font-weight: bold;
-    font-size: 100%;
-    border-radius: 5px;
-    width: 20%;
-    padding: 10px;
-    margin-right: 20px;
-    margin-top: 3%;
-    text-decoration: none; 
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-  }
+
   
   .table-container {
     height: 400px; 

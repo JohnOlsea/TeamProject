@@ -180,6 +180,7 @@
       height: auto;
       float: left;
       margin-right: 10px; 
+      margin-top: 50px;
     }
   
     .address-container {
@@ -204,11 +205,12 @@
     .sender-info-t {
       float: right; 
       width: calc(100% - 100px); 
+      margin-top: 0;
     }
   
     .consignee-info {
       clear: both; 
-      margin-top: 30px; 
+      margin-top: 20px; 
     }
   
     .address-container h2 {

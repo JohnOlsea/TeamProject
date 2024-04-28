@@ -15,7 +15,7 @@ function Payment() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get("http://localhost:8000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -33,7 +33,7 @@ function Payment() {
   const fileInputRef = useRef(null);
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("http://localhost:8000/logout", "_self");
   };
   const handlePersonalInfo = () => {
     navigate('/personalInfo');
@@ -61,7 +61,7 @@ function Payment() {
       const formData = new FormData();
       formData.append('image', receiptFile);
       formData.append('student_id', userData.email.split("@")[0]);
-      axios.post("http://localhost:5000/upload_receipt", formData)
+      axios.post("http://localhost:8000/upload_receipt", formData)
       .then(res => console.log(res))
       .catch(err => console.log(err));
       navigate('/AddressConfirmation');

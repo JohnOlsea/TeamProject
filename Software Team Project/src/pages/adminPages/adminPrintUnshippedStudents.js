@@ -13,7 +13,7 @@ function AdminPrintUnshippedStudents() {
 
   const getStudentInfo = async () => {
     const response = await axios
-      .get("http://localhost:5000/admin/get_all_student_info_to_print")
+      .get("http://localhost:8000/admin/get_all_student_info_to_print")
       .then((response) => {
         console.log("Response:", response.data);
         setData(response.data);
@@ -187,43 +187,27 @@ function AdminPrintUnshippedStudents() {
             <img src={logo} alt="Logo" className="ap-logo-pr" />
             <div className="sender-info">
               <div className="sender-info-t">
-                <h2 style={{ color: "orange" }}>Sender</h2>
-                <p>Sender : KMTIL</p>
-                <p>Tel. : 02-329-8000</p>
+                <h2 style={{ color: "orange", fontWeight: "bold"}}>ผู้จัดส่ง</h2>
+                <p >สถาบันเทคโนโลยีพระจอมเกล้าเจ้าคุณทหารลาดกระบัง ถนนฉลองกรุง เขตลาดกระบัง กรุงเทพฯ 10520, ประเทศไทย</p>
+                <p>02-329-8000</p>
               </div>
             </div>
             <div className="divider"></div>
             <div className="consignee-info">
               <h2 style={{ color: "orange", marginBottom: "20px" }}>
-                Consignee
+                ผู้รับ
               </h2>
               <p>
-                <span style={{ fontWeight: "bold" }}>Consignee: </span>
+                <span style={{ fontWeight: "bold" }}>ผู้รับ: </span>
                 {row.name}
               </p>
               <p>
-                <span style={{ fontWeight: "bold" }}>Tel Number: </span>
+                <span style={{ fontWeight: "bold" }}>เบอร์: </span>
                 {row.tel_no}
               </p>
               <p>
-                <span style={{ fontWeight: "bold" }}>Address: </span>
-                {row.address}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Subdistrict: </span>
-                {row.subdistrict}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>District: </span>
-                {row.district}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Province: </span>
-                {row.province}
-              </p>
-              <p>
-                <span style={{ fontWeight: "bold" }}>Postal Code: </span>
-                {row.post_code}
+                <span style={{ fontWeight: "bold" }}>ที่อยู่: </span>
+                {row.address}, {row.subdistrict}, {row.province}, {row.post_code}
               </p>
             </div>
           </div>

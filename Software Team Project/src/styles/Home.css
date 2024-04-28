@@ -182,10 +182,11 @@ body, html {
   color: #FF6E2F;
   background-color: white;
   border-top: 2px solid black;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
-  width: 30%;
+  width: 85%;
   height: 50%;
   font-size: 100%;
   font-weight: bold;
@@ -196,17 +197,17 @@ body, html {
 .option-button {
   color: #FF6E2F;
   background-color: white;
-  border-left: none;
-  border-right: none;
   border-top: 2px solid black;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
-  width: 100%;
-  height: 60px;
+  width: 85%;
+  height: 80px;
   font-size: 100%;
   font-weight: bold;
   margin-bottom: 2%;
+  margin-top: 5%;
   justify-content: center;
 }
 

@@ -13,7 +13,7 @@ function AdminPrintAllStudents() {
   const getAllStudentOptionInfo = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/admin/get_all_student_option_info"
+        "http://localhost:8000/admin/get_all_student_option_info"
       );
       var temp = response.data;
       temp.forEach((student_info) => {

@@ -10,7 +10,7 @@ function ImageTest() {
     const [image, setImage] = useState({})
 
     useEffect(() => {
-        axios.get('http://192.168.15.57:5000/get_reciept_image?sid=64011671')
+        axios.get('http://192.168.15.57:8000/get_reciept_image?sid=64011671')
         .then(res => {
             // setImage(res.data[0].image)
             console.log(res.data.image_path);
@@ -24,7 +24,7 @@ function ImageTest() {
   return (
     <div className="app-container">
       <p>Test Image</p>
-      <img src={`http://localhost:5000/images/`+image}></img>
+      <img src={`http://localhost:8000/images/`+image}></img>
     </div>
   );
 }

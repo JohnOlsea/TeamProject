@@ -13,7 +13,7 @@ function Home() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get("http://localhost:8000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -31,7 +31,7 @@ function Home() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `http://localhost:8000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -50,7 +50,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("http://localhost:8000/logout", "_self");
   };
   const handleSeeYourOption = () => {
     navigate("/seeyouroption")
@@ -72,11 +72,11 @@ function Home() {
 
   const handleClosePopup = async () => {
     setShowPopup(false);
-    const response = await axios.post('http://localhost:5000/update_option', {
+    const response = await axios.post('http://localhost:8000/update_option', {
       email: userData.email,
       grant_option: selectedOption
     });
-    await axios.post('http://localhost:5000/create_image_path', {
+    await axios.post('http://localhost:8000/create_image_path', {
       email: userData.email
     })
     navigate('/seeYourOption')
@@ -84,11 +84,11 @@ function Home() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/update_option', {
+      const response = await axios.post('http://locaslhost:8000/update_option', {
         email: userData.email,
         grant_option: selectedOption
       });
-      await axios.post('http://localhost:5000/create_image_path', {
+      await axios.post('http://localhost:8000/create_image_path', {
         email: userData.email
       })
       switch (selectedOption) {
@@ -150,29 +150,26 @@ function Home() {
         
 
         {/* Buttons for options */}
-        <button className="option-button" onClick={() => handleOptionClick("Graduation Day Pickup")}>Graduation Day Pickup</button>
-        <div className={`option-description ${selectedOption === "Graduation Day Pickup" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            Join us on Graduation Day to receive your certificate in person. Experience the joy of celebrating your accomplishments with your peers and loved ones.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
+        <button className="option-button" onClick={() => {handleOptionClick("Graduation Day Pickup"); handleChooseOption()}}>
+          Graduation Day Pickup<br/>
+          <span style={{color: 'black'}}>มารับเองที่พิธีมอบปริญญาบัตร<br/></span>
+          1,500
+        </button>
 
-        <button className="option-button" onClick={() => handleOptionClick("Pickup at Registration Office")}>Pickup at Registration Office</button>
-        <div className={`option-description ${selectedOption === "Pickup at Registration Office" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            You can visit the institute office at any time during working hours to collect your certificate.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
 
-        <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>Postal Delivery</button>
-        <div className={`option-description ${selectedOption === "Postal Delivery" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            Prefer the comfort of receiving your certificate at your doorstep? Opt for postal delivery. Simply provide us with your mailing address, and we'll ensure your certificate reaches you securely.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
+        <button className="option-button" onClick={() => {handleOptionClick("Pickup at Registration Office"); handleChooseOption()}}>
+          Pickup at Registration Office<br/>
+          <span style={{color: 'black'}}>มารับเองที่สำนักทะเบียนตึกอธิการ<br/></span>
+          1,500
+        </button>
+  
+
+        <button className="option-button" onClick={() => {handleOptionClick("Postal Delivery"); handleChooseOption();}}>
+          Postal Delivery<br/>
+          <span style={{color: 'black'}}>ส่งมอบทางไปรณีย์<br/></span>
+          1,750
+        </button>
+
       </div>
 
       {/* Pop-up message */}

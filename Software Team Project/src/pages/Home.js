@@ -153,21 +153,21 @@ function Home() {
         <button className="option-button" onClick={() => {handleOptionClick("Graduation Day Pickup"); handleChooseOption()}}>
           Graduation Day Pickup<br/>
           <span style={{color: 'black'}}>มารับเองที่พิธีมอบปริญญาบัตร<br/></span>
-          1,500
+          1,500 THB
         </button>
 
 
         <button className="option-button" onClick={() => {handleOptionClick("Pickup at Registration Office"); handleChooseOption()}}>
           Pickup at Registration Office<br/>
           <span style={{color: 'black'}}>มารับเองที่สำนักทะเบียนตึกอธิการ<br/></span>
-          1,500
+          1,500 THB
         </button>
   
 
         <button className="option-button" onClick={() => {handleOptionClick("Postal Delivery"); handleChooseOption();}}>
           Postal Delivery<br/>
           <span style={{color: 'black'}}>ส่งมอบทางไปรณีย์<br/></span>
-          1,750
+          1,750 THB
         </button>
 
       </div>

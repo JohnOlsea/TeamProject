@@ -39,6 +39,8 @@
 }
 
 .logo-logout-paymentCompleted {
-  width: 13%;
-  margin-top: -5%;
+  width: 7%;
+  margin-top: -6%;
+  margin-right: -3%;
+  position: absolute;
 }

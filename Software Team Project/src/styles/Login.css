@@ -40,7 +40,7 @@ body, html {
 }
   
 .logo {
-  width: 150px; 
+  width: 110px; 
   height: auto;
   margin-right: 10%; 
   margin-left: 10%; 
@@ -50,6 +50,7 @@ body, html {
   
 .title {
   font-size: 24px;
+  margin-bottom: 5%;
 }
   
 .navbar {
@@ -61,6 +62,11 @@ body, html {
   color: white;
   font-size: 15px; 
   font-weight: bold;
+}
+
+.uniName {
+  justify-content: center;
+  text-align: center;
 }
 
 .login-page {

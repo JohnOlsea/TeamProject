@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import logo from "../images/KMITLLogo.png";
+import logoutLogo from "../images/logoutLogo.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -115,20 +116,30 @@ function Home() {
       <header className="header-homepage">
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo-homepage" />
+        
           <div>
-            <h1 className="title">Home Page</h1>
-            <p className="subtitle">{userName}</p>
+
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout" onClick={handleLogout}/>
+            </div>
+
+            <div className="homeTitle">
+              <h1 className="title">Home Page</h1>
+              <p className="subtitle">{userName}</p>
+            </div>
+            
           </div>
+          
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
-      </nav>
+      </nav> */}
       <div className="announcement">
         <p className="announcement-title-homepage">🎓📜 Welcome Graduates 📜🎓</p>
         {/* <p className="announcement-title2">How to Obtain Your Degree Certificate</p> */}

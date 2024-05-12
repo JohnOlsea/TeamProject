@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect} from 'react';
 import '../styles/Payment.css';
 import logo from '../images/KMITLLogo.png';
+import logoutLogo from '../images/logoutLogo.png'
 import kmitlQRCode from '../images/kmitlQRCode.png'; 
 import receiptImage from '../images/receipt.jpg'; 
 import { useNavigate } from 'react-router-dom';
@@ -75,8 +76,16 @@ function Payment() {
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
           <div>
-            <h1 className="title">Payment</h1>
-            <p className="subtitle">{userData.displayName}</p>
+
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout" onClick={handleLogout}/>
+            </div>
+
+            <div className="homeTitle">
+              <h1 className="title">Payment</h1>
+              <p className="subtitle">{userData.displayName}</p>
+            </div>
+            
           </div>
         </div>
       </header>

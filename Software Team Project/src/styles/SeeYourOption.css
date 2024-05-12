@@ -46,6 +46,19 @@
   background-color: #f0f0f0;
 }
 
+.logo-logout-syo {
+  width: 7%;
+  margin-top: -4%;
+  margin-right: -10%;
+  position: absolute;
+}
+
+.seeYourOptionTitle {
+  margin-right: 5%;
+  margin-bottom: 30%;
+  margin-top: -15%;
+}
+
 .edit-and-save-option-button {
   color: #FF6E2F;
   background-color: white;
@@ -146,3 +159,5 @@
   table, td {
     border: 1px solid #000000;
   }
+
+  

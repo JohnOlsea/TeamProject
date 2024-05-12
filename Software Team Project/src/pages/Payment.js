@@ -89,14 +89,14 @@ function Payment() {
           </div>
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="pm-announcement">
         <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" /> 

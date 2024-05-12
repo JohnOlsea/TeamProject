@@ -109,7 +109,7 @@ function PaymentCompleted() {
           </div>
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>
             Personal Information
@@ -120,7 +120,7 @@ function PaymentCompleted() {
             Logout
           </button>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">Congratulations! 🎉</p>

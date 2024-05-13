@@ -63,7 +63,7 @@ body, html {
   font-weight: bold;
 }
 
-.login-form {
+.login-page {
   display: flex;
   flex-direction: column;
   align-items: center;

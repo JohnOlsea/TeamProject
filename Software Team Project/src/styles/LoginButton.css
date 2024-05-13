@@ -7,7 +7,7 @@
   border-radius: 8px;
   cursor: pointer;
   font-size: 15px;
-  font-family: "Kanit", sans-serif;
+  margin-top: 3%;
 }
   
 .login-button:hover {

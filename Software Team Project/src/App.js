@@ -15,16 +15,12 @@ import SeeYourOption from './pages/SeeYourOption.js'
 import ChangeReceipt from './pages/ChangeReceipt.js'
 import PaymentForGraduaPick from './pages/PaymentGra_Pick.js'
 
-// Test
-// import ImageTest from './pages/ImageTest'
-
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
 import AdminPrint from './pages/adminPages/adminPrint'
 import AdminPrintAllStudents from './pages/adminPages/adminPrintAllStudents';
 import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
 import AdminUpdateStatus from './pages/adminPages/adminUpdateStatus';
-import AdminLogin from './pages/adminPages/adminLogin';
 import AdminPrintGraduationDayStudents from './pages/adminPages/adminPrintGraduationDayStudents';
 import AdminPrintRegistrationOffice from './pages/adminPages/adminPrintRegistrationOfficeStudents'
 import adminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery'
@@ -33,6 +29,7 @@ import AdminPrintUnprintedStudents from './pages/adminPages/adminPrintUnprintedS
 import AdminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery';
 import AdminSeeAllUnprintedStudents from './pages/adminPages/adminSeeAllUnprintedStudents';
 
+// import A4size from './pages/a4-size';
 
 function App() {
 
@@ -57,7 +54,6 @@ function App() {
           <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
 
           {/* Admin Routes */}
-          <Route path='adminLogin' element={<AdminLogin />} />
           <Route path='adminHome' element={<AdminHome />} />
 
 
@@ -75,9 +71,8 @@ function App() {
           <Route path='adminShowUpdatedStatus' element={<AdminShowUpdatedStatus />} />
           <Route path='adminUpdateStatus' element={<AdminUpdateStatus />} />
 
-          {/* <Route path='imageTest' element={<ImageTest />} /> */}
-
-
+          {/* <Route path='A4size' element={<A4size/>} /> */}
+          
         </Routes>
       </main>
     </BrowserRouter>

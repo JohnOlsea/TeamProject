@@ -4,6 +4,7 @@ import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logoutLogo from "../../images/logoutLogo.png";
 
 function AdminPrintUnprintedStudents() {
   const userName = "Admin";
@@ -351,6 +352,9 @@ function AdminPrintUnprintedStudents() {
       <header className="am-header">
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
           <div>
             <h1 className="am-title">Print Unprinted Students</h1>
             <p className="am-admin">{userName}</p>
@@ -359,16 +363,13 @@ function AdminPrintUnprintedStudents() {
       </header>
 
       <nav className="ap-navbar">
-        <div className="ap-navbar-left">
+        <div className="am-navbar-left">
           <button
             className="back-nav-button"
             onClick={handleBack}
           >
             Back
           </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button">Logout</button>
         </div>
       </nav>
       <p></p>

@@ -3,6 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import logo from '../../images/KMITLLogo.png';
 import settingIcon from '../../images/setting-icon.png'; 
 import '../../styles/adminStyles/adminPrint.css';
+import logoutLogo from "../../images/logoutLogo.png";
 
 function AdminPrint() {
   const userName = "Admin";
@@ -41,6 +42,9 @@ function AdminPrint() {
       <header className="am-header">
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
           <div>
             <h1 className="am-title">Print</h1>
             <p className="am-admin">{userName}</p>
@@ -49,11 +53,8 @@ function AdminPrint() {
       </header>
       
       <nav className="ap-navbar">
-        <div className="ap-navbar-left">
+        <div className="am-navbar-left">
           <button className="back-to-home-nav-button" onClick={handleBacktToHome}>Back to Home</button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
       <p></p>

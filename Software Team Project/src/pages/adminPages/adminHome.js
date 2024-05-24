@@ -4,6 +4,7 @@ import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logoutLogo from "../../images/logoutLogo.png";
 
 function AdminHome() {
   const userName = "Admin";
@@ -303,6 +304,11 @@ function AdminHome() {
       <header className="am-header">
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
+          
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
+
           <div>
             <h1 className="am-title">Home</h1>
             <p className="am-admin">{userName}</p>
@@ -311,17 +317,12 @@ function AdminHome() {
       </header>
 
       <nav className="am-navbar">
-        <div className="navbar-left">
+        <div className="am-navbar-left">
           <button
             className="print-student-address-nav-button"
             onClick={handlePrintAddresses}
           >
             Print
-          </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
           </button>
         </div>
       </nav>

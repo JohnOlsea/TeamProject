@@ -48,3 +48,25 @@
     width: 30%; 
   }
 }
+
+/* Change Reciept */
+
+.changeRecieptDiv {
+  margin-top: 2%;
+}
+
+.logo-changeReciept {
+  width: 30%; 
+  height: auto;
+  margin-right: 10%; 
+  margin-left: 10%; 
+  margin-top: 7%; 
+  margin-bottom: 10%; 
+}
+
+.logo-logout-changeReciept {
+  width: 6%;
+  margin-top: -2%;
+  margin-right: -5%;
+  position: absolute;
+}

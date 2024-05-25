@@ -4,6 +4,9 @@ import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logoutLogo from "../../images/logoutLogo.png";
+import { IoPrintOutline } from "react-icons/io5";
+import { MdLocalPrintshop } from "react-icons/md";
 
 function AdminHome() {
   const userName = "Admin";
@@ -303,28 +306,19 @@ function AdminHome() {
       <header className="am-header">
         <div className="am-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
+          
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
+          <div className="am-header-left">
+              <MdLocalPrintshop size={40} color="white" class="printAddressIcon" onClick={handlePrintAddresses}/>
+          </div>
           <div>
             <h1 className="am-title">Home</h1>
             <p className="am-admin">{userName}</p>
           </div>
         </div>
       </header>
-
-      <nav className="am-navbar">
-        <div className="navbar-left">
-          <button
-            className="print-student-address-nav-button"
-            onClick={handlePrintAddresses}
-          >
-            Print
-          </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </nav>
       <p></p>
       <div className="am-table-container">
         <table className="am-table">

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from '../../images/KMITLLogo.png';
 import '../../styles/adminStyles/adminUpdateStatus.css';
 import { useLocation, useNavigate } from 'react-router-dom';
+import logoutLogo from "../../images/logoutLogo.png";
 
 function AdminUpdateStatus() {
   const { state: { selectedData } } = useLocation();
@@ -48,6 +49,9 @@ function AdminUpdateStatus() {
       <header className="aus-header">
         <div className="aus-header-content">
           <img src={logo} alt="Logo" className="aus-logo" />
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
           <div>
             <h1 className="aus-title">Update Status</h1>
           </div>
@@ -58,9 +62,6 @@ function AdminUpdateStatus() {
       <nav className="aus-navbar">
         <div className="aus-navbar-left">
             <p className="aus-subtitle">King Monkut's Institute of Technology Ladkrabang</p>
-        </div>
-        <div className="aus-navbar-right">
-          <button className="aus-logout-button" onClick={handleLogout}>Logout</button>
         </div>
       </nav>
 

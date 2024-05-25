@@ -50,12 +50,25 @@ body, html {
 }
 
 .logo-homepage {
-  width: 40%; 
+  width: 30%; 
   height: auto;
   margin-right: 10%; 
   margin-left: 10%; 
-  margin-top: 10%; 
-  margin-bottom: 10%; 
+  margin-top: 7%; 
+  margin-bottom: 5%; 
+}
+
+.logo-logout {
+  color: white;
+  width: 13%;
+  justify-content: right;
+  text-align: right;
+  margin-top: 7%;
+}
+
+.logo-logout:hover {
+  cursor: pointer;
+  opacity: 70%;
 }
 
 .title {
@@ -67,6 +80,18 @@ body, html {
   font-size: 16px;
 }
 
+.homeTitle {
+  margin-right: 5%;
+  margin-bottom: 20%;
+  margin-top: -30%;
+}
+
+.logoutDiv {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5%;
+  margin-bottom: 35%;
+}
 
 .navbar {
   background-color: #666666;
@@ -123,6 +148,7 @@ body, html {
 
 .announcement {
   text-align: center; 
+  margin-top: 5%;
 }
 
 .announcement-title-homepage {
@@ -182,10 +208,11 @@ body, html {
   color: #FF6E2F;
   background-color: white;
   border-top: 2px solid black;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
-  width: 30%;
+  width: 85%;
   height: 50%;
   font-size: 100%;
   font-weight: bold;
@@ -196,17 +223,17 @@ body, html {
 .option-button {
   color: #FF6E2F;
   background-color: white;
-  border-left: none;
-  border-right: none;
   border-top: 2px solid black;
+  border-radius: 5px;
   padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
-  width: 100%;
-  height: 60px;
+  width: 85%;
+  height: 80px;
   font-size: 100%;
   font-weight: bold;
   margin-bottom: 2%;
+  margin-top: 5%;
   justify-content: center;
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/PaymentCompleted.css";
 import logo from "../images/KMITLLogo.png";
+import logoutLogo from '../images/logoutLogo.png'
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -18,20 +19,20 @@ function PaymentCompleted() {
     "post_code": ''
 });
 
-  const getUser = async () => {
-    try {
-      const response = await axios.get("http://localhost:5000/login/success", {
-        withCredentials: true,
-      });
-      setUserData(response.data.user);
-      const email = response.data.user.email;
-      getAddress(email);
-      getImage()
-    } catch (err) {
-      console.log(err);
-      navigate("/");
-    }
-  };
+  // const getUser = async () => {
+  //   try {
+  //     const response = await axios.get("http://localhost:8000/login/success", {
+  //       withCredentials: true,
+  //     });
+  //     setUserData(response.data.user);
+  //     const email = response.data.user.email;
+  //     getAddress(email);
+  //     getImage()
+  //   } catch (err) {
+  //     console.log(err);
+  //     navigate("/");
+  //   }
+  // };
 
   const getImage = async () => {
     const response = await axios.get('http://localhost:5000/get_receipt_image?sid=64011671')
@@ -69,10 +70,10 @@ function PaymentCompleted() {
     }
   };
 
-  useEffect(() => {
-    getUser();
+  // useEffect(() => {
+  //   getUser();
     
-  }, []);
+  // }, []);
 
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
@@ -95,12 +96,20 @@ function PaymentCompleted() {
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
           <div>
-            <h1 className="title">Payment Completed</h1>
-            <p className="subtitle">{userData.displayName}</p>
+
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-paymentCompleted" onClick={handleLogout}/>
+            </div>
+
+            <div className="homeTitle">
+              <h1 className="title">Payment Completed</h1>
+              <p className="subtitle">{userData.displayName}</p>
+            </div>
+            
           </div>
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>
             Personal Information
@@ -111,7 +120,7 @@ function PaymentCompleted() {
             Logout
           </button>
         </div>
-      </nav>
+      </nav> */}
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">Congratulations! 🎉</p>

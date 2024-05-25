@@ -37,3 +37,10 @@
   margin-top: 10%;
   margin-bottom: 5%;
 }
+
+.logo-logout-paymentCompleted {
+  width: 7%;
+  margin-top: -6%;
+  margin-right: -3%;
+  position: absolute;
+}

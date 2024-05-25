@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "../styles/PersonalInfo.css";
 import logo from "../images/KMITLLogo.png";
+import logoutLogo from '../images/logoutLogo.png';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -35,7 +36,7 @@ function PersonalInfo() {
     if (email) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/get_personal_info",
+          "http://localhost:8000/get_personal_info",
           {
             email: email,
           }
@@ -63,7 +64,7 @@ function PersonalInfo() {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("http://localhost:8000/logout", "_self");
   };
   const handleHome = () => {
     navigate("/Home");
@@ -74,12 +75,20 @@ function PersonalInfo() {
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
           <div>
-            <h1 className="title">Personal Information</h1>
-            <p className="subtitle">{userData.displayName}</p>
+
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-personalInfo" onClick={handleLogout}/>
+            </div>
+
+            <div className="personalInfoTitle">
+              <h1 className="title">Personal Information</h1>
+              <p className="subtitle">{userData.displayName}</p>
+            </div>
+            
           </div>
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handleHome}>
             Home Page
@@ -90,7 +99,7 @@ function PersonalInfo() {
             Logout
           </button>
         </div>
-      </nav>
+      </nav> */}
       <div className="personal-info-table">
         <table>
           <tbody>

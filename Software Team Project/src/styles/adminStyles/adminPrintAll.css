@@ -1,55 +1,55 @@
- .ap-header {
-    background-color: #FF6E2F;
-    height: 70%; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px; 
-    color: White;
-  }
+.ap-header {
+  background-color: #FF6E2F;
+  height: 70%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px; 
+  color: White;
+}
   
-  .ap-header-content {
-    display: flex;
-    align-items: center;
-  }
+.ap-header-content {
+  display: flex;
+  align-items: center;
+}
   
-  .ap-logo {
-    width: 150px; 
-    height: auto;
-    margin-right: 10%; 
-    margin-left: 10%; 
-    margin-top: 10%; 
-    margin-bottom: 10%; 
-  }
+.ap-logo {
+  width: 150px; 
+  height: auto;
+  margin-right: 10%; 
+  margin-left: 10%; 
+  margin-top: 10%; 
+  margin-bottom: 10%; 
+}
   
-  .ap-subtitle {
-    font-size: 16px;
-    font-weight: bold;
-  }
+.ap-subtitle {
+  font-size: 16px;
+  font-weight: bold;
+}
   
-  .ap-navbar {
-    background-color: #666666;
-    height: 50px;
-    display: flex;
-  }
+.ap-navbar {
+  background-color: #666666;
+  height: 50px;
+  display: flex;
+}
   
-  .ap-navbar-left {
-    width: 70%;
-    height: auto;
-    background-color: transparent;
-    border: black; 
-    color: white;
-    text-decoration: none; 
-  }
+.ap-navbar-left {
+  width: 70%;
+  height: auto;
+  background-color: transparent;
+  border: black; 
+  color: white;
+  text-decoration: none; 
+}
   
-  .ap-navbar-right {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-  }
+.ap-navbar-right {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
   
-  .ap-logout-button {
+.ap-logout-button {
     background-color: white;
     border: 1px solid black;
     color: Red;
@@ -59,10 +59,10 @@
     width: 100%;
     font-size: 150%;
     font-weight: bold;
-  }
+}
 
   
-  .back-to-home-nav-button {
+.back-to-home-nav-button {
     background-color: white;
     border: 1px solid black;
     color: black;
@@ -166,6 +166,12 @@
     height: 400px; 
     overflow-y: auto; 
   }
+
+  .backIcon:hover {
+    opacity: 50%;
+    cursor: pointer;
+  }
+
   @media print {
     /* Hide navbar and header when printing */
     .ap-navbar, .ap-header {
@@ -175,29 +181,25 @@
       display: none;
     }
   
-    /* Remove height and overflow properties to allow table to break across pages */
     .ap-table-container {
       height: auto;
 
     }
   
-    /* Set table width to 100% and remove table cell padding */
     .ap-table {
       width: 95%;
       border-collapse: collapse;
-      page-break-inside: auto; /* Allow table to break across pages */
+      page-break-inside: auto; 
     }
     
     .ap-table td {
       padding: 0.5;
     }
   
-    /* Remove borders for table header cells */
     .ap-table th {
       border: none;
     }
   
-    /* Set font size and alignment for table header and cells */
     .ap-table th,
     .ap-table td {
       font-size: 14px;

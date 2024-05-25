@@ -26,3 +26,16 @@ td {
 table, td {
   border: 1px solid #000000;
 }
+
+.logo-logout-personalInfo {
+  width: 6%;
+  margin-top: 3%;
+  margin-right: -4%;
+  position: absolute;
+}
+
+.personalInfoTitle {
+  margin-right: 5%;
+  margin-bottom: 15%;
+  margin-top: -20%;
+}

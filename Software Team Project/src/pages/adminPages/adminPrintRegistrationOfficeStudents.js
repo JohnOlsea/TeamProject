@@ -4,6 +4,9 @@ import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminPrintAll.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import logoutLogo from "../../images/logoutLogo.png";
+import * as XLSX from "xlsx";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 function AdminPrintRegistrationOfficeStudents() {
   const userName = "Admin";
@@ -35,8 +38,15 @@ function AdminPrintRegistrationOfficeStudents() {
   const handleBack = () => {
     navigate("/adminPrint");
   };
-  const handlePrint = () => {
-    window.print();
+  const handleExportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(data.map(row => ({
+      "Student ID": row.student_id,
+      "Name": row.name,
+      "Payment Status": row.payment_status
+    })));
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "Students");
+    XLSX.writeFile(wb, "GraduationDayStudents.xlsx");
   };
 
   const handleSort = (selectedOption) => {
@@ -85,23 +95,18 @@ function AdminPrintRegistrationOfficeStudents() {
       <header className="ap-header">
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="am-logo" />
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
+          <div className="am-header-left">
+              <IoChevronBackCircleOutline size={40} color="white" class="backIcon" onClick={handleBack}/>
+          </div>
           <div>
             <h1 className="ap-title">Print All Registration Office Students</h1>
             <p className="ap-admin">{userName}</p>
           </div>
         </div>
       </header>
-
-      <nav className="ap-navbar">
-        <div className="ap-navbar-left">
-          <button className="back-to-home-nav-button" onClick={handleBack}>
-            Back
-          </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div>
-      </nav>
       <h2 style={{ textAlign: "center" }}>
         All Students that have Selected Registration Office
       </h2>
@@ -138,10 +143,10 @@ function AdminPrintRegistrationOfficeStudents() {
           </tbody>
         </table>
       </div>
-
+      
       <div className="button-container">
-        <button className="am-update-button" onClick={handlePrint}>
-          Print
+        <button className="am-update-button" onClick={handleExportToExcel}>
+          Export to Excel
         </button>
       </div>
     </div>

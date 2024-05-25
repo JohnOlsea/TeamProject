@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../images/KMITLLogo.png";
+import logoutLogo from '../images/logoutLogo.png'
 import "../styles/SeeYourOption.css";
 import receiptImage from "../images/receipt.jpg";
 import { useNavigate } from "react-router-dom";
@@ -200,9 +201,9 @@ function SeeYourOption() {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   const handleHome = () => {
     navigate("/Home");
@@ -257,13 +258,18 @@ function SeeYourOption() {
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo" />
           <div>
-            <h1 className="title">See Your Option</h1>
-            <p className="subtitle">{userData.displayName}</p>
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-syo" onClick={handleLogout}/>
+            </div>
+            <div className="seeYourOptionTitle">
+              <h1 className="title">See Your Option</h1>
+              <p className="subtitle">{userData.displayName}</p>
+            </div>
           </div>
         </div>
       </header>
 
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handleHome}>
             Home Page
@@ -274,7 +280,7 @@ function SeeYourOption() {
             Logout
           </button>
         </div>
-      </nav>
+      </nav> */}
       {delivery_status === "Unshipped" ? (
         <div className="option-details">
           <h2>

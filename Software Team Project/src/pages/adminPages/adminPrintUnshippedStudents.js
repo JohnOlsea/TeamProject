@@ -4,6 +4,8 @@ import logo from "../../images/KMITLLogo.png";
 import "../../styles/adminStyles/adminPrint.css";
 import { styled } from "styled-components";
 import axios from "axios";
+import logoutLogo from "../../images/logoutLogo.png";
+import { IoHomeOutline } from "react-icons/io5";
 
 function AdminPrintUnshippedStudents() {
   const { state } = useLocation();
@@ -114,23 +116,18 @@ function AdminPrintUnshippedStudents() {
       <header className="ap-header">
         <div className="ap-header-content">
           <img src={logo} alt="Logo" className="ap-logo" />
+          <div className="am-header-right">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
+          </div>
+          <div className="am-header-left">
+              <IoHomeOutline size={35} color="white" onClick={handleBack}/>
+          </div>
           <div>
             <h1 className="ap-title">Print Unshipped Students</h1>
             <p className="ap-admin">{userName}</p>
           </div>
         </div>
       </header>
-
-      <nav className="ap-navbar">
-        <div className="ap-navbar-left">
-          <button className="back-to-home-nav-button" onClick={handleBack}>
-            Back to Home
-          </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button">Logout</button>
-        </div>
-      </nav>
       <p></p>
 
       <div className="am-table-container">

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import logo from "../images/KMITLLogo.png";
+import logoutLogo from "../images/logoutLogo.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -84,7 +85,7 @@ function Home() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/update_option', {
+      const response = await axios.post('http://locaslhost:5000/update_option', {
         email: userData.email,
         grant_option: selectedOption
       });
@@ -115,20 +116,30 @@ function Home() {
       <header className="header-homepage">
         <div className="header-content">
           <img src={logo} alt="Logo" className="logo-homepage" />
+        
           <div>
-            <h1 className="title">Home Page</h1>
-            <p className="subtitle">{userName}</p>
+
+            <div className="logoutDiv">
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout" onClick={handleLogout}/>
+            </div>
+
+            <div className="homeTitle">
+              <h1 className="title">Home Page</h1>
+              <p className="subtitle">{userName}</p>
+            </div>
+            
           </div>
+          
         </div>
       </header>
-      <nav className="navbar">
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
         </div>
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
-      </nav>
+      </nav> */}
       <div className="announcement">
         <p className="announcement-title-homepage">🎓📜 Welcome Graduates 📜🎓</p>
         {/* <p className="announcement-title2">How to Obtain Your Degree Certificate</p> */}
@@ -150,29 +161,26 @@ function Home() {
         
 
         {/* Buttons for options */}
-        <button className="option-button" onClick={() => handleOptionClick("Graduation Day Pickup")}>Graduation Day Pickup</button>
-        <div className={`option-description ${selectedOption === "Graduation Day Pickup" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            Join us on Graduation Day to receive your certificate in person. Experience the joy of celebrating your accomplishments with your peers and loved ones.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
+        <button className="option-button" onClick={() => {handleOptionClick("Graduation Day Pickup"); handleChooseOption()}}>
+          Graduation Day Pickup<br/>
+          <span style={{color: 'black'}}>มารับเองที่พิธีมอบปริญญาบัตร<br/></span>
+          1,500 THB
+        </button>
 
-        <button className="option-button" onClick={() => handleOptionClick("Pickup at Registration Office")}>Pickup at Registration Office</button>
-        <div className={`option-description ${selectedOption === "Pickup at Registration Office" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            You can visit the institute office at any time during working hours to collect your certificate.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
 
-        <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>Postal Delivery</button>
-        <div className={`option-description ${selectedOption === "Postal Delivery" ? 'active' : ''}`}>
-          <p className="small-font-left-align">
-            Prefer the comfort of receiving your certificate at your doorstep? Opt for postal delivery. Simply provide us with your mailing address, and we'll ensure your certificate reaches you securely.
-          </p>
-          <button className="choose-option-button" onClick={handleChooseOption}>Choose this option</button>
-        </div>
+        <button className="option-button" onClick={() => {handleOptionClick("Pickup at Registration Office"); handleChooseOption()}}>
+          Pickup at Registration Office<br/>
+          <span style={{color: 'black'}}>มารับเองที่สำนักทะเบียนตึกอธิการ<br/></span>
+          1,500 THB
+        </button>
+  
+
+        <button className="option-button" onClick={() => {handleOptionClick("Postal Delivery"); handleChooseOption();}}>
+          Postal Delivery<br/>
+          <span style={{color: 'black'}}>ส่งมอบทางไปรณีย์<br/></span>
+          1,750 THB
+        </button>
+
       </div>
 
       {/* Pop-up message */}

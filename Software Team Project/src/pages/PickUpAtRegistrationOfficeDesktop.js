@@ -28,7 +28,7 @@ function PickUpAtRegistrationOfficeDesktop() {
   }, []);
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open("http://localhost:8000/logout", "_self");
   };
   const handleHome = () => {
     navigate('/Home');

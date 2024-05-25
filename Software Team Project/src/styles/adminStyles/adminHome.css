@@ -23,6 +23,31 @@
     font-size: 20px;
 }
 
+.am-header-right {
+    position: absolute;
+    top: 10px;
+    left: 95%;
+  }
+
+  .am-header-left {
+    position: absolute;
+    top: 10px;
+    right: 95%;
+  }
+
+  .logo-logout-am {
+    color: white;
+    width: 50%;
+    justify-content: right;
+    text-align: right;
+    margin-top: 3px;
+  }
+  
+  .logo-logout-am:hover {
+    cursor: pointer;
+    opacity: 70%;
+  }
+
 .am-header-content {
     display: flex;
     align-items: center;
@@ -50,20 +75,12 @@
 }
 
 .am-navbar-left {
-    width: 70%;
+    width: 100%;
     height: auto;
     background-color: transparent;
     border: black; 
     color: white;
     text-decoration: none; 
-    margin-left: 10px;
-}
-
-.am-navbar-right {
-    width: 30%;
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
 }
 
 .see-all-students-nav-button {
@@ -387,4 +404,9 @@
 
 .white-space {
     background-color: black;
+}
+
+.printAddressIcon:hover {
+    opacity: 50%;
+    cursor: pointer;
 }

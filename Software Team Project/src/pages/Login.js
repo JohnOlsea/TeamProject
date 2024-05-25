@@ -91,7 +91,7 @@ function Login() {
         </div>
       </header>
       <nav className="navbar">
-        King Mongkut's Institute of Technology Ladkrabang
+        <p className='uniName'>King Mongkut's Institute of Technology Ladkrabang</p>
       </nav>
       <div className="login-form">
       <StyledContainer>

@@ -42,9 +42,9 @@ function Home() {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  }, []);
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
 
   const userName = userData.displayName;
 

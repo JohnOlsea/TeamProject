@@ -201,9 +201,9 @@ function SeeYourOption() {
     }
   };
 
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleHome = () => {
     navigate("/Home");
@@ -220,7 +220,7 @@ function SeeYourOption() {
     navigate("/changeReceipt");
   };
   const handleUploadReceipt = () => {
-    navigate("/uploadReceipt");
+    navigate("/payment");
   };
   const handleChangeOption = () => {
     navigate("/home");

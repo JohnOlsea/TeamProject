@@ -191,45 +191,7 @@ app.post("/verify", async (req, res) => {
     return res.status(500).send();
   }
 });
-
-// Verify email and password
-app.options("/verify", async (req, res) => {
-  const { email, password } = req.body;
-  try {
-    connection.query(
-      "SELECT password, role FROM role WHERE email = ?",
-      [email],
-      (err, results, fields) => {
-        if (results.length == 0) {
-          return res.status(401).json({ error: "Incorrect password or email" });
-        }
-        if (err) {
-          console.log(err);
-          return res.status(400).send();
-        }
-        try {
-          if (results[0].password !== password) {
-            return res
-              .status(401)
-              .json({ error: "Incorrect password or email" });
-          }
-
-          if (results[0].role == "admin") {
-            return res.status(200).json({ role: "admin" });
-          }
-          return res.status(200).json({ role: "user" });
-        } catch (err) {
-          console.log(err);
-          return res.status(500).send();
-        }
-      }
-    );
-  } catch (err) {
-    console.log(err);
-    return res.status(500).send();
-  }
-});
-
+  
 // Get student id
 app.get("/get_student_id", async (req, res) => {
   if (req.user) {

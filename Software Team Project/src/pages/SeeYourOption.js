@@ -290,7 +290,7 @@ function SeeYourOption() {
             className="syo-change-your-option-button"
             onClick={handleChangeOption}
           >
-            Change Your Option
+            Change Your Delivery Option
           </button>
         </div>
       ) : (
@@ -343,7 +343,7 @@ function SeeYourOption() {
             className="syo-change-your-option-button"
             onClick={handleChangeReceipt}
           >
-            Change Receipt
+            Update Receipt
           </button>
         </div>
       ) : (

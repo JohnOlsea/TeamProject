@@ -7,10 +7,8 @@ import PersonalInfo from './pages/PersonalInfo'
 import Login from './pages/Login'
 import AddressConfirmation from './pages/AddressConfirmation'
 import Payment from './pages/Payment'
-import PaymentCompleted from './pages/PaymentCompleted'
 import SeeYourOption from './pages/SeeYourOption.js'
 import ChangeReceipt from './pages/ChangeReceipt.js'
-import PaymentForGraduaPick from './pages/PaymentGra_Pick.js'
 
 // Admin Pages
 import AdminHome from './pages/adminPages/adminHome'
@@ -42,10 +40,8 @@ function App() {
           <Route path='personalInfo' element={<PersonalInfo />} />
           <Route path='addressConfirmation' element={<AddressConfirmation />} />
           <Route path='payment' element={<Payment />} />
-          <Route path='paymentCompleted' element={<PaymentCompleted />} />
           <Route path='seeyouroption' element={<SeeYourOption />} />
           <Route path='changeReceipt' element={<ChangeReceipt />} />
-          <Route path='paymentNondelivery' element={<PaymentForGraduaPick />} />
 
           {/* Admin Routes */}
           <Route path='adminHome' element={<AdminHome />} />

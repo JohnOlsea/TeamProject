@@ -404,3 +404,8 @@
 .white-space {
     background-color: black;
 }
+
+.printAddressIcon:hover {
+    opacity: 50%;
+    cursor: pointer;
+}

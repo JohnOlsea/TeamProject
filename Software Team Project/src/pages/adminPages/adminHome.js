@@ -311,7 +311,7 @@ function AdminHome() {
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
           <div className="am-header-left">
-              <MdLocalPrintshop size={40} color="white" onClick={handlePrintAddresses}/>
+              <MdLocalPrintshop size={40} color="white" class="printAddressIcon" onClick={handlePrintAddresses}/>
           </div>
           <div>
             <h1 className="am-title">Home</h1>

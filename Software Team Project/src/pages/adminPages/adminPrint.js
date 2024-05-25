@@ -48,7 +48,7 @@ function AdminPrint() {
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
           <div className="am-header-left">
-              <IoHomeOutline size={35} color="white" onClick={handleBacktToHome}/>
+              <IoHomeOutline size={35} color="white" class="backToHomeIcon" onClick={handleBacktToHome}/>
           </div>
           <div>
             <h1 className="am-title">Print</h1>

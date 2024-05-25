@@ -95,7 +95,7 @@ function AdminPrintPostalDelivery() {
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
           <div className="am-header-left">
-              <IoChevronBackCircleOutline size={40} color="white" onClick={handleBack}/>
+              <IoChevronBackCircleOutline size={40} color="white" class="backIcon" onClick={handleBack}/>
           </div>
           <div>
             <h1 className="ap-title">Print All Postal Service Students</h1>

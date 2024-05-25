@@ -23,7 +23,7 @@ function Home() {
       getOption(email, fname, sname);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");   
     }
   };
 

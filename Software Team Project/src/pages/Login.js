@@ -119,9 +119,7 @@ function Login() {
           <input type="password" id="password" value={formData.password} onChange={handleInputChange} />
         </div>
         {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
-        <button className="login-button" onClick={handleSubmit}>Login</button>
-        <p style={{ textAlign: "center", marginBottom: "8px", textWieght: 'bold' }}>OR</p>
-        <button className="google-button" onClick={handleGoogleLogin}>Sign In with Google</button></StyledContainer>
+        <button className="login-button" onClick={handleSubmit}>Login</button></StyledContainer>
         
       </div>
     </div>

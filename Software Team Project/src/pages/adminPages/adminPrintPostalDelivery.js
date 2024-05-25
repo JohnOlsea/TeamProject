@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logoutLogo from "../../images/logoutLogo.png";
 import * as XLSX from "xlsx";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 function AdminPrintPostalDelivery() {
   const userName = "Admin";
@@ -93,23 +94,15 @@ function AdminPrintPostalDelivery() {
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
+          <div className="am-header-left">
+              <IoChevronBackCircleOutline size={40} color="white" onClick={handleBack}/>
+          </div>
           <div>
             <h1 className="ap-title">Print All Postal Service Students</h1>
             <p className="ap-admin">{userName}</p>
           </div>
         </div>
       </header>
-
-      <nav className="ap-navbar">
-        <div className="am-navbar-left">
-          <button
-            className="back-to-home-nav-button"
-            onClick={handleBack}
-          >
-            Back 
-          </button>
-        </div>
-      </nav>
       <h2 style={{textAlign:'center'}}>All Students Selected Postal Delivery</h2>
       <div className="ap-table-container">
         <table className="ap-table">

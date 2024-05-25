@@ -5,6 +5,7 @@ import "../../styles/adminStyles/adminPrint.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logoutLogo from "../../images/logoutLogo.png";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 function AdminSeeAllUnprintedStudents() {
   const userName = "Admin";
@@ -355,23 +356,15 @@ function AdminSeeAllUnprintedStudents() {
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
+          <div className="am-header-left">
+              <IoChevronBackCircleOutline size={40} color="white" onClick={handleBack}/>
+          </div>
           <div>
             <h1 className="am-title">All Unprinted Students</h1>
             <p className="am-admin">{userName}</p>
           </div>
         </div>
       </header>
-
-      <nav className="ap-navbar">
-        <div className="am-navbar-left">
-          <button
-            className="back-nav-button"
-            onClick={handleBack}
-          >
-            Back 
-          </button>
-        </div>
-      </nav>
       <p></p>
       <div className="am-table-container">
         <table className="am-table">

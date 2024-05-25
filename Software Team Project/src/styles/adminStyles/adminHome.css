@@ -29,6 +29,12 @@
     left: 95%;
   }
 
+  .am-header-left {
+    position: absolute;
+    top: 10px;
+    right: 95%;
+  }
+
   .logo-logout-am {
     color: white;
     width: 50%;

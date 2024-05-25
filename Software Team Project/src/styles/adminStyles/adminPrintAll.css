@@ -181,29 +181,25 @@
       display: none;
     }
   
-    /* Remove height and overflow properties to allow table to break across pages */
     .ap-table-container {
       height: auto;
 
     }
   
-    /* Set table width to 100% and remove table cell padding */
     .ap-table {
       width: 95%;
       border-collapse: collapse;
-      page-break-inside: auto; /* Allow table to break across pages */
+      page-break-inside: auto; 
     }
     
     .ap-table td {
       padding: 0.5;
     }
   
-    /* Remove borders for table header cells */
     .ap-table th {
       border: none;
     }
   
-    /* Set font size and alignment for table header and cells */
     .ap-table th,
     .ap-table td {
       font-size: 14px;

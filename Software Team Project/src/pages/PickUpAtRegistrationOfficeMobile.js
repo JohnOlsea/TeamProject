@@ -13,7 +13,7 @@ function PickUpatRegistrationOfficeMobile() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/login/success", {
+      const response = await axios.get("http://localhost:5000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -28,7 +28,7 @@ function PickUpatRegistrationOfficeMobile() {
   }, []);
 
   const handleLogout = () => {
-    window.open("http://localhost:8000/logout", "_self");
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleHome = () => {
     navigate('/Home');

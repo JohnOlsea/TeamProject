@@ -15,7 +15,7 @@ function AdminPrintPostalDelivery() {
 
   const getAllStudentOptionInfo = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/admin/get_all_student_option_info");
+      const response = await axios.get("http://localhost:5000/admin/get_all_student_option_info");
       const filteredData = response.data.filter(student_info => student_info.grant_option === 'Postal Delivery');
       setData(filteredData);
     } catch (err) {

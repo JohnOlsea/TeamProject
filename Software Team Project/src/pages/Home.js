@@ -14,7 +14,7 @@ function Home() {
   
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/login/success", {
+      const response = await axios.get("http://localhost:5000/login/success", {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -32,7 +32,7 @@ function Home() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:8000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -51,7 +51,7 @@ function Home() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    window.open("http://localhost:8000/logout", "_self");
+    window.open("http://localhost:5000/logout", "_self");
   };
   const handleSeeYourOption = () => {
     navigate("/seeyouroption")
@@ -73,11 +73,11 @@ function Home() {
 
   const handleClosePopup = async () => {
     setShowPopup(false);
-    const response = await axios.post('http://localhost:8000/update_option', {
+    const response = await axios.post('http://localhost:5000/update_option', {
       email: userData.email,
       grant_option: selectedOption
     });
-    await axios.post('http://localhost:8000/create_image_path', {
+    await axios.post('http://localhost:5000/create_image_path', {
       email: userData.email
     })
     navigate('/seeYourOption')
@@ -85,11 +85,11 @@ function Home() {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://locaslhost:8000/update_option', {
+      const response = await axios.post('http://locaslhost:5000/update_option', {
         email: userData.email,
         grant_option: selectedOption
       });
-      await axios.post('http://localhost:8000/create_image_path', {
+      await axios.post('http://localhost:5000/create_image_path', {
         email: userData.email
       })
       switch (selectedOption) {

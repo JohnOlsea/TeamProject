@@ -35,7 +35,7 @@ function PaymentCompleted() {
   // };
 
   const getImage = async () => {
-    const response = await axios.get('http://localhost:8000/get_receipt_image?sid=64011671')
+    const response = await axios.get('http://localhost:5000/get_receipt_image?sid=64011671')
         .then(res => {
             // setImage(res.data[0].image)
             console.log(res.data.image_path);
@@ -49,7 +49,7 @@ function PaymentCompleted() {
       try {
         const student_id = email.split('@')[0]
         const response = await axios.get(
-          `http://localhost:8000/get_address/${student_id}`,
+          `http://localhost:5000/get_address/${student_id}`,
         );
         const info = response.data[0]
         setInfo({
@@ -78,7 +78,7 @@ function PaymentCompleted() {
   const [selectedOption, setSelectedOption] = useState("");
   const navigate = useNavigate();
   const handleLogout = () => {
-    window.open("http://localhost:8000/logout","_self") 
+    window.open("http://localhost:5000/logout","_self") 
   };
   const handleHome = () => {
     navigate("/Home");
@@ -124,7 +124,7 @@ function PaymentCompleted() {
 
       <div className="pc-announcement">
         <p className="pc-announcement-title">Congratulations! 🎉</p>
-        <img src={`http://localhost:8000/images/`+image}></img>
+        <img src={`http://localhost:5000/images/`+image}></img>
 
         <p className="pc-description">
           Your payment for the delivery of your graduation certificate has been

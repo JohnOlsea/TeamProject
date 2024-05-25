@@ -22,7 +22,7 @@ function AdminHome() {
   const getAllStudentOptionInfo = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/admin/get_all_student_option_info"
+        "http://localhost:5000/admin/get_all_student_option_info"
       );
       // console.log(response.data);
       var temp = response.data;
@@ -63,7 +63,7 @@ function AdminHome() {
         item.shipping_id = null
       }
     });
-    await axios.post("http://localhost:8000/admin/update_student_option_info", 
+    await axios.post("http://localhost:5000/admin/update_student_option_info", 
   {data:selectedData})
     window.location.reload()
 };
@@ -224,11 +224,11 @@ function AdminHome() {
 
   const handleViewReceipt = async (sid) => {
     const response = await axios.get(
-      `http://localhost:8000/get_receipt_image?sid=${sid}`
+      `http://localhost:5000/get_receipt_image?sid=${sid}`
     );
     console.log(response.data.image_path);
     window.open(
-      `http://localhost:8000/images/${response.data.image_path}`,
+      `http://localhost:5000/images/${response.data.image_path}`,
       "_blank"
     );
   };

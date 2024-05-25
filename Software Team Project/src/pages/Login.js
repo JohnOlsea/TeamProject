@@ -19,7 +19,7 @@ function Login() {
 
   const getUser = async ()=>{
     try {
-      const response =  await axios.get("http://localhost:8000/login/success", {withCredentials:  true})
+      const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
       navigate('/home')
     } catch (err) {
       console.log(err);
@@ -55,11 +55,11 @@ function Login() {
 
 
   const handleGoogleLogin = () => {
-      window.open("http://localhost:8000/auth/google","_self")
+      window.open("http://localhost:5000/auth/google","_self")
   };
 
   const handleSubmit = async () => {
-    const response = await axios.post("http://localhost:8000/verify", {
+    const response = await axios.post("http://localhost:5000/verify", {
       email : formData.email,
       password : formData.password
     } ).then((response) => {

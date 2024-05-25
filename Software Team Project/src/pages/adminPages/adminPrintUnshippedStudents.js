@@ -15,7 +15,7 @@ function AdminPrintUnshippedStudents() {
 
   const getStudentInfo = async () => {
     const response = await axios
-      .get("http://localhost:8000/admin/get_all_student_info_to_print")
+      .get("http://localhost:5000/admin/get_all_student_info_to_print")
       .then((response) => {
         console.log("Response:", response.data);
         setData(response.data);

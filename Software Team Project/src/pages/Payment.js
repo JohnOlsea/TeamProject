@@ -66,7 +66,7 @@ function Payment() {
       axios.post("http://localhost:5000/upload_receipt", formData)
       .then(res => console.log(res))
       .catch(err => console.log(err));
-      navigate('/AddressConfirmation');
+      navigate('/seeYourOption');
     }
   };  
 

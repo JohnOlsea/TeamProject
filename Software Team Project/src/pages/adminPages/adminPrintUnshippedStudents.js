@@ -7,6 +7,7 @@ import { styled } from "styled-components";
 import axios from "axios";
 import logoutLogo from "../../images/logoutLogo.png";
 import { IoHomeOutline } from "react-icons/io5";
+import { IoChevronBackCircleOutline } from "react-icons/io5";
 
 function AdminPrintUnshippedStudents() {
   const { state } = useLocation();
@@ -121,7 +122,7 @@ function AdminPrintUnshippedStudents() {
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>
           <div className="am-header-left">
-              <IoHomeOutline size={35} color="white" onClick={handleBack}/>
+              <IoChevronBackCircleOutline size={40} color="white" class="backToHomeIcon" onClick={handleBack}/>
           </div>
           <div>
             <h1 className="ap-title">Print Unshipped Students</h1>

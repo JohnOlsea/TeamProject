@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Home.css";
 import logo from "../images/KMITLLogo.png";
+import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logoutLogo from "../images/logoutLogo.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
@@ -24,7 +25,7 @@ function Home() {
       getOption(email, fname, sname);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 
@@ -115,7 +116,7 @@ function Home() {
     <div className="app-container">
       <header className="header-homepage">
         <div className="header-content">
-          <img src={logo} alt="Logo" className="logo-homepage" />
+          <img src={logoKreso} alt="Logo" className="logo-homepage" />
         
           <div>
 
@@ -124,7 +125,7 @@ function Home() {
             </div>
 
             <div className="homeTitle">
-              <h1 className="title">Home Page</h1>
+              <h1 className="titleHomePage">Home Page</h1>
               <p className="subtitle">{userName}</p>
             </div>
             

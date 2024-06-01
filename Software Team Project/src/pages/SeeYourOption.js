@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../images/KMITLLogo.png";
+import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logoutLogo from '../images/logoutLogo.png'
 import "../styles/SeeYourOption.css";
 import receiptImage from "../images/receipt.jpg";
@@ -60,7 +61,7 @@ function SeeYourOption() {
       getImage(email);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 
@@ -256,7 +257,7 @@ function SeeYourOption() {
     <div className="app-container">
       <header className="header">
         <div className="header-content">
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logoKreso} alt="Logo" className="logo" />
           <div>
             <div className="logoutDiv">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-syo" onClick={handleLogout}/>
@@ -314,7 +315,7 @@ function SeeYourOption() {
       ) : (
         <div className="option-details">
           <h2>
-            Payment Status: <span className="orange-text">Unpaid</span>
+            Payment Status: <br></br><span className="orange-text">Unpaid</span>
           </h2>
         </div>
       )}

@@ -257,13 +257,13 @@ function SeeYourOption() {
     <div className="app-container">
       <header className="header">
         <div className="header-content">
-          <img src={logoKreso} alt="Logo" className="logo" />
+          <img src={logoKreso} alt="Logo" className="logoKreso" />
           <div>
             <div className="logoutDiv">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-syo" onClick={handleLogout}/>
             </div>
             <div className="seeYourOptionTitle">
-              <h1 className="title">See Your Option</h1>
+              <h1 className="syo-title">See Your Option</h1>
               <p className="subtitle">{userData.displayName}</p>
             </div>
           </div>

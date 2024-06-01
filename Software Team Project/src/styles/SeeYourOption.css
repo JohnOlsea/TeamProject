@@ -1,3 +1,8 @@
+.syo-title {
+  font-size: 24px;
+  margin-bottom: -16%;
+}
+
 .syo-change-your-option-button {
     color: #FF6E2F;
     background-color: white;
@@ -5,7 +10,7 @@
     font-weight: bold;
     font-size: 100%;
     border-radius: 5px;
-    width: 50%;
+    width: 80%;
     padding: 8px;
     margin-bottom: 2%;
     margin-top: 2%;
@@ -36,10 +41,16 @@
     font-weight: bold;
     font-size: 100%;
     border-radius: 5px;
-    width: 50%;
+    width: 84%;
     padding: 8px;
     margin-bottom: 0%;
     margin-top: 0%;
+}
+
+.logoKreso {
+  width: 110px;
+  height: auto;
+  margin-right: 10%;
 }
 
 .upload-receipt-button-syo:hover {
@@ -47,8 +58,8 @@
 }
 
 .logo-logout-syo {
-  width: 30px;
-  margin-top: -4%;
+  width: 25px;
+  margin-top: 2%;
   margin-right: -10%;
   position: absolute;
 }

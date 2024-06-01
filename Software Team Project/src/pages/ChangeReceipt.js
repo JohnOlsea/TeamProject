@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect} from 'react';
 import '../styles/Payment.css';
+import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from '../images/KMITLLogo.png';
 import logoutLogo from '../images/logoutLogo.png';
 import kmitlQRCode from '../images/kmitlQRCode.png'; 
@@ -22,13 +23,13 @@ function ChangeReceipt() {
       setUserData(response.data.user);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const navigate = useNavigate();
   const fileInputRef = useRef(null);
@@ -73,7 +74,7 @@ function ChangeReceipt() {
     <div className="app-container">
       <header className="header">
         <div className="header-content">
-          <img src={logo} alt="Logo" className="logo-changeReciept" />
+          <img src={logoKreso} alt="Logo" className="logoKresoChangeReciept" />
           <div className='changeRecieptDiv'>
 
             <div className="logoutDiv">
@@ -81,7 +82,7 @@ function ChangeReceipt() {
             </div>
 
             <div className="seeYourOptionTitle">
-              <h1 className="title">Chage Reciept</h1>
+              <h1 className="titleChangeReceiept">Chage Reciept</h1>
               <p className="subtitle">{userData.displayName}</p>
             </div>
 

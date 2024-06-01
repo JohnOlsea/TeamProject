@@ -66,7 +66,39 @@
 
 .logo-logout-changeReciept {
   width: 6%;
+  margin-right: -14%;
+  position: absolute;
+}
+
+.logoKresoPayment {
+  width: 110px;
+  height: auto;
+  margin-right: 15%;
+  margin-top: 10%;
+  margin-bottom: 10%;
+  margin-left: -20%;
+}
+
+.logoKresoChangeReciept {
+  width: 110px;
+  height: auto;
+  margin-right: 15%;
+  margin-left: 5%;
+}
+
+.titlePayment {
+  font-size: 24px;
+  margin-bottom: -15%;
+}
+
+.titleChangeReceiept {
+  font-size: 24px;
+  margin-bottom: -15%;
+}
+
+.logo-logout-payment {
+  width: 25px;
   margin-top: -2%;
-  margin-right: -5%;
+  margin-right: -25%;
   position: absolute;
 }

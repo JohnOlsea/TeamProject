@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect} from 'react';
 import '../styles/Payment.css';
+import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from '../images/KMITLLogo.png';
 import logoutLogo from '../images/logoutLogo.png'
 import kmitlQRCode from '../images/kmitlQRCode.png'; 
@@ -22,7 +23,7 @@ function Payment() {
       setUserData(response.data.user);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 
@@ -74,15 +75,15 @@ function Payment() {
     <div className="app-container">
       <header className="header">
         <div className="header-content">
-          <img src={logo} alt="Logo" className="logo" />
+          <img src={logoKreso} alt="Logo" className="logoKresoPayment" />
           <div>
 
             <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout" onClick={handleLogout}/>
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-payment" onClick={handleLogout}/>
             </div>
 
             <div className="homeTitle">
-              <h1 className="title">Payment</h1>
+              <h1 className="titlePayment">Payment</h1>
               <p className="subtitle">{userData.displayName}</p>
             </div>
             

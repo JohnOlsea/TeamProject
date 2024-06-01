@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from "../../images/KMITLLogo.png";
 import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminPrintAll.css";
@@ -90,7 +91,7 @@ function AdminPrintGraduationDayStudents() {
     <div className="app-container">
       <header className="ap-header">
         <div className="ap-header-content">
-          <img src={logo} alt="Logo" className="am-logo" />
+          <img src={logoKreso} alt="Logo" className="am-logo" />
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>

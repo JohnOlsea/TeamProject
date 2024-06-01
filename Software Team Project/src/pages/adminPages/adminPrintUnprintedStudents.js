@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from "../../images/KMITLLogo.png";
 import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminHome.css";
@@ -152,7 +153,6 @@ function AdminPrintUnprintedStudents() {
     // });
 
     const sortedData = [...data].sort((a, b) => {
-      // Priority for selected option (replace 'selectedOption' with your actual variable)
       if (
         a.grant_option === selectedOption &&
         b.grant_option !== selectedOption
@@ -165,14 +165,12 @@ function AdminPrintUnprintedStudents() {
         return 1;
       }
 
-      // Specific order for "Postal Delivery", "Non-Delivery", "Not Selected Yet"
       const optionOrder = {
         "Postal Delivery": 2,
         "Non-Delivery": 1,
         "Not Selected Yet": 0,
       };
 
-      // Compare based on predefined order
       return optionOrder[a.grant_option] - optionOrder[b.grant_option];
     });
 
@@ -352,7 +350,7 @@ function AdminPrintUnprintedStudents() {
     <div className="app-container">
       <header className="am-header">
         <div className="am-header-content">
-          <img src={logo} alt="Logo" className="am-logo" />
+          <img src={logoKreso} alt="Logo" className="am-logo" />
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>

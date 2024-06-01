@@ -21,7 +21,7 @@ function UploadReceipt() {
       setUserData(response.data.user);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 

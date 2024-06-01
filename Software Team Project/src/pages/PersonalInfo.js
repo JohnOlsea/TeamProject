@@ -28,7 +28,7 @@ function PersonalInfo() {
       getInfo(email);
     } catch (err) {
       console.log(err);
-      navigate("/");
+      // navigate("/");
     }
   };
 

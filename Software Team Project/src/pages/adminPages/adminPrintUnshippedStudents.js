@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from "../../images/KMITLLogo.png";
 import "../../styles/adminStyles/adminPrint.css";
 import { styled } from "styled-components";
@@ -115,7 +116,7 @@ function AdminPrintUnshippedStudents() {
     <div className="app-container">
       <header className="ap-header">
         <div className="ap-header-content">
-          <img src={logo} alt="Logo" className="ap-logo" />
+          <img src={logoKreso} alt="Logo" className="ap-logo" />
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
           </div>

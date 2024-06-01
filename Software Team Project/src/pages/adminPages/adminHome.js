@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import logo from "../../images/KMITLLogo.png";
+import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import settingIcon from "../../images/setting-icon.png";
 import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
@@ -305,7 +306,7 @@ function AdminHome() {
     <div className="app-container">
       <header className="am-header">
         <div className="am-header-content">
-          <img src={logo} alt="Logo" className="am-logo" />
+          <img src={logoKreso} alt="Logo" className="am-logo" />
           
           <div className="am-header-right">
               <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>

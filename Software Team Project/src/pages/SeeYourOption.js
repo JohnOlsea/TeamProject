@@ -270,22 +270,10 @@ function SeeYourOption() {
         </div>
       </header>
 
-      {/* <nav className="navbar">
-        <div className="navbar-left">
-          <button className="nav-button" onClick={handleHome}>
-            Home Page
-          </button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      </nav> */}
       {delivery_status === "Unshipped" ? (
         <div className="option-details">
           <h2>
-            Your Option: <span className="orange-text">{selectedOption}</span>
+            Your Option: <br></br><span className="orange-text">{selectedOption}</span>
           </h2>
           <button
             className="syo-change-your-option-button"
@@ -297,7 +285,7 @@ function SeeYourOption() {
       ) : (
         <div className="option-details">
           <h2>
-            Your Option: <span className="orange-text">{selectedOption}</span>
+            Your Option: <br></br><span className="orange-text">{selectedOption}</span>
           </h2>
           <button className="syo-change-your-option-button-inactive">
             Cannot Change Your Option
@@ -309,7 +297,7 @@ function SeeYourOption() {
         <div className="option-details">
           <h2>
             Payment Verification:{" "}
-            <span className="orange-text">{receipt_verification}</span>
+            <br></br><span className="orange-text">{receipt_verification}</span>
           </h2>
         </div>
       ) : (
@@ -334,14 +322,14 @@ function SeeYourOption() {
       ) : receipt_verification !== "Verified" ? (
         <div className="receipt-div">
           <button
-            className="syo-change-your-option-button"
+            className="syo-see-receipt-button"
             onClick={handleSeeReceipt}
             style={{ marginRight: "5%" }}
           >
             See Receipt
           </button>
           <button
-            className="syo-change-your-option-button"
+            className="syo-update-receipt-button"
             onClick={handleChangeReceipt}
           >
             Update Receipt

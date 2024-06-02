@@ -58,14 +58,9 @@ body, html {
   margin-bottom: 5%; 
 }
 
-.logo-logout {
-  /* color: white;
-  width: 13%;
-  justify-content: right;
-  text-align: right;
-  margin-top: 7%; */
+.logo-logout-home {
   width: 25px;
-  margin-top: -3%;
+  margin-top: -2%;
   margin-right: -20%;
   position: absolute;
 }

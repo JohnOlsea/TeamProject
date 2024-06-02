@@ -10,7 +10,6 @@ import axios from "axios";
 function Home() {
   const [option, setOption] = useState({});
   const [userData, setUserData] = useState({});
-  const [showPopup, setShowPopup] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
   
   const getUser = async () => {
@@ -64,53 +63,22 @@ function Home() {
     navigate("/degreeCertificateCollection");
   };
 
-  const handleOptionClick = (option) => {
-    setSelectedOption(option === selectedOption ? null : option);
-  };
+  const handleOptionClick = async (option) => {
+    setSelectedOption(option);
 
-  const handleChooseOption = () => {
-    setShowPopup(true); 
-  };
-
-  const handleClosePopup = async () => {
-    setShowPopup(false);
-    const response = await axios.post('http://localhost:5000/update_option', {
-      email: userData.email,
-      grant_option: selectedOption
-    });
-    await axios.post('http://localhost:5000/create_image_path', {
-      email: userData.email
-    })
-    navigate('/seeYourOption')
-  };
-
-  const handleSubmit = async () => {
     try {
-      const response = await axios.post('http://locaslhost:5000/update_option', {
+      await axios.post('http://localhost:5000/update_option', {
         email: userData.email,
-        grant_option: selectedOption
+        grant_option: option
       });
       await axios.post('http://localhost:5000/create_image_path', {
         email: userData.email
-      })
-      switch (selectedOption) {
-        case 'Graduation Day Pickup':
-          navigate('/graduationDayPickup');
-          break;
-        case 'Pick up at Registration Office':
-          navigate('/pickUpAtRegistrationOffice');
-          break;
-        case 'Postal Delivery':
-          navigate('/Payment');
-          break;
-        default:
-          break;
-      }
+      });
+      navigate('/seeYourOption');
     } catch (error) {
       console.error('Error submitting form:', error);
     }
   };
-
 
   return (
     <div className="app-container">
@@ -121,78 +89,54 @@ function Home() {
           <div>
 
             <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout" onClick={handleLogout}/>
+              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-home" onClick={handleLogout}/>
             </div>
 
             <div className="homeTitle">
               <h1 className="titleHomePage">Home Page</h1>
-              <p className="subtitle">{userName}</p>
             </div>
             
           </div>
           
         </div>
       </header>
-      {/* <nav className="navbar">
-        <div className="navbar-left">
-          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div>
-      </nav> */}
       <div className="announcement">
         <p className="announcement-title-homepage">🎓📜 Welcome Graduates 📜🎓</p>
-        {/* <p className="announcement-title2">How to Obtain Your Degree Certificate</p> */}
 
         <div style={{marginTop:'5%'}}>
           {Object.keys(option).length > 0 ? (
             <React.Fragment >
-              <p className="small-font-center-align" style={{ color: '#0aec0a', fontWeight: 'bold'}}>Option: {option}</p>
               <button className="home-see-your-option-button" onClick={() => handleSeeYourOption()}>See your option</button>
             </React.Fragment>
-          ) : (
-              <p className="small-font-center-align" style={{ color: 'red', fontWeight: 'bold'}}>
-                Option: No option selected
-              </p>
-          )}
+          ) : null}
         </div>
+
 
         <p className="small-font-left-align" style={{textAlign:"center"}}>Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
         
 
         {/* Buttons for options */}
-        <button className="option-button" onClick={() => {handleOptionClick("Graduation Day Pickup"); handleChooseOption()}}>
+        <button className="option-button" onClick={() => handleOptionClick("Graduation Day Pickup")}>
           Graduation Day Pickup<br/>
           <span style={{color: 'black'}}>มารับเองที่พิธีมอบปริญญาบัตร<br/></span>
           1,500 THB
         </button>
 
 
-        <button className="option-button" onClick={() => {handleOptionClick("Pickup at Registration Office"); handleChooseOption()}}>
+        <button className="option-button" onClick={() => handleOptionClick("Pickup at Registration Office")}>
           Pickup at Registration Office<br/>
           <span style={{color: 'black'}}>มารับเองที่สำนักทะเบียนตึกอธิการ<br/></span>
           1,500 THB
         </button>
   
 
-        <button className="option-button" onClick={() => {handleOptionClick("Postal Delivery"); handleChooseOption();}}>
+        <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>
           Postal Delivery<br/>
           <span style={{color: 'black'}}>ส่งมอบทางไปรณีย์<br/></span>
           1,750 THB
         </button>
 
       </div>
-
-      {/* Pop-up message */}
-      {showPopup && (
-        <div className="popup-homepage">
-          <div className="popup-content">
-            <p className='selected-option'><span className='orange-text'>{selectedOption}</span> option selected</p>
-            <button onClick={handleClosePopup} className="close-popup-button">Close</button>
-          </div>
-        </div>
-      )}
     </div>
   );
 }

@@ -4,16 +4,44 @@
 }
 
 .syo-change-your-option-button {
-    color: #FF6E2F;
-    background-color: white;
-    border: 2px solid black;
-    font-weight: bold;
-    font-size: 100%;
-    border-radius: 5px;
-    width: 80%;
-    padding: 8px;
-    margin-bottom: 2%;
-    margin-top: 2%;
+  color: #FF6E2F;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 100%;
+  border-radius: 5px;
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  background-color: white;
+}
+
+.syo-see-receipt-button {
+  color: #FF6E2F;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 100%;
+  border-radius: 5px;
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-left: 8%;
+  background-color: white;
+}
+
+.syo-update-receipt-button {
+  color: #FF6E2F;
+  border: 2px solid black;
+  font-weight: bold;
+  font-size: 100%;
+  border-radius: 5px;
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 2%;
+  margin-top: 2%;
+  margin-right: 8%;
+  background-color: white;
 }
 
 .syo-change-your-option-button:hover {

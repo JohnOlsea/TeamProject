@@ -99,7 +99,7 @@ function Payment() {
         <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" /> 
       </div>
         {receiptUploaded && (
-          <div style={{ display: "flex", justifyContent:"center"}}>
+          <div className='divRemoveButton'>
             <p style={{ color: "#0aec0a", marginRight:"5%"}}>Receipt uploaded successfully!</p>
             <button className="remove-receipt-button" onClick={handleRemoveReceipt}>Remove</button>
           </div>

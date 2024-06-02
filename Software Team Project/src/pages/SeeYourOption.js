@@ -264,7 +264,7 @@ function SeeYourOption() {
             </div>
             <div className="seeYourOptionTitle">
               <h1 className="syo-title">See Your Option</h1>
-              <p className="subtitle">{userData.displayName}</p>
+              {/* <p className="subtitle">{userData.displayName}</p> */}
             </div>
           </div>
         </div>
@@ -315,7 +315,7 @@ function SeeYourOption() {
               className="upload-receipt-button-syo"
               onClick={handleUploadReceipt}
             >
-              Upload Receipt
+              Make Payment
             </button>
           </div>
         </div>

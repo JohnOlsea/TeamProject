@@ -90,14 +90,10 @@ function Payment() {
           </div>
         </div>
       </header>
-      {/* <nav className="navbar">
-        <div className="navbar-left">
-          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div>
-      </nav> */}
+
+      <div>
+        <p className='paymentKasikorn'>Kasikorn: <span className='orange-text'>631-1-0057-6</span></p>
+      </div>
 
       <div className="pm-announcement">
         <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" /> 

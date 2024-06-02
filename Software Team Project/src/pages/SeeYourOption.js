@@ -10,6 +10,10 @@ import axios from "axios";
 import "../styles/PersonalInfo.css";
 
 function SeeYourOption() {
+
+  const [showPopup, setShowPopup] = useState(false);
+
+
   const [userData, setUserData] = useState({});
   const [selectedOption, setSelectedOption] = useState("");
   const [image, setImage] = useState(null);
@@ -231,6 +235,15 @@ function SeeYourOption() {
     setEditMode(true);
   };
 
+  const handleShowPopup = () => {
+    setShowPopup(true);
+  };
+  
+  const handleClosePopup = () => {
+    setShowPopup(false);
+  };
+  
+
   const handleSave = () => {
     setEditMode(false);
     console.log("Edited data:", addressInfo);
@@ -253,6 +266,21 @@ function SeeYourOption() {
     setAddressInfo({ ...addressInfo, [name]: value });
   };
 
+  const Popup = ({ onClose }) => {
+    return (
+      <div className="popup-overlay">
+        <div className="popup-content">
+          <h2>Your receipt is waiting to be verified</h2>
+          <p>If you have any questions, please contact the KMITL Registration Office</p>
+          <p>Tel: 02-329-8000</p>
+          <p>Fax: 0-2329-8106</p>
+          <p>Email: pr.kmitl@kmitl.ac.th</p>
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>
+    );
+  };
+  
   return (
     <div className="app-container">
       <header className="header">
@@ -269,7 +297,7 @@ function SeeYourOption() {
           </div>
         </div>
       </header>
-
+  
       {delivery_status === "Unshipped" ? (
         <div className="option-details">
           <h2>
@@ -277,7 +305,7 @@ function SeeYourOption() {
           </h2>
           <button
             className="syo-change-your-option-button"
-            onClick={handleChangeOption}
+            onClick={receipt_verification === "Waiting to be verified" ? handleShowPopup : handleChangeOption}
           >
             Change Your Delivery Option
           </button>
@@ -292,7 +320,7 @@ function SeeYourOption() {
           </button>
         </div>
       )}
-
+  
       {image ? (
         <div className="option-details">
           <h2>
@@ -307,7 +335,7 @@ function SeeYourOption() {
           </h2>
         </div>
       )}
-
+  
       {!image ? (
         <div>
           <div className="receipt-div" style={{ justifyContent: "center" }}>
@@ -507,7 +535,7 @@ function SeeYourOption() {
           </table>
         </div>
       )}
-
+  
       {selectedOption === "Postal Delivery" && (
         <div className="option-details">
           <h2>
@@ -523,8 +551,11 @@ function SeeYourOption() {
           </h2>
         </div>
       )}
+  
+      {showPopup && <Popup onClose={handleClosePopup} />}
     </div>
   );
+  
 }
 
 export default SeeYourOption;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import logo from "../../images/KMITLLogo.png";
 import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import settingIcon from "../../images/setting-icon.png";
+import shippingIcon from "../../images/shipping-icon.png";
 import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -216,7 +217,8 @@ function AdminHome() {
             className="settings-icon"
             onClick={(e) => handleSettingsClick(e, shipping_id, index)}
           >
-            <img src={settingIcon} alt="Settings" />
+            {/* <img src={settingIcon} alt="Settings" /> */}
+            <img src={shippingIcon} alt="Settings" />
           </a>
         </td>
       );

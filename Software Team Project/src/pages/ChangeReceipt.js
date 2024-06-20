@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect} from 'react';
 import '../styles/Payment.css';
-import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import logo from '../images/KMITLLogo.png';
-import logoutLogo from '../images/logoutLogo.png';
 import kmitlQRCode from '../images/kmitlQRCode.png'; 
 import receiptImage from '../images/receipt.jpg'; 
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import Header from "./Header";
 
 function ChangeReceipt() {
   const [receiptUploaded, setReceiptUploaded] = useState(false);
@@ -72,32 +70,7 @@ function ChangeReceipt() {
 
   return (
     <div className="app-container">
-      <header className="header">
-        <div className="header-content">
-          <img src={logoKreso} alt="Logo" className="logoKresoChangeReciept" />
-          <div className='changeRecieptDiv'>
-
-            <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-changeReciept" onClick={handleLogout}/>
-            </div>
-
-            <div className="seeYourOptionTitle">
-              <h1 className="titleChangeReceiept">Chage Reciept</h1>
-              <p className="subtitle">{userData.displayName}</p>
-            </div>
-
-          </div>
-        </div>
-      </header>
-      {/* <nav className="navbar">
-        <div className="navbar-left">
-          <button className="nav-button" onClick={handlePersonalInfo}>Personal Information</button>
-        </div>
-        <div className="navbar-right">
-          <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div>
-      </nav> */}
-
+      <Header title="Change Receipt" userData={userData} />
       <div className="pm-announcement">
         <img src={kmitlQRCode} alt="QRCode Image" className="qrcode-image" /> 
       </div>

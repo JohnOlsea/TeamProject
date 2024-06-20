@@ -6,6 +6,7 @@ import "../styles/AddressConfirmation.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PersonalInfo from "./PersonalInfo";
+import Header from "./Header";
 
 function AddressConfirmation() {
   const navigate = useNavigate();
@@ -101,24 +102,8 @@ function AddressConfirmation() {
   };
   return (
     <div className="app-container">
-      <header className="header">
-        <div className="header-content">
-          <img src={logo} alt="Logo" className="logo" />
-          <div>
-
-            <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-addrConf" onClick={handleLogout}/>
-            </div>
-
-            <div className="homeTitle">
-              <h1 className="title">Address Confirmation</h1>
-              <p className="subtitle">{userData.displayName}</p>
-            </div>
-            
-          </div>
-        </div>
-      </header>
-      <nav className="navbar">
+      <Header title="Address Confirmation" userData={userData} />
+      {/* <nav className="navbar">
         <div className="navbar-left">
           <button className="nav-button" onClick={handlePersonalInfo}>
             Personal Information
@@ -129,7 +114,7 @@ function AddressConfirmation() {
             Logout
           </button>
         </div>
-      </nav>
+      </nav> */}
       
       <div className="announcement-addressconfirm">
         <p className="announcement-title-addressconfirm">

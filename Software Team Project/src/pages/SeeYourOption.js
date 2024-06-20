@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import logo from "../images/KMITLLogo.png";
-import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import logoutLogo from '../images/logoutLogo.png'
 import "../styles/SeeYourOption.css";
 import receiptImage from "../images/receipt.jpg";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import axios from "axios";
+import Header from "./Header";
 import "../styles/PersonalInfo.css";
+import "../styles/SeeYourOption.css";
 
 function SeeYourOption() {
 
@@ -266,38 +265,23 @@ function SeeYourOption() {
     setAddressInfo({ ...addressInfo, [name]: value });
   };
 
-  const Popup = ({ onClose }) => {
+  const Popup = ({ title, message, onClose }) => {
     return (
       <div className="popup-overlay">
         <div className="popup-content">
-          <h2>Your receipt is waiting to be verified</h2>
-          <p>If you have any questions, please contact the KMITL Registration Office</p>
-          <p>Tel: 02-329-8000</p>
-          <p>Fax: 0-2329-8106</p>
-          <p>Email: pr.kmitl@kmitl.ac.th</p>
+          <h2>{title}</h2>
+          <p>{message}</p>
           <button onClick={onClose}>Close</button>
         </div>
       </div>
     );
   };
   
+  
   return (
     <div className="app-container">
-      <header className="header">
-        <div className="header-content">
-          <img src={logoKreso} alt="Logo" className="logoKreso" />
-          <div>
-            <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-syo" onClick={handleLogout}/>
-            </div>
-            <div className="seeYourOptionTitle">
-              <h1 className="syo-title">See Your Option</h1>
-              {/* <p className="subtitle">{userData.displayName}</p> */}
-            </div>
-          </div>
-        </div>
-      </header>
-  
+      <Header title="Option" userData={userData} />
+
       {delivery_status === "Unshipped" ? (
         <div className="option-details">
           <h2>

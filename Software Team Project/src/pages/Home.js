@@ -1,17 +1,13 @@
-import React from "react";
-import "../styles/Home.css";
-import logo from "../images/KMITLLogo.png";
-import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import logoutLogo from "../images/logoutLogo.png";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
 import axios from "axios";
+import Header from "./Header";
+import "../styles/Home.css";
 
 function Home() {
   const [option, setOption] = useState({});
   const [userData, setUserData] = useState({});
-  const [selectedOption, setSelectedOption] = useState(null);
-  
+
   const getUser = async () => {
     try {
       const response = await axios.get("http://localhost:5000/login/success", {
@@ -46,26 +42,9 @@ function Home() {
     getUser();
   }, []);
 
-  const userName = userData.displayName;
-
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
-  };
-  const handleSeeYourOption = () => {
-    navigate("/seeyouroption")
-  }
-  const handlePersonalInfo = () => {
-    navigate("/personalInfo");
-  };
-  const handleDegreeCertificateCollection = () => {
-    navigate("/degreeCertificateCollection");
-  };
-
   const handleOptionClick = async (option) => {
-    setSelectedOption(option);
-
     try {
       await axios.post('http://localhost:5000/update_option', {
         email: userData.email,
@@ -82,60 +61,30 @@ function Home() {
 
   return (
     <div className="app-container">
-      <header className="header-homepage">
-        <div className="header-content">
-          <img src={logoKreso} alt="Logo" className="logo-homepage" />
-        
-          <div>
-
-            <div className="logoutDiv">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-home" onClick={handleLogout}/>
-            </div>
-
-            <div className="homeTitle">
-              <h1 className="titleHomePage">Home Page</h1>
-            </div>
-            
-          </div>
-          
-        </div>
-      </header>
+      <Header title="Home" userData={userData} />
       <div className="announcement">
         <p className="announcement-title-homepage">🎓📜 Welcome Graduates 📜🎓</p>
-
-        <div style={{marginTop:'5%'}}>
-          {Object.keys(option).length > 0 ? (
-            <React.Fragment >
-              <button className="home-see-your-option-button" onClick={() => handleSeeYourOption()}>See your option</button>
-            </React.Fragment>
-          ) : null}
+        <div style={{ marginTop: '5%' }}>
+          {Object.keys(option).length > 0 && (
+            <button className="home-see-your-option-button" onClick={() => navigate("/seeyouroption")}>See your option</button>
+          )}
         </div>
-
-
-        <p className="small-font-left-align" style={{textAlign:"center"}}>Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
-        
-
-        {/* Buttons for options */}
+        <p className="small-font-left-align" style={{ textAlign: "center" }}>Dear Graduates, You have <span className='orange-text'>three options</span> to collect your degree certificate:</p>
         <button className="option-button" onClick={() => handleOptionClick("Graduation Day Pickup")}>
-          Graduation Day Pickup<br/>
-          <span style={{color: 'black'}}>มารับเองที่พิธีมอบปริญญาบัตร<br/></span>
+          Graduation Day Pickup<br />
+          <span style={{ color: 'black' }}>มารับเองที่พิธีมอบปริญญาบัตร<br /></span>
           1,500 THB
         </button>
-
-
         <button className="option-button" onClick={() => handleOptionClick("Pickup at Registration Office")}>
-          Pickup at Registration Office<br/>
-          <span style={{color: 'black'}}>มารับเองที่สำนักทะเบียนตึกอธิการ<br/></span>
+          Pickup at Registration Office<br />
+          <span style={{ color: 'black' }}>มารับเองที่สำนักทะเบียนตึกอธิการ<br /></span>
           1,500 THB
         </button>
-  
-
         <button className="option-button" onClick={() => handleOptionClick("Postal Delivery")}>
-          Postal Delivery<br/>
-          <span style={{color: 'black'}}>ส่งมอบทางไปรณีย์<br/></span>
+          Postal Delivery<br />
+          <span style={{ color: 'black' }}>ส่งมอบทางไปรณีย์<br /></span>
           1,750 THB
         </button>
-
       </div>
     </div>
   );

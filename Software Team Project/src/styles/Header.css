@@ -43,6 +43,11 @@
 .logout-header {
     width: 30px;
 }
+
+.logout-header:hover {
+    cursor: pointer;
+    opacity: 50%;
+}
   
 .title-header {
     margin: 0;

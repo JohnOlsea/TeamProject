@@ -28,20 +28,6 @@ function AdminPrintUnshippedStudents() {
     getStudentInfo();
   }, []);
 
-  const handleLogout = () => {
-    navigate("/adminLogin");
-  };
-
-  const handleBack = () => {
-    navigate("/adminPrint");
-  };
-
-  const handleStatusChange = (index, status) => {
-    const newData = [...data];
-    newData[index].status = status;
-    setData(newData);
-  };
-
   const handleCheckboxChange = (index) => {
     const newData = [...data];
     newData[index].checked = !newData[index].checked;
@@ -50,23 +36,6 @@ function AdminPrintUnshippedStudents() {
     const addressSections = document.querySelectorAll(".address-section");
     addressSections[index].classList.toggle("selected");
   };
-
-  // const handleAllCheckboxChange = () => {
-  //   const newData = data.map((item) => ({
-  //     ...item,
-  //     checked: !data.every((item) => item.checked),
-  //   }));
-  //   setData(newData);
-
-  //   const addressSections = document.querySelectorAll(".address-section");
-  //   addressSections.forEach((row, index) => {
-  //     if (newData[index].checked) {
-  //       row.classList.add("selected");
-  //     } else {
-  //       row.classList.remove("selected");
-  //     }
-  //   });
-  // };
 
   const handleAllCheckboxChange = () => {
     if (data.length > 0) {
@@ -161,6 +130,7 @@ function AdminPrintUnshippedStudents() {
           Print
         </button>
       </div>
+
       <div className="address-container">
         {data.map((row, index) => (
           <div key={index} className="address-section">

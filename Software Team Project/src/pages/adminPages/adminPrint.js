@@ -1,20 +1,11 @@
 import React, { useState, useEffect} from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import logo from '../../images/KMITLLogo.png';
-import settingIcon from '../../images/setting-icon.png'; 
+import { useNavigate } from 'react-router-dom';
 import '../../styles/adminStyles/adminPrint.css';
-import logoutLogo from "../../images/logoutLogo.png";
-import { IoHomeOutline } from "react-icons/io5";
-
+import AdminHeader from './adminHeader';
 
 function AdminPrint() {
   const userName = "Admin";
   const navigate = useNavigate();
-
-  const handleLogout = () => {
-    navigate('/login');
-  };
 
   const handlePrintAllStudents = () => {
     navigate('/adminPrintAllStudents');
@@ -36,27 +27,18 @@ function AdminPrint() {
     navigate('/adminPrintUnshippedStudents');
   }
 
-  const handleBacktToHome = () => {
-    navigate('/adminHome')
-  }
+  const handleBackToHome = () => {
+    navigate("/adminHome");  
+  };
 
   return (
     <div className="app-container">
-      <header className="am-header">
-        <div className="am-header-content">
-          <div className="am-header-left">
-            <IoHomeOutline size={35} color="white" className="backToHomeIcon" onClick={handleBacktToHome} />
-          </div>
-          <img src={logoKreso} alt="Logo" className="am-logo" />
-          <div>
-            <h1 className="am-title">Print</h1>
-            <p className="am-admin">{userName}</p>
-          </div>
-          <div className="am-header-right">
-            <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout} />
-          </div>
-        </div>
-      </header>
+      <AdminHeader 
+        title="Print" 
+        userName={userName} 
+        onBack={handleBackToHome} 
+        backIconType="home" 
+      /> 
   
       <div className="am-main-container">
         <div className="am-main-item">

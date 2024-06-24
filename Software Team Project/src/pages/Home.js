@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 import "../styles/Home.css";
+import BACKENDURL from '../service/service';
 
 function Home() {
   const [option, setOption] = useState({});
@@ -10,7 +11,7 @@ function Home() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get(`${BACKENDURL}/login/success`, {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -28,7 +29,7 @@ function Home() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `${BACKENDURL}/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -46,11 +47,11 @@ function Home() {
 
   const handleOptionClick = async (option) => {
     try {
-      await axios.post('http://localhost:5000/update_option', {
+      await axios.post(`${BACKENDURL}/update_option`, {
         email: userData.email,
         grant_option: option
       });
-      await axios.post('http://localhost:5000/create_image_path', {
+      await axios.post(`${BACKENDURL}/create_image_path`, {
         email: userData.email
       });
       navigate('/seeYourOption');

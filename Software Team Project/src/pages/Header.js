@@ -3,12 +3,13 @@ import logoKreso from "../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso
 import logoutLogo from '../images/logoutLogo.png';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Header.css';
+import BACKENDURL from '../service/service';
 
 function Header({ title, userData }) {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open(`${BACKENDURL}/logout`, "_self");
   };
 
   return (
@@ -19,7 +20,7 @@ function Header({ title, userData }) {
         </div>
         <div className="header-center">
           <h1 className="title-header">{title}</h1>
-          {userData && <p className="subtitle-header">{userData.displayName}</p>}
+          {/* {userData && <p className="subtitle-header">{userData.displayName}</p>} */}
         </div>
         <div className="header-right">
           <img src={logoutLogo} alt="logoutLogo" className="logout-header" onClick={handleLogout} />

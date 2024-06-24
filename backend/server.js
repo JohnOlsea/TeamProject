@@ -32,7 +32,7 @@ const connection = mysql.createConnection({
   user: "root",
   password: "root",
   database: "project_db",
-  port: "3306",
+  port: "8889",
 });
 
 // Connect to MySQL

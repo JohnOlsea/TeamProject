@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import logoutLogo from "../../images/logoutLogo.png";
 import { IoChevronBackCircleOutline } from "react-icons/io5";
+import BACKENDURL from "../../service/service";
 
 function AdminSeeAllUnprintedStudents() {
   const userName = "Admin";
@@ -21,7 +22,7 @@ function AdminSeeAllUnprintedStudents() {
   const getAllStudentOptionInfo = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/admin/get_all_student_option_info"
+        `${BACKENDURL}/admin/get_all_student_option_info`
       );
       // console.log(response.data);
       var temp = response.data;

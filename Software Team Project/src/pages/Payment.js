@@ -4,6 +4,7 @@ import axios from "axios";
 import Header from "./Header";
 import { useNavigate } from 'react-router-dom';
 import '../styles/Payment.css';
+import BACKENDURL from '../service/service';
 
 function Payment() {
   const [receiptUploaded, setReceiptUploaded] = useState(false);
@@ -13,7 +14,7 @@ function Payment() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get(`${BACKENDURL}/login/success`, {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -55,7 +56,7 @@ function Payment() {
       const formData = new FormData();
       formData.append('image', receiptFile);
       formData.append('student_id', userData.email.split("@")[0]);
-      axios.post("http://localhost:5000/upload_receipt", formData)
+      axios.post(`${BACKENDURL}/upload_receipt`, formData)
         .then(res => console.log(res))
         .catch(err => console.log(err));
       navigate('/seeYourOption');

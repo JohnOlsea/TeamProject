@@ -1,0 +1,64 @@
+/* adminHeader.css */
+.ah-header {
+    background-color: #FF6E2F;
+    height: 70%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .ah-header-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 150px;
+    justify-content: space-between;
+  }
+  
+  .ah-logo {
+    width: 150px;
+    height: auto;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+  
+  .ah-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 20px; /* Adjust this value as needed to move it closer or further from the right border */
+  }
+  
+  .ah-header-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .ah-logo-logout {
+    cursor: pointer;
+    width: 15%;
+    margin-right: 0; 
+  }
+  
+  .ah-back-icon {
+    cursor: pointer;
+    margin-left: 30px;
+  }
+  
+  .ah-title-container {
+    text-align: center;
+    flex-grow: 1;
+  }
+  
+  .ah-title {
+    margin: 0;
+  }
+  
+  .ah-admin {
+    margin: 0;
+  }
+  

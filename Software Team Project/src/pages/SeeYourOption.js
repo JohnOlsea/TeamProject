@@ -7,6 +7,7 @@ import axios from "axios";
 import Header from "./Header";
 import "../styles/PersonalInfo.css";
 import "../styles/SeeYourOption.css";
+import BACKENDURL from "../service/service";
 
 function SeeYourOption() {
 
@@ -46,7 +47,7 @@ function SeeYourOption() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get(`${BACKENDURL}/login/success`, {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -72,7 +73,7 @@ function SeeYourOption() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/grant_option/${student_id}?fname=${fname}&sname=${sname}`
+        `${BACKENDURL}/grant_option/${student_id}?fname=${fname}&sname=${sname}`
       );
       console.log(response.data);
       if (response.data.grant_option != null)
@@ -86,7 +87,7 @@ function SeeYourOption() {
     if (email) {
       try {
         const response = await axios.post(
-          "http://localhost:5000/get_personal_info",
+          `${BACKENDURL}/get_personal_info`,
           {
             email: email,
           }
@@ -112,7 +113,7 @@ function SeeYourOption() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/shipping_id/${student_id}`
+        `${BACKENDURL}/shipping_id/${student_id}`
       );
       console.log(response.data);
       if (response.data.shipping_id != null) {
@@ -131,7 +132,7 @@ function SeeYourOption() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios.get(
-        `http://localhost:5000/get_receipt_verification/${student_id}`
+        `${BACKENDURL}/get_receipt_verification/${student_id}`
       );
       console.log("receipt verification, ", response.data);
       if (response.data[0].receipt_verification != null) {
@@ -149,7 +150,7 @@ function SeeYourOption() {
     try {
       const student_id = email.split("@")[0];
       const response = await axios
-        .get(`http://localhost:5000/get_receipt_image?sid=${student_id}`)
+        .get(`${BACKENDURL}/get_receipt_image?sid=${student_id}`)
         .then((res) => {
           console.log("Image Path:", res.data.image_path);
           setImage(res.data.image_path);
@@ -165,7 +166,7 @@ function SeeYourOption() {
       try {
         const student_id = email.split("@")[0];
         const response = await axios.get(
-          `http://localhost:5000/get_address/${student_id}`
+          `${BACKENDURL}/get_address/${student_id}`
         );
         const info = response.data[0];
         if (info) {
@@ -180,7 +181,7 @@ function SeeYourOption() {
             post_code: info.post_code,
           });
         } else {
-          await axios.post(`http://localhost:5000/update_address`,
+          await axios.post(`${BACKENDURL}/update_address`,
          {
           student_id: student_id,
           name: `${fname} ${sname}` ,
@@ -214,11 +215,11 @@ function SeeYourOption() {
   };
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open(`${BACKENDURL}/logout`, "_self");
   };
 
   const handleSeeReceipt = () => {
-    window.open("http://localhost:5000/images/" + image, "_blank");
+    window.open(`${BACKENDURL}/images/` + image, "_blank");
   };
   const handleChangeReceipt = () => {
     navigate("/changeReceipt");
@@ -251,7 +252,7 @@ function SeeYourOption() {
     console.log("Edited data:", addressInfo);
 
     axios
-      .post("http://localhost:5000/update_address", addressInfo)
+      .post(`${BACKENDURL}/update_address`, addressInfo)
       .then((response) => {
         console.log("Response:", response.data);
       })

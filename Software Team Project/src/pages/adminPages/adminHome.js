@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import logo from "../../images/KMITLLogo.png";
-import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import settingIcon from "../../images/setting-icon.png";
-import shippingIcon from "../../images/shipping-icon.png";
-import "../../styles/adminStyles/adminHome.css";
 import { useNavigate } from "react-router-dom";
+import BACKENDURL from "../../service/service";
+import AdminHeader from "./adminHeader";
+import shippingIcon from "../../images/shipping-icon.png";
 import axios from "axios";
-import logoutLogo from "../../images/logoutLogo.png";
-import { IoPrintOutline } from "react-icons/io5";
-import { MdLocalPrintshop } from "react-icons/md";
+import "../../styles/adminStyles/adminHome.css";
 
 function AdminHome() {
   const userName = "Admin";
@@ -24,7 +20,7 @@ function AdminHome() {
   const getAllStudentOptionInfo = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:5000/admin/get_all_student_option_info"
+        `${BACKENDURL}/admin/get_all_student_option_info`
       );
       // console.log(response.data);
       var temp = response.data;
@@ -45,12 +41,8 @@ function AdminHome() {
     getAllStudentOptionInfo();
   }, []);
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
-  const handlePrintAddresses = () => {
-    navigate("/adminPrint");
+  const handleToPrint = () => {
+    navigate("/adminPrint");  
   };
 
   const handleCancel = () => {
@@ -65,7 +57,7 @@ function AdminHome() {
         item.shipping_id = null
       }
     });
-    await axios.post("http://localhost:5000/admin/update_student_option_info", 
+    await axios.post(`${BACKENDURL}/admin/update_student_option_info`, 
   {data:selectedData})
     window.location.reload()
 };
@@ -227,11 +219,11 @@ function AdminHome() {
 
   const handleViewReceipt = async (sid) => {
     const response = await axios.get(
-      `http://localhost:5000/get_receipt_image?sid=${sid}`
+      `${BACKENDURL}/get_receipt_image?sid=${sid}`
     );
     console.log(response.data.image_path);
     window.open(
-      `http://localhost:5000/images/${response.data.image_path}`,
+      `${BACKENDURL}/images/${response.data.image_path}`,
       "_blank"
     );
   };
@@ -306,22 +298,12 @@ function AdminHome() {
 
   return (
     <div className="app-container">
-      <header className="am-header">
-        <div className="am-header-content">
-          <img src={logoKreso} alt="Logo" className="am-logo" />
-          
-          <div className="am-header-right">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
-          </div>
-          <div className="am-header-left">
-              <MdLocalPrintshop size={40} color="white" class="printAddressIcon" onClick={handlePrintAddresses}/>
-          </div>
-          <div>
-            <h1 className="am-title">Home</h1>
-            <p className="am-admin">{userName}</p>
-          </div>
-        </div>
-      </header>
+      <AdminHeader 
+        title="Home" 
+        userName={userName} 
+        onBack={handleToPrint} 
+        backIconType="print"  
+      />
       <p></p>
       <div className="am-table-container">
         <table className="am-table">

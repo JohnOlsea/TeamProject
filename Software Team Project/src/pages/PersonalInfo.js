@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./Header"
 import "../styles/PersonalInfo.css";
+import BACKENDURL from "../service/service";
 
 function PersonalInfo() {
   const [userData, setUserData] = useState({});
@@ -19,7 +20,7 @@ function PersonalInfo() {
 
   const getUser = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/login/success", {
+      const response = await axios.get(`${BACKENDURL}/login/success`, {
         withCredentials: true,
       });
       setUserData(response.data.user);
@@ -35,7 +36,7 @@ function PersonalInfo() {
     if (email) {
       try {
         const response = await axios.post(
-          "http://localhost:8000/get_personal_info",
+          `${BACKENDURL}/get_personal_info`,
           {
             email: email,
           }
@@ -63,7 +64,7 @@ function PersonalInfo() {
 
   const navigate = useNavigate();
   const handleLogout = () => {
-    window.open("http://localhost:8000/logout", "_self");
+    window.open(`${BACKENDURL}/logout`, "_self");
   };
   const handleHome = () => {
     navigate("/Home");

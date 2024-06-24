@@ -6,6 +6,8 @@ import '../styles/LoginButton.css';
 import '../styles/GoogleButton.css';
 import logo from '../images/KMITLLogo.png'; 
 import axios  from 'axios';
+import BACKENDURL from '../service/service';
+
 export const StyledContainer = styled.div`
   display: grid;
   justify-items: center;
@@ -19,7 +21,7 @@ function Login() {
 
   const getUser = async ()=>{
     try {
-      const response =  await axios.get("http://localhost:5000/login/success", {withCredentials:  true})
+      const response =  await axios.get(`${BACKENDURL}/login/success`, {withCredentials:  true})
       navigate('/home')
     } catch (err) {
       console.log(err);
@@ -55,11 +57,11 @@ function Login() {
 
 
   const handleGoogleLogin = () => {
-      window.open("http://localhost:5000/auth/google","_self")
+      window.open(`${BACKENDURL}/auth/google`,"_self")
   };
 
   const handleSubmit = async () => {
-    const response = await axios.post("http://localhost:5000/verify", {
+    const response = await axios.post(`${BACKENDURL}/verify`, {
       email : formData.email,
       password : formData.password
     } ).then((response) => {

@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
-import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
-import logo from "../../images/KMITLLogo.png";
-import settingIcon from "../../images/setting-icon.png";
-import "../../styles/adminStyles/adminPrintAll.css";
 import { useNavigate } from "react-router-dom";
+import BACKENDURL from "../../service/service";
+import AdminHeader from "./adminHeader";
 import axios from "axios";
-import logoutLogo from "../../images/logoutLogo.png";
 import * as XLSX from "xlsx";
-import { IoChevronBackCircleOutline } from "react-icons/io5";
+// import "../../styles/adminStyles/adminPrintAll.css";
 
 function AdminPrintGraduationDayStudents() {
   const userName = "Admin";
@@ -16,8 +13,8 @@ function AdminPrintGraduationDayStudents() {
 
   const getAllStudentOptionInfo = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/admin/get_all_student_option_info");
-      const filteredData = response.data.filter(student_info => student_info.grant_option === 'Graduation Day Pickup');
+      const response = await axios.get(`${BACKENDURL}/admin/get_all_student_option_info`);
+      const filteredData = response.data.filter(student_info => student_info.grant_option === 'Graduation Day Pick up');
       setData(filteredData);
     } catch (err) {
       console.log(err);
@@ -28,13 +25,6 @@ function AdminPrintGraduationDayStudents() {
     getAllStudentOptionInfo();
   }, []);
 
-  const handleLogout = () => {
-    navigate("/login");
-  };
-
-  const handleBack = () => {
-    navigate("/adminPrint");
-  };
   const handleExportToExcel = () => {
     const ws = XLSX.utils.json_to_sheet(data.map(row => ({
       "Student ID": row.student_id,
@@ -89,21 +79,7 @@ function AdminPrintGraduationDayStudents() {
 
   return (
     <div className="app-container">
-      <header className="ap-header">
-        <div className="ap-header-content">
-          <img src={logoKreso} alt="Logo" className="am-logo" />
-          <div className="am-header-right">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
-          </div>
-          <div className="am-header-left">
-              <IoChevronBackCircleOutline size={40} color="white" class="backIcon" onClick={handleBack}/>
-          </div>
-          <div>
-            <h1 className="ap-title">Print All Graduation Day Students</h1>
-            <p className="ap-admin">{userName}</p>
-          </div>
-        </div>
-      </header>
+      <AdminHeader title="Print Graduation Day Students" userName={userName} /> 
       <h2 style={{textAlign:'center'}}>All students selecting Graduation Day Pickup</h2>
       <div className="ap-table-container">
         <table className="ap-table">

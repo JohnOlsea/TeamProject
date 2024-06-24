@@ -4,6 +4,7 @@ import logo from "../images/KMITLLogo.png";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BACKENDURL from "../service/service";
 
 function ImageTest() {
 
@@ -24,7 +25,7 @@ function ImageTest() {
   return (
     <div className="app-container">
       <p>Test Image</p>
-      <img src={`http://localhost:5000/images/`+image}></img>
+      <img src={`${BACKENDURL}/images/`+image}></img>
     </div>
   );
 }

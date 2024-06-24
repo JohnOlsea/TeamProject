@@ -18,7 +18,6 @@ import AdminShowUpdatedStatus from './pages/adminPages/adminShowUpdatedStatus';
 import AdminUpdateStatus from './pages/adminPages/adminUpdateStatus';
 import AdminPrintGraduationDayStudents from './pages/adminPages/adminPrintGraduationDayStudents';
 import AdminPrintRegistrationOffice from './pages/adminPages/adminPrintRegistrationOfficeStudents'
-import adminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery'
 import AdminPrintUnshippedStudents from './pages/adminPages/adminPrintUnshippedStudents'
 import AdminPrintUnprintedStudents from './pages/adminPages/adminPrintUnprintedStudents'
 import AdminPrintPostalDelivery from './pages/adminPages/adminPrintPostalDelivery';

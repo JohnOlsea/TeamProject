@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import PersonalInfo from "./PersonalInfo";
 import Header from "./Header";
+import BACKENDURL from "../service/service";
 
 function AddressConfirmation() {
   const navigate = useNavigate();
@@ -47,7 +48,7 @@ function AddressConfirmation() {
   // };
 
   const handleLogout = () => {
-    window.open("http://localhost:5000/logout", "_self");
+    window.open(`${BACKENDURL}/logout`, "_self");
   };
   const handlePersonalInfo = () => {
     navigate("/personalInfo");
@@ -87,7 +88,7 @@ function AddressConfirmation() {
       };
       console.log(data);
       axios
-        .post("http://localhost:5000/update_address", data)
+        .post(`${BACKENDURL}/update_address`, data)
         .then((response) => {
           console.log("Response:", response.data);
         })

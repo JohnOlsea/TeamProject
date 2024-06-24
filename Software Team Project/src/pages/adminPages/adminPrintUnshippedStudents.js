@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import logoKreso from "../../images/Logo Name Only/Logo Name Only PNG file/1x/Kreso Logo - White.png";
 import logo from "../../images/KMITLLogo.png";
-import "../../styles/adminStyles/adminPrint.css";
-import { styled } from "styled-components";
+import BACKENDURL from "../../service/service";
+import AdminHeader from "./adminHeader";
 import axios from "axios";
-import logoutLogo from "../../images/logoutLogo.png";
-import { IoHomeOutline } from "react-icons/io5";
-import { IoChevronBackCircleOutline } from "react-icons/io5";
+import "../../styles/adminStyles/adminPrint.css";
 
 function AdminPrintUnshippedStudents() {
   const { state } = useLocation();
@@ -17,7 +14,7 @@ function AdminPrintUnshippedStudents() {
 
   const getStudentInfo = async () => {
     const response = await axios
-      .get("http://localhost:5000/admin/get_all_student_info_to_print")
+      .get(`${BACKENDURL}/admin/get_all_student_info_to_print`)
       .then((response) => {
         console.log("Response:", response.data);
         setData(response.data);
@@ -36,7 +33,7 @@ function AdminPrintUnshippedStudents() {
   };
 
   const handleBack = () => {
-    navigate("/adminHome");
+    navigate("/adminPrint");
   };
 
   const handleStatusChange = (index, status) => {
@@ -81,7 +78,6 @@ function AdminPrintUnshippedStudents() {
     }
   };
   
-  // useEffect to update DOM elements after state has been updated
   useEffect(() => {
     const addressSections = document.querySelectorAll(".address-section");
     addressSections.forEach((row, index) => {
@@ -115,23 +111,8 @@ function AdminPrintUnshippedStudents() {
 
   return (
     <div className="app-container">
-      <header className="ap-header">
-        <div className="ap-header-content">
-          <img src={logoKreso} alt="Logo" className="ap-logo" />
-          <div className="am-header-right">
-              <img src={logoutLogo} alt="logoutLogo" className="logo-logout-am" onClick={handleLogout}/>
-          </div>
-          <div className="am-header-left">
-              <IoChevronBackCircleOutline size={40} color="white" class="backToHomeIcon" onClick={handleBack}/>
-          </div>
-          <div>
-            <h1 className="ap-title">Print Unshipped Students</h1>
-            <p className="ap-admin">{userName}</p>
-          </div>
-        </div>
-      </header>
+      <AdminHeader title="Print All Unshipped Students" userName={userName} /> 
       <p></p>
-
       <div className="am-table-container">
         <table className="ap-table">
           <thead>
